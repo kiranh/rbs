@@ -1,0 +1,24 @@
+common: &common
+  adapter: mysql2
+  reconnect: false
+  pool: 5
+  host: localhost
+  username: root
+  password: password 
+
+development:
+  <<: *common
+  database: rbs_dev
+
+test:
+  <<: *common
+  database: rbs_test
+
+production:
+  <<: *common
+  database: rbs_production
+
+cucumber:
+  <<: *common
+  database: rbs_test
+

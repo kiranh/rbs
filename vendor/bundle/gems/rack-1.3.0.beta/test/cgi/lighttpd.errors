@@ -1,0 +1,412 @@
+2011-04-29 17:10:37: (log.c.166) server started 
+2011-04-29 17:10:38: (server.c.1512) server stopped by UID = 501 PID = 44792 
+2011-04-29 17:10:55: (log.c.166) server started 
+2011-04-29 17:10:57: (server.c.1512) server stopped by UID = 501 PID = 44889 
+2011-04-29 17:10:57: (log.c.166) server started 
+2011-04-29 17:10:59: (server.c.1512) server stopped by UID = 501 PID = 44889 
+2011-04-29 17:11:26: (log.c.166) server started 
+2011-04-29 17:11:27: (server.c.1512) server stopped by UID = 501 PID = 44928 
+2011-04-29 17:11:27: (log.c.166) server started 
+2011-04-29 17:11:29: (server.c.1512) server stopped by UID = 501 PID = 44928 
+2011-05-02 18:57:07: (log.c.166) server started 
+2011-05-02 18:57:07: (mod_fastcgi.c.1104) the fastcgi-backend test.fcgi failed to start: 
+2011-05-02 18:57:07: (mod_fastcgi.c.1108) child exited with status 1 test.fcgi 
+2011-05-02 18:57:07: (mod_fastcgi.c.1111) If you're trying to run your app as a FastCGI backend, make sure you're using the FastCGI-enabled version.
+If this is PHP on Gentoo, add 'fastcgi' to the USE flags. 
+2011-05-02 18:57:07: (mod_fastcgi.c.1399) [ERROR]: spawning fcgi failed. 
+2011-05-02 18:57:07: (server.c.938) Configuration of plugins failed. Going down. 
+2011-05-02 19:09:57: (log.c.166) server started 
+2011-05-02 19:09:58: (server.c.1512) server stopped by UID = 501 PID = 28253 
+2011-05-02 19:09:58: (log.c.166) server started 
+2011-05-02 19:10:00: (server.c.1512) server stopped by UID = 501 PID = 28253 
+2011-05-02 19:12:20: (log.c.166) server started 
+2011-05-02 19:12:21: (server.c.1512) server stopped by UID = 501 PID = 28958 
+2011-05-02 19:12:21: (log.c.166) server started 
+2011-05-02 19:12:23: (server.c.1512) server stopped by UID = 501 PID = 28958 
+2011-05-02 19:18:22: (log.c.166) server started 
+2011-05-02 19:18:24: (server.c.1512) server stopped by UID = 501 PID = 29126 
+2011-05-02 19:18:24: (log.c.166) server started 
+2011-05-02 19:18:25: (server.c.1512) server stopped by UID = 501 PID = 29126 
+2011-05-02 19:18:37: (log.c.166) server started 
+2011-05-02 19:18:39: (server.c.1512) server stopped by UID = 501 PID = 29165 
+2011-05-02 19:18:39: (log.c.166) server started 
+2011-05-02 19:18:40: (server.c.1512) server stopped by UID = 501 PID = 29165 
+2011-05-02 19:20:04: (log.c.166) server started 
+2011-05-02 19:20:06: (server.c.1512) server stopped by UID = 501 PID = 29207 
+2011-05-02 19:20:06: (log.c.166) server started 
+2011-05-02 19:20:07: (server.c.1512) server stopped by UID = 501 PID = 29207 
+2011-05-02 19:30:51: (log.c.166) server started 
+2011-05-02 19:30:53: (server.c.1512) server stopped by UID = 501 PID = 29335 
+2011-05-02 19:30:53: (log.c.166) server started 
+2011-05-02 19:30:54: (server.c.1512) server stopped by UID = 501 PID = 29335 
+2011-05-02 19:34:32: (log.c.166) server started 
+2011-05-02 19:34:34: (server.c.1512) server stopped by UID = 501 PID = 29387 
+2011-05-02 19:34:34: (log.c.166) server started 
+2011-05-02 19:34:35: (server.c.1512) server stopped by UID = 501 PID = 29387 
+2011-05-02 19:34:57: (log.c.166) server started 
+2011-05-02 19:34:59: (server.c.1512) server stopped by UID = 501 PID = 29431 
+2011-05-02 19:34:59: (log.c.166) server started 
+2011-05-02 19:35:00: (server.c.1512) server stopped by UID = 501 PID = 29431 
+2011-05-02 19:53:03: (log.c.166) server started 
+2011-05-02 19:53:05: (server.c.1512) server stopped by UID = 501 PID = 29549 
+2011-05-02 19:53:05: (log.c.166) server started 
+2011-05-02 19:53:06: (server.c.1512) server stopped by UID = 501 PID = 29549 
+2011-05-02 19:53:33: (log.c.166) server started 
+2011-05-02 19:53:35: (server.c.1512) server stopped by UID = 501 PID = 29608 
+2011-05-02 19:53:35: (log.c.166) server started 
+2011-05-02 19:53:37: (server.c.1512) server stopped by UID = 501 PID = 29608 
+2011-05-02 19:59:39: (log.c.166) server started 
+2011-05-02 19:59:40: (server.c.1512) server stopped by UID = 501 PID = 29663 
+2011-05-02 19:59:40: (log.c.166) server started 
+2011-05-02 19:59:42: (server.c.1512) server stopped by UID = 501 PID = 29663 
+2011-05-02 20:04:59: (log.c.166) server started 
+2011-05-02 20:05:01: (server.c.1512) server stopped by UID = 501 PID = 29722 
+2011-05-02 20:05:01: (log.c.166) server started 
+2011-05-02 20:05:03: (server.c.1512) server stopped by UID = 501 PID = 29722 
+2011-05-02 20:05:21: (log.c.166) server started 
+2011-05-02 20:05:23: (server.c.1512) server stopped by UID = 501 PID = 29762 
+2011-05-02 20:05:23: (log.c.166) server started 
+2011-05-02 20:05:24: (server.c.1512) server stopped by UID = 501 PID = 29762 
+2011-05-02 20:06:14: (log.c.166) server started 
+2011-05-02 20:06:16: (server.c.1512) server stopped by UID = 501 PID = 29802 
+2011-05-02 20:06:16: (log.c.166) server started 
+2011-05-02 20:06:17: (server.c.1512) server stopped by UID = 501 PID = 29802 
+2011-05-02 20:09:27: (log.c.166) server started 
+2011-05-02 20:09:29: (server.c.1512) server stopped by UID = 501 PID = 29849 
+2011-05-02 20:09:29: (log.c.166) server started 
+2011-05-02 20:09:30: (server.c.1512) server stopped by UID = 501 PID = 29849 
+2011-05-02 20:09:53: (log.c.166) server started 
+2011-05-02 20:09:55: (server.c.1512) server stopped by UID = 501 PID = 29892 
+2011-05-02 20:09:55: (log.c.166) server started 
+2011-05-02 20:09:56: (server.c.1512) server stopped by UID = 501 PID = 29892 
+2011-05-02 20:10:30: (log.c.166) server started 
+2011-05-02 20:10:31: (server.c.1512) server stopped by UID = 501 PID = 29934 
+2011-05-02 20:10:31: (log.c.166) server started 
+2011-05-02 20:10:33: (server.c.1512) server stopped by UID = 501 PID = 29934 
+2011-05-02 20:12:02: (log.c.166) server started 
+2011-05-02 20:12:03: (server.c.1512) server stopped by UID = 501 PID = 29980 
+2011-05-02 20:12:03: (log.c.166) server started 
+2011-05-02 20:12:05: (server.c.1512) server stopped by UID = 501 PID = 29980 
+2011-05-02 20:16:25: (log.c.166) server started 
+2011-05-02 20:16:26: (server.c.1512) server stopped by UID = 501 PID = 30031 
+2011-05-02 20:16:26: (log.c.166) server started 
+2011-05-02 20:16:28: (server.c.1512) server stopped by UID = 501 PID = 30031 
+2011-05-02 20:16:53: (log.c.166) server started 
+2011-05-02 20:16:55: (server.c.1512) server stopped by UID = 501 PID = 30075 
+2011-05-02 20:16:55: (log.c.166) server started 
+2011-05-02 20:16:56: (server.c.1512) server stopped by UID = 501 PID = 30075 
+2011-05-02 20:27:54: (log.c.166) server started 
+2011-05-02 20:27:54: (log.c.166) server started 
+2011-05-02 20:30:52: (log.c.166) server started 
+2011-05-02 20:30:53: (server.c.1512) server stopped by UID = 501 PID = 30256 
+2011-05-02 20:30:57: (log.c.166) server started 
+2011-05-02 20:30:58: (server.c.1512) server stopped by UID = 501 PID = 30280 
+2011-05-02 20:30:59: (log.c.166) server started 
+2011-05-02 20:31:00: (server.c.1512) server stopped by UID = 501 PID = 30280 
+2011-05-02 20:31:09: (log.c.166) server started 
+2011-05-02 20:31:11: (server.c.1512) server stopped by UID = 501 PID = 30319 
+2011-05-02 20:31:11: (log.c.166) server started 
+2011-05-02 20:31:12: (server.c.1512) server stopped by UID = 501 PID = 30319 
+2011-05-02 20:31:21: (log.c.166) server started 
+2011-05-02 20:31:23: (server.c.1512) server stopped by UID = 501 PID = 30359 
+2011-05-02 20:31:23: (log.c.166) server started 
+2011-05-02 20:31:25: (server.c.1512) server stopped by UID = 501 PID = 30359 
+2011-05-02 20:31:39: (log.c.166) server started 
+2011-05-02 20:31:40: (server.c.1512) server stopped by UID = 501 PID = 30419 
+2011-05-02 20:31:40: (log.c.166) server started 
+2011-05-02 20:31:42: (server.c.1512) server stopped by UID = 501 PID = 30419 
+2011-05-02 20:31:55: (log.c.166) server started 
+2011-05-02 20:31:56: (server.c.1512) server stopped by UID = 501 PID = 30459 
+2011-05-02 20:31:56: (log.c.166) server started 
+2011-05-02 20:31:58: (server.c.1512) server stopped by UID = 501 PID = 30459 
+2011-05-02 20:32:04: (log.c.166) server started 
+2011-05-02 20:32:06: (server.c.1512) server stopped by UID = 501 PID = 30498 
+2011-05-02 20:32:23: (log.c.166) server started 
+2011-05-02 20:32:25: (server.c.1512) server stopped by UID = 501 PID = 30524 
+2011-05-02 20:32:25: (log.c.166) server started 
+2011-05-02 20:32:26: (server.c.1512) server stopped by UID = 501 PID = 30524 
+2011-05-02 21:06:43: (log.c.166) server started 
+2011-05-02 21:06:44: (log.c.166) server started 
+2011-05-02 21:06:45: (server.c.1512) server stopped by UID = 501 PID = 31557 
+2011-05-02 21:39:21: (log.c.166) server started 
+2011-05-02 21:39:23: (server.c.1512) server stopped by UID = 501 PID = 31734 
+2011-05-02 21:39:23: (log.c.166) server started 
+2011-05-02 21:39:25: (server.c.1512) server stopped by UID = 501 PID = 31734 
+2011-05-02 21:49:40: (log.c.166) server started 
+2011-05-02 21:49:42: (server.c.1512) server stopped by UID = 501 PID = 31844 
+2011-05-02 21:49:42: (log.c.166) server started 
+2011-05-02 21:49:43: (server.c.1512) server stopped by UID = 501 PID = 31844 
+2011-05-02 22:09:37: (log.c.166) server started 
+2011-05-02 22:09:39: (server.c.1512) server stopped by UID = 501 PID = 32186 
+2011-05-02 22:09:39: (log.c.166) server started 
+2011-05-02 22:09:40: (server.c.1512) server stopped by UID = 501 PID = 32186 
+2011-05-02 22:10:05: (log.c.166) server started 
+2011-05-02 22:10:06: (server.c.1512) server stopped by UID = 501 PID = 32226 
+2011-05-02 22:10:07: (log.c.166) server started 
+2011-05-02 22:10:08: (server.c.1512) server stopped by UID = 501 PID = 32226 
+2011-05-02 22:23:08: (log.c.166) server started 
+2011-05-02 22:23:09: (server.c.1512) server stopped by UID = 501 PID = 32414 
+2011-05-02 22:23:09: (log.c.166) server started 
+2011-05-02 22:23:11: (server.c.1512) server stopped by UID = 501 PID = 32414 
+2011-05-02 22:23:32: (log.c.166) server started 
+2011-05-02 22:23:33: (server.c.1512) server stopped by UID = 501 PID = 32464 
+2011-05-02 22:23:33: (log.c.166) server started 
+2011-05-02 22:23:35: (server.c.1512) server stopped by UID = 501 PID = 32464 
+2011-05-02 22:25:01: (log.c.166) server started 
+2011-05-02 22:25:03: (server.c.1512) server stopped by UID = 501 PID = 32508 
+2011-05-02 22:25:03: (log.c.166) server started 
+2011-05-02 22:25:04: (server.c.1512) server stopped by UID = 501 PID = 32508 
+2011-05-02 22:28:36: (log.c.166) server started 
+2011-05-02 22:28:38: (server.c.1512) server stopped by UID = 501 PID = 33458 
+2011-05-02 22:28:38: (log.c.166) server started 
+2011-05-02 22:28:39: (server.c.1512) server stopped by UID = 501 PID = 33458 
+2011-05-02 22:30:14: (log.c.166) server started 
+2011-05-02 22:30:16: (server.c.1512) server stopped by UID = 501 PID = 33517 
+2011-05-02 22:30:16: (log.c.166) server started 
+2011-05-02 22:30:17: (server.c.1512) server stopped by UID = 501 PID = 33517 
+2011-05-02 22:41:56: (log.c.166) server started 
+2011-05-02 22:41:58: (server.c.1512) server stopped by UID = 501 PID = 33684 
+2011-05-02 22:41:58: (log.c.166) server started 
+2011-05-02 22:41:59: (server.c.1512) server stopped by UID = 501 PID = 33684 
+2011-05-02 22:46:31: (log.c.166) server started 
+2011-05-02 22:46:33: (server.c.1512) server stopped by UID = 501 PID = 33751 
+2011-05-02 22:46:33: (log.c.166) server started 
+2011-05-02 22:46:34: (server.c.1512) server stopped by UID = 501 PID = 33751 
+2011-05-02 22:46:49: (log.c.166) server started 
+2011-05-02 22:46:51: (server.c.1512) server stopped by UID = 501 PID = 33800 
+2011-05-02 22:46:51: (log.c.166) server started 
+2011-05-02 22:46:52: (server.c.1512) server stopped by UID = 501 PID = 33800 
+2011-05-02 22:47:09: (log.c.166) server started 
+2011-05-02 22:47:10: (server.c.1512) server stopped by UID = 501 PID = 33840 
+2011-05-02 22:47:10: (log.c.166) server started 
+2011-05-02 22:47:12: (server.c.1512) server stopped by UID = 501 PID = 33840 
+2011-05-02 22:47:13: (log.c.166) server started 
+2011-05-02 22:47:15: (server.c.1512) server stopped by UID = 501 PID = 33867 
+2011-05-02 22:47:15: (log.c.166) server started 
+2011-05-02 22:47:16: (server.c.1512) server stopped by UID = 501 PID = 33867 
+2011-05-02 22:47:26: (log.c.166) server started 
+2011-05-02 22:47:27: (server.c.1512) server stopped by UID = 501 PID = 33919 
+2011-05-02 22:47:27: (log.c.166) server started 
+2011-05-02 22:47:29: (server.c.1512) server stopped by UID = 501 PID = 33919 
+2011-05-02 22:48:14: (log.c.166) server started 
+2011-05-02 22:48:15: (server.c.1512) server stopped by UID = 501 PID = 33969 
+2011-05-02 22:48:15: (log.c.166) server started 
+2011-05-02 22:48:17: (server.c.1512) server stopped by UID = 501 PID = 33969 
+2011-05-02 22:48:33: (log.c.166) server started 
+2011-05-02 22:48:35: (server.c.1512) server stopped by UID = 501 PID = 34009 
+2011-05-02 22:48:35: (log.c.166) server started 
+2011-05-02 22:48:36: (server.c.1512) server stopped by UID = 501 PID = 34009 
+2011-05-02 22:48:36: (log.c.166) server started 
+2011-05-02 22:48:38: (server.c.1512) server stopped by UID = 501 PID = 34011 
+2011-05-02 22:48:53: (log.c.166) server started 
+2011-05-02 22:48:54: (server.c.1512) server stopped by UID = 501 PID = 34072 
+2011-05-02 22:48:54: (log.c.166) server started 
+2011-05-02 22:48:55: (server.c.1512) server stopped by UID = 501 PID = 34072 
+2011-05-02 22:49:30: (log.c.166) server started 
+2011-05-02 22:49:31: (server.c.1512) server stopped by UID = 501 PID = 34206 
+2011-05-02 22:49:31: (log.c.166) server started 
+2011-05-02 22:49:33: (server.c.1512) server stopped by UID = 501 PID = 34206 
+2011-05-02 22:50:45: (log.c.166) server started 
+2011-05-02 22:50:47: (server.c.1512) server stopped by UID = 501 PID = 34362 
+2011-05-02 22:50:47: (log.c.166) server started 
+2011-05-02 22:50:48: (server.c.1512) server stopped by UID = 501 PID = 34362 
+2011-05-02 23:19:24: (log.c.166) server started 
+2011-05-02 23:19:26: (server.c.1512) server stopped by UID = 501 PID = 35003 
+2011-05-02 23:19:26: (log.c.166) server started 
+2011-05-02 23:19:27: (server.c.1512) server stopped by UID = 501 PID = 35003 
+2011-05-02 23:20:22: (log.c.166) server started 
+2011-05-02 23:20:23: (server.c.1512) server stopped by UID = 501 PID = 35044 
+2011-05-02 23:20:23: (log.c.166) server started 
+2011-05-02 23:20:25: (server.c.1512) server stopped by UID = 501 PID = 35044 
+2011-05-02 23:20:40: (log.c.166) server started 
+2011-05-02 23:20:42: (server.c.1512) server stopped by UID = 501 PID = 35083 
+2011-05-02 23:20:42: (log.c.166) server started 
+2011-05-02 23:20:43: (server.c.1512) server stopped by UID = 501 PID = 35083 
+2011-05-02 23:20:59: (log.c.166) server started 
+2011-05-02 23:21:01: (server.c.1512) server stopped by UID = 501 PID = 35124 
+2011-05-02 23:21:01: (log.c.166) server started 
+2011-05-02 23:21:02: (server.c.1512) server stopped by UID = 501 PID = 35124 
+2011-05-02 23:21:35: (log.c.166) server started 
+2011-05-02 23:21:36: (server.c.1512) server stopped by UID = 501 PID = 35164 
+2011-05-02 23:21:36: (log.c.166) server started 
+2011-05-02 23:21:38: (server.c.1512) server stopped by UID = 501 PID = 35164 
+2011-05-02 23:29:31: (log.c.166) server started 
+2011-05-02 23:29:33: (server.c.1512) server stopped by UID = 501 PID = 35245 
+2011-05-02 23:29:33: (log.c.166) server started 
+2011-05-02 23:29:35: (server.c.1512) server stopped by UID = 501 PID = 35245 
+2011-05-02 23:29:55: (log.c.166) server started 
+2011-05-02 23:29:56: (server.c.1512) server stopped by UID = 501 PID = 35286 
+2011-05-02 23:29:56: (log.c.166) server started 
+2011-05-02 23:29:58: (server.c.1512) server stopped by UID = 501 PID = 35286 
+2011-05-02 23:30:23: (log.c.166) server started 
+2011-05-02 23:30:25: (server.c.1512) server stopped by UID = 501 PID = 35328 
+2011-05-02 23:30:25: (log.c.166) server started 
+2011-05-02 23:30:27: (server.c.1512) server stopped by UID = 501 PID = 35328 
+2011-05-02 23:31:14: (log.c.166) server started 
+2011-05-02 23:31:15: (server.c.1512) server stopped by UID = 501 PID = 35374 
+2011-05-02 23:31:15: (log.c.166) server started 
+2011-05-02 23:31:17: (server.c.1512) server stopped by UID = 501 PID = 35374 
+2011-05-02 23:31:28: (log.c.166) server started 
+2011-05-02 23:31:29: (server.c.1512) server stopped by UID = 501 PID = 35414 
+2011-05-02 23:31:30: (log.c.166) server started 
+2011-05-02 23:31:31: (server.c.1512) server stopped by UID = 501 PID = 35414 
+2011-05-02 23:46:00: (log.c.166) server started 
+2011-05-02 23:46:02: (server.c.1512) server stopped by UID = 501 PID = 35569 
+2011-05-02 23:46:02: (log.c.166) server started 
+2011-05-02 23:46:03: (server.c.1512) server stopped by UID = 501 PID = 35569 
+2011-05-02 23:48:54: (log.c.166) server started 
+2011-05-02 23:48:55: (server.c.1512) server stopped by UID = 501 PID = 35631 
+2011-05-02 23:48:55: (log.c.166) server started 
+2011-05-02 23:48:57: (server.c.1512) server stopped by UID = 501 PID = 35631 
+2011-05-03 00:13:59: (log.c.166) server started 
+2011-05-03 00:14:01: (server.c.1512) server stopped by UID = 501 PID = 35857 
+2011-05-03 00:14:01: (log.c.166) server started 
+2011-05-03 00:14:03: (server.c.1512) server stopped by UID = 501 PID = 35857 
+2011-05-03 00:14:31: (log.c.166) server started 
+2011-05-03 00:14:32: (server.c.1512) server stopped by UID = 501 PID = 35906 
+2011-05-03 00:14:32: (log.c.166) server started 
+2011-05-03 00:14:34: (server.c.1512) server stopped by UID = 501 PID = 35906 
+2011-05-03 00:16:10: (log.c.166) server started 
+2011-05-03 00:16:12: (server.c.1512) server stopped by UID = 501 PID = 35995 
+2011-05-03 00:16:12: (log.c.166) server started 
+2011-05-03 00:16:13: (server.c.1512) server stopped by UID = 501 PID = 35995 
+2011-05-03 00:22:07: (log.c.166) server started 
+2011-05-03 00:22:08: (server.c.1512) server stopped by UID = 501 PID = 36057 
+2011-05-03 00:22:08: (log.c.166) server started 
+2011-05-03 00:22:10: (server.c.1512) server stopped by UID = 501 PID = 36057 
+2011-05-03 00:23:14: (log.c.166) server started 
+2011-05-03 00:23:16: (server.c.1512) server stopped by UID = 501 PID = 36104 
+2011-05-03 00:23:16: (log.c.166) server started 
+2011-05-03 00:23:17: (server.c.1512) server stopped by UID = 501 PID = 36104 
+2011-05-03 00:27:36: (log.c.166) server started 
+2011-05-03 00:27:38: (server.c.1512) server stopped by UID = 501 PID = 36155 
+2011-05-03 00:27:38: (log.c.166) server started 
+2011-05-03 00:27:39: (server.c.1512) server stopped by UID = 501 PID = 36155 
+2011-05-03 00:28:20: (log.c.166) server started 
+2011-05-03 00:28:21: (server.c.1512) server stopped by UID = 501 PID = 36199 
+2011-05-03 00:28:21: (log.c.166) server started 
+2011-05-03 00:28:23: (server.c.1512) server stopped by UID = 501 PID = 36199 
+2011-05-03 00:28:43: (log.c.166) server started 
+2011-05-03 00:28:45: (server.c.1512) server stopped by UID = 501 PID = 36244 
+2011-05-03 00:28:45: (log.c.166) server started 
+2011-05-03 00:28:46: (server.c.1512) server stopped by UID = 501 PID = 36244 
+2011-05-03 00:39:25: (log.c.166) server started 
+2011-05-03 00:39:26: (server.c.1512) server stopped by UID = 501 PID = 36317 
+2011-05-03 00:39:26: (log.c.166) server started 
+2011-05-03 00:39:28: (server.c.1512) server stopped by UID = 501 PID = 36317 
+2011-05-03 00:40:28: (log.c.166) server started 
+2011-05-03 00:40:29: (server.c.1512) server stopped by UID = 501 PID = 36360 
+2011-05-03 00:40:30: (log.c.166) server started 
+2011-05-03 00:40:31: (server.c.1512) server stopped by UID = 501 PID = 36360 
+2011-05-03 00:52:43: (log.c.166) server started 
+2011-05-03 00:52:45: (server.c.1512) server stopped by UID = 501 PID = 36510 
+2011-05-03 00:52:45: (log.c.166) server started 
+2011-05-03 00:52:46: (server.c.1512) server stopped by UID = 501 PID = 36510 
+2011-05-03 00:54:08: (log.c.166) server started 
+2011-05-03 00:54:10: (server.c.1512) server stopped by UID = 501 PID = 36565 
+2011-05-03 00:54:10: (log.c.166) server started 
+2011-05-03 00:54:11: (server.c.1512) server stopped by UID = 501 PID = 36565 
+2011-05-03 01:12:29: (log.c.166) server started 
+2011-05-03 01:12:31: (server.c.1512) server stopped by UID = 501 PID = 39824 
+2011-05-03 01:12:31: (log.c.166) server started 
+2011-05-03 01:12:32: (server.c.1512) server stopped by UID = 501 PID = 39824 
+2011-05-03 01:24:24: (log.c.166) server started 
+2011-05-03 01:24:25: (server.c.1512) server stopped by UID = 501 PID = 39941 
+2011-05-03 01:24:26: (log.c.166) server started 
+2011-05-03 01:24:27: (server.c.1512) server stopped by UID = 501 PID = 39941 
+2011-05-03 01:24:34: (log.c.166) server started 
+2011-05-03 01:24:35: (server.c.1512) server stopped by UID = 501 PID = 39980 
+2011-05-03 01:24:35: (log.c.166) server started 
+2011-05-03 01:24:37: (server.c.1512) server stopped by UID = 501 PID = 39980 
+2011-05-03 01:24:37: (log.c.166) server started 
+2011-05-03 01:24:38: (server.c.1512) server stopped by UID = 501 PID = 39982 
+2011-05-03 01:24:38: (log.c.166) server started 
+2011-05-03 01:24:40: (server.c.1512) server stopped by UID = 501 PID = 39998 
+2011-05-03 01:24:45: (log.c.166) server started 
+2011-05-03 01:24:47: (server.c.1512) server stopped by UID = 501 PID = 40063 
+2011-05-03 01:24:47: (log.c.166) server started 
+2011-05-03 01:24:48: (server.c.1512) server stopped by UID = 501 PID = 40063 
+2011-05-03 01:26:17: (log.c.166) server started 
+2011-05-03 01:26:18: (server.c.1512) server stopped by UID = 501 PID = 40105 
+2011-05-03 01:26:19: (log.c.166) server started 
+2011-05-03 01:26:20: (server.c.1512) server stopped by UID = 501 PID = 40105 
+2011-05-03 01:39:33: (log.c.166) server started 
+2011-05-03 01:39:34: (server.c.1512) server stopped by UID = 501 PID = 40228 
+2011-05-03 01:39:34: (log.c.166) server started 
+2011-05-03 01:39:36: (server.c.1512) server stopped by UID = 501 PID = 40228 
+2011-05-03 01:40:27: (log.c.166) server started 
+2011-05-03 01:40:29: (server.c.1512) server stopped by UID = 501 PID = 40269 
+2011-05-03 01:40:29: (log.c.166) server started 
+2011-05-03 01:40:30: (server.c.1512) server stopped by UID = 501 PID = 40269 
+2011-05-03 01:47:57: (log.c.166) server started 
+2011-05-03 01:47:59: (server.c.1512) server stopped by UID = 501 PID = 40396 
+2011-05-03 01:47:59: (log.c.166) server started 
+2011-05-03 01:48:00: (server.c.1512) server stopped by UID = 501 PID = 40396 
+2011-05-03 01:48:54: (log.c.166) server started 
+2011-05-03 01:48:55: (server.c.1512) server stopped by UID = 501 PID = 40437 
+2011-05-03 01:48:55: (log.c.166) server started 
+2011-05-03 01:48:57: (server.c.1512) server stopped by UID = 501 PID = 40437 
+2011-05-03 01:51:52: (log.c.166) server started 
+2011-05-03 01:51:53: (server.c.1512) server stopped by UID = 501 PID = 40487 
+2011-05-03 01:51:53: (log.c.166) server started 
+2011-05-03 01:51:55: (server.c.1512) server stopped by UID = 501 PID = 40487 
+2011-05-03 01:55:38: (log.c.166) server started 
+2011-05-03 01:55:39: (server.c.1512) server stopped by UID = 501 PID = 40586 
+2011-05-03 01:55:39: (log.c.166) server started 
+2011-05-03 01:55:41: (server.c.1512) server stopped by UID = 501 PID = 40586 
+2011-05-03 01:55:43: (log.c.166) server started 
+2011-05-03 01:55:44: (server.c.1512) server stopped by UID = 501 PID = 40619 
+2011-05-03 01:55:44: (log.c.166) server started 
+2011-05-03 01:55:46: (server.c.1512) server stopped by UID = 501 PID = 40619 
+2011-05-03 02:04:46: (log.c.166) server started 
+2011-05-03 02:04:48: (server.c.1512) server stopped by UID = 501 PID = 40696 
+2011-05-03 02:04:48: (log.c.166) server started 
+2011-05-03 02:04:49: (server.c.1512) server stopped by UID = 501 PID = 40696 
+2011-05-03 02:14:59: (log.c.166) server started 
+2011-05-03 02:15:01: (server.c.1512) server stopped by UID = 501 PID = 40789 
+2011-05-03 02:15:01: (log.c.166) server started 
+2011-05-03 02:15:02: (server.c.1512) server stopped by UID = 501 PID = 40789 
+2011-05-03 02:15:22: (log.c.166) server started 
+2011-05-03 02:15:23: (server.c.1512) server stopped by UID = 501 PID = 40828 
+2011-05-03 02:15:24: (log.c.166) server started 
+2011-05-03 02:15:25: (server.c.1512) server stopped by UID = 501 PID = 40828 
+2011-05-03 02:15:34: (log.c.166) server started 
+2011-05-03 02:15:35: (server.c.1512) server stopped by UID = 501 PID = 40868 
+2011-05-03 02:15:35: (log.c.166) server started 
+2011-05-03 02:15:37: (server.c.1512) server stopped by UID = 501 PID = 40868 
+2011-05-03 02:16:46: (log.c.166) server started 
+2011-05-03 02:16:48: (server.c.1512) server stopped by UID = 501 PID = 40923 
+2011-05-03 02:16:48: (log.c.166) server started 
+2011-05-03 02:16:49: (server.c.1512) server stopped by UID = 501 PID = 40923 
+2011-05-03 02:17:08: (log.c.166) server started 
+2011-05-03 02:17:09: (server.c.1512) server stopped by UID = 501 PID = 40963 
+2011-05-03 02:17:09: (log.c.166) server started 
+2011-05-03 02:17:10: (server.c.1512) server stopped by UID = 501 PID = 40963 
+2011-05-03 02:29:29: (log.c.166) server started 
+2011-05-03 02:29:31: (server.c.1512) server stopped by UID = 501 PID = 41128 
+2011-05-03 02:29:31: (log.c.166) server started 
+2011-05-03 02:29:32: (server.c.1512) server stopped by UID = 501 PID = 41128 
+2011-05-03 03:05:05: (log.c.166) server started 
+2011-05-03 03:05:07: (server.c.1512) server stopped by UID = 501 PID = 42429 
+2011-05-03 03:05:07: (log.c.166) server started 
+2011-05-03 03:05:09: (server.c.1512) server stopped by UID = 501 PID = 42429 
+2011-05-03 03:05:55: (log.c.166) server started 
+2011-05-03 03:05:57: (server.c.1512) server stopped by UID = 501 PID = 42470 
+2011-05-03 03:05:57: (log.c.166) server started 
+2011-05-03 03:05:58: (server.c.1512) server stopped by UID = 501 PID = 42470 
+2011-05-03 03:13:23: (log.c.166) server started 
+2011-05-03 03:13:24: (server.c.1512) server stopped by UID = 501 PID = 42575 
+2011-05-03 03:13:24: (log.c.166) server started 
+2011-05-03 03:13:26: (server.c.1512) server stopped by UID = 501 PID = 42575 
+2011-05-03 03:14:22: (log.c.166) server started 
+2011-05-03 03:14:23: (server.c.1512) server stopped by UID = 501 PID = 42617 
+2011-05-03 03:14:23: (log.c.166) server started 
+2011-05-03 03:14:25: (server.c.1512) server stopped by UID = 501 PID = 42617 
+2011-05-03 03:16:37: (log.c.166) server started 
+2011-05-03 03:16:39: (server.c.1512) server stopped by UID = 501 PID = 42737 
+2011-05-03 03:16:39: (log.c.166) server started 
+2011-05-03 03:16:40: (server.c.1512) server stopped by UID = 501 PID = 42737 
+2011-05-03 03:22:11: (log.c.166) server started 
+2011-05-03 03:22:12: (server.c.1512) server stopped by UID = 501 PID = 42805 
+2011-05-03 03:22:12: (log.c.166) server started 
+2011-05-03 03:22:14: (server.c.1512) server stopped by UID = 501 PID = 42805 
