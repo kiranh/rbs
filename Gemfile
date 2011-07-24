@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 
 gem 'rails', '3.1.0.beta1'
 
-gem 'community_engine', :path => "vendor/bundle/bundler/gems/communityengine-a9e07d813135" 
+gem 'community_engine', :path => "vendor/engines/communityengine" 
 #'2.0.0.beta', :git => 'https://github.com/bborn/communityengine.git', :branch => 'rails3'
 gem 'authlogic', :path => "vendor/bundle/bundler/gems/authlogic-03ed66a97174"
 #, :git => 'https://github.com/bborn/authlogic.git' 
