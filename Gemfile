@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', :git => "git://github.com/rails/rails.git", :branch => "3-1-stable"
+gem 'rails', :path => "vendor/git/rails"
 
 gem 'prototype-rails', :path => "vendor/git/prototype-rails"
 gem 'community_engine', :path => "vendor/engines/communityengine"
@@ -9,9 +9,10 @@ gem 'community_engine', :path => "vendor/engines/communityengine"
 gem 'authlogic', :path => "vendor/git/authlogic"
 
 #, :git => 'https://github.com/bborn/authlogic.git'
-gem 'calendar_date_select', :path => "vendor/bundle/bundler/gems/calendar_date_select-8e7ec79435a6"
+gem 'calendar_date_select', :path => "vendor/git/calendar_date_select"
 
 #, :git => 'https://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
+
 gem 'omniauth'
 gem 'meta_search', :path => "vendor/git/meta_search"
 gem 'sprockets', :path => "vendor/git/sprockets"

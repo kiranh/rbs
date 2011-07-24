@@ -4,3 +4,4 @@ log/*.log
 tmp/
 .DS_store
 .idea
+public/assets

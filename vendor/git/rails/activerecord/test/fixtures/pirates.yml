@@ -1,0 +1,9 @@
+blackbeard:
+  catchphrase: "Yar."
+  parrot: george
+
+redbeard:
+  catchphrase: "Avast!"
+  parrot: louis
+  created_on: <%= 2.weeks.ago.utc.to_s(:db) %>
+  updated_on: <%= 2.weeks.ago.utc.to_s(:db) %>

@@ -49,11 +49,6 @@ GIT
       thor (~> 0.14.6)
 
 PATH
-  remote: vendor/bundle/bundler/gems/calendar_date_select-8e7ec79435a6
-  specs:
-    calendar_date_select (1.16.1)
-
-PATH
   remote: vendor/engines/communityengine
   specs:
     community_engine (2.0.0.beta)
@@ -89,6 +84,11 @@ PATH
     authlogic (3.0.3)
       activerecord (>= 3.0.7)
       activerecord (>= 3.0.7)
+
+PATH
+  remote: vendor/git/calendar_date_select
+  specs:
+    calendar_date_select (1.16.3)
 
 PATH
   remote: vendor/git/meta_search

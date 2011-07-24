@@ -16,7 +16,7 @@ test:
 
 production:
   <<: *common
-  database: rbs_production
+  database: rbs_dev
 
 cucumber:
   <<: *common
