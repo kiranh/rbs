@@ -177,7 +177,7 @@ ld: warning: directory '/opt/local/lib' following -L not found
 ld: warning: directory '/sw/local/lib' following -L not found
 Undefined symbols:
   "_sqlite3_column_database_name", referenced from:
-      _t in ccW7tqCN.o
+      _t in ccNN7Rck.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
@@ -212,7 +212,7 @@ ld: warning: directory '/opt/local/lib' following -L not found
 ld: warning: directory '/sw/local/lib' following -L not found
 Undefined symbols:
   "_sqlite3_enable_load_extension", referenced from:
-      _t in cc6SXlbI.o
+      _t in ccTsc8zA.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
@@ -247,7 +247,7 @@ ld: warning: directory '/opt/local/lib' following -L not found
 ld: warning: directory '/sw/local/lib' following -L not found
 Undefined symbols:
   "_sqlite3_load_extension", referenced from:
-      _t in cckPUSSk.o
+      _t in ccfelPhS.o
 ld: symbol(s) not found
 collect2: ld returned 1 exit status
 checked program was:
