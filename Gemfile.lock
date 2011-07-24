@@ -1,8 +1,52 @@
-PATH
-  remote: vendor/bundle/bundler/gems/authlogic-03ed66a97174
+GIT
+  remote: git://github.com/rails/rails.git
+  revision: b2eaf968de405ab4b5c5fb868efbb6d812779ff1
+  branch: 3-1-stable
   specs:
-    authlogic (2.1.6)
-      activesupport
+    actionmailer (3.1.0.rc4)
+      actionpack (= 3.1.0.rc4)
+      mail (~> 2.3.0)
+    actionpack (3.1.0.rc4)
+      activemodel (= 3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+      builder (~> 3.0.0)
+      erubis (~> 2.7.0)
+      i18n (~> 0.6)
+      rack (~> 1.3.1)
+      rack-cache (~> 1.0.2)
+      rack-mount (~> 0.8.1)
+      rack-test (~> 0.6.0)
+      sprockets (~> 2.0.0.beta.10)
+    activemodel (3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+      bcrypt-ruby (~> 2.1.4)
+      builder (~> 3.0.0)
+      i18n (~> 0.6)
+    activerecord (3.1.0.rc4)
+      activemodel (= 3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+      arel (~> 2.1.3)
+      tzinfo (~> 0.3.29)
+    activeresource (3.1.0.rc4)
+      activemodel (= 3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+    activesupport (3.1.0.rc4)
+      multi_json (~> 1.0)
+    rails (3.1.0.rc4)
+      actionmailer (= 3.1.0.rc4)
+      actionpack (= 3.1.0.rc4)
+      activerecord (= 3.1.0.rc4)
+      activeresource (= 3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+      bundler (~> 1.0)
+      railties (= 3.1.0.rc4)
+    railties (3.1.0.rc4)
+      actionpack (= 3.1.0.rc4)
+      activesupport (= 3.1.0.rc4)
+      rack-ssl (~> 1.3.2)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (~> 0.14.6)
 
 PATH
   remote: vendor/bundle/bundler/gems/calendar_date_select-8e7ec79435a6
@@ -10,7 +54,7 @@ PATH
     calendar_date_select (1.16.1)
 
 PATH
-  remote: vendor/bundle/bundler/gems/communityengine-a9e07d813135
+  remote: vendor/engines/communityengine
   specs:
     community_engine (2.0.0.beta)
       acts_as_commentable (~> 3.0.0)
@@ -26,12 +70,12 @@ PATH
       hpricot
       htmlentities
       kaminari
-      meta_search (= 1.1.0.pre)
+      meta_search (= 1.1.0.pre2)
       omniauth (~> 0.2.0.beta3)
       paperclip (~> 2.3)
       prototype-rails
-      rack (= 1.3.0.beta)
-      rails (= 3.1.0.beta1)
+      rack (= 1.3.1)
+      rails (= 3.1.0.rc4)
       rails_autolink
       rakismet
       recaptcha
@@ -39,39 +83,38 @@ PATH
       simplecov
       sqlite3
 
+PATH
+  remote: vendor/git/authlogic
+  specs:
+    authlogic (3.0.3)
+      activerecord (>= 3.0.7)
+      activerecord (>= 3.0.7)
+
+PATH
+  remote: vendor/git/meta_search
+  specs:
+    meta_search (1.1.0.pre2)
+      actionpack (~> 3.1.0.alpha)
+      activerecord (~> 3.1.0.alpha)
+      activesupport (~> 3.1.0.alpha)
+
+PATH
+  remote: vendor/git/prototype-rails
+  specs:
+    prototype-rails (0.3.1)
+      rails (~> 3.1.0.beta1)
+
+PATH
+  remote: vendor/git/sprockets
+  specs:
+    sprockets (2.0.0.beta.10)
+      hike (~> 1.0)
+      rack (~> 1.0)
+      tilt (~> 1.1, != 1.3.0)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    actionmailer (3.1.0.beta1)
-      actionpack (= 3.1.0.beta1)
-      mail (~> 2.3.0)
-    actionpack (3.1.0.beta1)
-      activemodel (= 3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-      builder (~> 3.0.0)
-      erubis (~> 2.7.0)
-      i18n (~> 0.6.0beta1)
-      rack (~> 1.3.0.beta)
-      rack-cache (~> 1.0.1)
-      rack-mount (~> 0.7.2)
-      rack-test (~> 0.6.0)
-      sprockets (~> 2.0.0.beta.2)
-      tzinfo (~> 0.3.27)
-    activemodel (3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-      bcrypt-ruby (~> 2.1.4)
-      builder (~> 3.0.0)
-      i18n (~> 0.6.0beta1)
-    activerecord (3.1.0.beta1)
-      activemodel (= 3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-      arel (~> 2.1.0)
-      tzinfo (~> 0.3.27)
-    activeresource (3.1.0.beta1)
-      activemodel (= 3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-    activesupport (3.1.0.beta1)
-      multi_json (~> 1.0)
     acts_as_commentable (3.0.1)
     addressable (2.2.4)
     ansi (1.3.0)
@@ -115,10 +158,6 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    meta_search (1.1.0.pre)
-      actionpack (~> 3.1.0.alpha)
-      activerecord (~> 3.1.0.alpha)
-      activesupport (~> 3.1.0.alpha)
     mime-types (1.16)
     multi_json (1.0.3)
     multi_xml (0.2.2)
@@ -169,13 +208,11 @@ GEM
       cocaine (>= 0.0.2)
       mime-types
     polyglot (0.3.1)
-    prototype-rails (0.3.1)
-      rails (~> 3.1.0.beta1)
     pyu-ruby-sasl (0.0.3.3)
-    rack (1.3.0.beta)
+    rack (1.3.1)
     rack-cache (1.0.2)
       rack (>= 0.4)
-    rack-mount (0.7.4)
+    rack-mount (0.8.1)
       rack (>= 1.0.0)
     rack-openid (1.3.1)
       rack (>= 1.1.0)
@@ -184,25 +221,12 @@ GEM
       rack
     rack-test (0.6.0)
       rack (>= 1.0)
-    rails (3.1.0.beta1)
-      actionmailer (= 3.1.0.beta1)
-      actionpack (= 3.1.0.beta1)
-      activerecord (= 3.1.0.beta1)
-      activeresource (= 3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-      bundler (~> 1.0)
-      railties (= 3.1.0.beta1)
     rails_autolink (1.0.2)
       rails (~> 3.1.0.a)
-    railties (3.1.0.beta1)
-      actionpack (= 3.1.0.beta1)
-      activesupport (= 3.1.0.beta1)
-      rack-ssl (~> 1.3.2)
-      rake (>= 0.8.7)
-      thor (~> 0.14.6)
     raindrops (0.7.0)
     rake (0.9.2)
     rakismet (1.1.0)
+    rdoc (3.8)
     recaptcha (0.3.1)
     rest-client (1.6.3)
       mime-types (>= 1.16)
@@ -215,10 +239,6 @@ GEM
     simplecov (0.4.2)
       simplecov-html (~> 0.4.4)
     simplecov-html (0.4.5)
-    sprockets (2.0.0.beta.2)
-      hike (~> 1.0)
-      rack (~> 1.0)
-      tilt (~> 1.0)
     sqlite3 (1.3.3)
     thor (0.14.6)
     tilt (1.3.2)
@@ -246,12 +266,13 @@ DEPENDENCIES
   coffee-script
   community_engine!
   jquery-rails
-  meta_search (= 1.1.0.pre)
+  meta_search!
   mysql2
   omniauth
-  rails (= 3.1.0.beta1)
+  prototype-rails!
+  rails!
   sass
-  sprockets (= 2.0.0.beta.2)
+  sprockets!
   turn
   uglifier
   unicorn

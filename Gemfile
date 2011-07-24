@@ -1,16 +1,20 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.beta1'
+gem 'rails', :git => "git://github.com/rails/rails.git", :branch => "3-1-stable"
 
-gem 'community_engine', :path => "vendor/engines/communityengine" 
+gem 'prototype-rails', :path => "vendor/git/prototype-rails"
+gem 'community_engine', :path => "vendor/engines/communityengine"
+
 #'2.0.0.beta', :git => 'https://github.com/bborn/communityengine.git', :branch => 'rails3'
-gem 'authlogic', :path => "vendor/bundle/bundler/gems/authlogic-03ed66a97174"
-#, :git => 'https://github.com/bborn/authlogic.git' 
+gem 'authlogic', :path => "vendor/git/authlogic"
+
+#, :git => 'https://github.com/bborn/authlogic.git'
 gem 'calendar_date_select', :path => "vendor/bundle/bundler/gems/calendar_date_select-8e7ec79435a6"
-#, :git => 'https://github.com/paneq/calendar_date_select.git', :branch => 'rails3test' 
-gem 'omniauth' 
-gem 'meta_search', '1.1.0.pre'
-gem 'sprockets', '2.0.0.beta.2'
+
+#, :git => 'https://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
+gem 'omniauth'
+gem 'meta_search', :path => "vendor/git/meta_search"
+gem 'sprockets', :path => "vendor/git/sprockets"
 
 gem 'mysql2'
 
