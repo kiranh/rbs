@@ -1,1 +1,3 @@
-community_name: "Social Tango"
+app_host: 50.19.105.161
+community_name: "BizzConnect"
+application_url: "http://localhost:3000"
