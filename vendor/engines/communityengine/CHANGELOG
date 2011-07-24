@@ -1,0 +1,113 @@
+= TODO
+# * replace paginating find with will paginate
+# * replace att_fu with paperclip
+# * fix boot; 
+# * recaptcha constants
+# * rip out beta mode and teaser stuff
+# * clean up routes
+# * take out vendors/offerings stuff
+# * take out ez where
+# * remote_form_for is gone (use dynamic_form gem/prototype legacy helper)
+# * finding transparently by login is broken (fixed using friendly_id)
+# * can't dup nilclass error in Rails timezone conversion (fixed with a little patch, should get fixed in a new version of Rails)
+# * tinymce isn't working
+# * fix responds-to-parent
+
+* replace old multiple uploader
+* fix photo uploading from welcome_photo page
+* add back searching to users index
+* remove all the theming stuff
+* replace white_list with something (sanitize?) (preserve stuff from white list initializer)
+* replace setup template with something else more sensible
+* allow overriding initializers, autoloading assets, etc
+* mce_opts initializer
+* fix rakismet initializer
+* remove stylesheet customization
+* use aato instead of aatos
+* authlogic has problems: not sure it's recording last_login magic columns, investigate
+# Bug in rails fixtures.rb on 849 - use fixtures_path.to_s.size instead
+
+=2.0.0.pre
+* Rails 3.1.0.beta1 compatibility
+
+=1.9.9
+
+* Rails 3.1 compatibility
+* Ruby 1.9.2 compatibility
+* Use Paperclip instead of attachment_fu
+* Add Omniauth
+* Remove lots of old, unused featured (contests, skills, offerings, etc.)
+
+=1.2.1
+* Anonymous forum replies
+* Turn comment notifications on or off by post
+* Allow admins/mods to edit comments (they can already delete them)
+* Fix security vulnerability in AuthenticatedSystem
+
+=1.2.0
+* Threaded private messages
+* Clear cache link in admin dashboard
+* Add support for using rakismet gem to check comments for spam (see README for instructions)
+
+=1.1.0
+* fixed time_ago formatting problem on user/index
+* user Authlogic's perishable token for doing password resets (instead of sending them a password)
+
+
+= 1.0.4.2
+* Rails 2.3.4 compatibility (all tests pass, Takk)
+* Add searchlogic gem dependency (searchlogic is awesome, will be using it more in the future, currently just using on admin_controller#comments)
+* Add searchlogic to manage tags page, add taggings_count to tags (new migration)
+
+= 1.0.4
+* Changes to Japanese language translations
+* Use authlogic instead of restful_authentication (augthlogic gem now required, new migrations required) (thanks jnimety!)
+* Big overhaul of i18n by sdecleire, more international-friendly translation tokens. `en` is now the default locale (instead of `en-US`)
+
+
+= 1.0.3
+* complete private messages integration, allow sending messages to multiple recipients
+* upgrades to Event functionality, including RSVPs (eksatx)
+* Photo albums, Static pages and messages controller tests (juafrlo, eksatx)
+* calendar_date_select, icalendar gems now required
+* added ability to unsubscribe from comment notifications for anonymous comments
+* ical format output for Events to allow subscriptions
+
+= 1.0.2
+* Rails 2.3 compatibility
+* RedCloth no longer required
+* fixed swfupload to work with 2.3 and use Rack middleware
+* use Desert plugin for code mixing and plugin migrations instead of Engines
+* allow moderators/activity owners to delete activities
+* only track login activity once per day
+* allow anonymous commenters to choose whether they want to receive follow-up comment notices by e-mail
+* refactor views to use 'box' helper for logical content modules, allowing better flexibility when trying to customize layouts
+
+= 1.0.1
+* fixed error when cropping photos using file system storage
+* fixed error on messages#delete
+
+
+= 1.0.0
+* postgres compatibility (thanks Johannes)
+* Some SEO improvements to page titles and urls for showing tags
+* Fixed a security vulnerability
+* updated to newest attachment_fu plugin (note new cropping in geometry strings for photo in application.yml)
+    - this attachment fu requires ImageMagick 6.4 or greater
+* updated swfupload to fix flash 10 compatibility
+* added ability to crop profile photo to better fit dimensions (/username/crop_profile_photo)
+* updated TinyMCE scripts
+* updated to newest Prototype and scriptaculous, and removed unused javascript files
+
+= 0.10.8
+
+* Updating CE for Rails 2.2.2 compatibility
+* Removed Globalite in favor of Rails' native I18n API. Ce localization should work without modification
+* renamed dozens of files to use Rails 2.0 conventions (ie. .html.haml)
+* updated truncate calls to use new options hash format
+
+
+= 0.10.7
+
+* Updating CE to be compatible with Rails 2.1.2
+* Lots of il8n refactoring, mainly using symbol tokens instead of string for localization in views. 

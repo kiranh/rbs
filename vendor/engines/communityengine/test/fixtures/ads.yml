@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+hgtv:
+  id: 1
+  name: hgtv
+  html: Come watch our show!
+  frequency: 1
+  created_at: <%= 5.days.ago.iso8601 %>
+  updated_at: <%= 5.days.ago.iso8601 %>
+  start_date: <%= 5.days.ago.iso8601 %>
+  end_date: <%= 5.days.from_now.iso8601 %>
+  location: homepage_s1
+  audience: all
+  published: true

@@ -1,0 +1,29 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+library_pic:
+  id: 1
+  name: library
+  description: The MPLS library is so great
+  user_id: 1
+  photo_content_type: image/jpg
+  photo_file_name: test.jpg
+  photo_file_size: 274
+  width: 45
+  height: 45
+  created_at: <%= Time.now.iso8601 %>
+  updated_at: <%= Time.now.iso8601 %>
+  album_id: 1
+  view_count: 0
+  
+another_pic:
+  id: 2
+  name: another
+  description: Something not that idfferent
+  user_id: 1
+  photo_content_type: image/jpg
+  photo_file_name: test.jpg
+  photo_file_size: 274
+  width: 45
+  height: 45
+  created_at: <%= 1.days.ago.iso8601 %>
+  created_at: <%= 1.days.ago.iso8601 %>
+  view_count: 0
