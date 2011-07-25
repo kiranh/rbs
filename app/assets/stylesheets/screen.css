@@ -1667,6 +1667,7 @@ input.text, textarea, select {
     border: 1px inset #AAA;
     margin: 0.5em 0;
     padding: 4px 5px;
+    margin-right:40px;
 }
 
 input.text:focus, textarea:focus, select:focus {
@@ -2126,6 +2127,7 @@ img.alignright, img.right {
 
 #main-nav ul li.current a {
     border-bottom: 2px solid #800517;
+    color: #002;
 }
 
 /* Subnav */
