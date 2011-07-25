@@ -1,15 +1,21 @@
+:javascript
+  jQuery(document).ready(function() {
+    jQuery('.reg_box').tipsy({trigger: 'focus', gravity: 'w'});
+    jQuery('#date_tip').tipsy({trigger: 'manual', gravity: 'w'});
+    jQuery('#user_birthday_1i, #user_birthday_2i, #user_birthday_3i').focus(function() {
+      jQuery('#date_tip').tipsy("show");
+    });
+    jQuery('#user_birthday_1i, #user_birthday_2i, #user_birthday_3i').focusout(function() {
+      jQuery('#date_tip').tipsy("hide");
+    });
+  });
+
 .yui-b
   -box do
     %h3
-      =:why_sign_up.l
-    %ul.list.checks
-    %li 
-      = :sign_up_reason_1.l
-    %li 
-      = :sign_up_reason_2.l
+      =:tips.l
 
   -box :class => 'alt' do
-    %h3=:tips.l
     %p
       =:after_signing_up_youll_receive_an_e_mail_confirmation_message.l
     %p
@@ -25,27 +31,23 @@
         %label{"for"=>"user_login"} 
           =:username.l
           \:
-          %em=:required_your_username_must_not_contain_numerals_spaces_or_special_characters.l
-        = f.text_field :login
+        = f.text_field :login, "original-title" => :required_your_username_must_not_contain_numerals_spaces_or_special_characters.l, :class => "reg_box"
 
         %label{"for"=>"user_email"}
           =:e_mail_address.l
-          \:
-          %em=:required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter.l
-        = f.text_field :email
-
+          \:        
+        = f.text_field :login, "original-title" => :required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter.l, :class => "reg_box"
         %label{"for"=>"user_birthdate"}
           =:birthday.l
           \:
-          %em=:required_you_must_be_at_least_years_old_to_sign_up.l_with_args(:min_age => configatron.min_age)
         = date_select :user, :birthday, {:start_year => (Time.now.year - configatron.max_age), :end_year => (Time.now.year - configatron.min_age)}
-
+        %a#date_tip{"original-title" => :required_you_must_be_at_least_years_old_to_sign_up.l_with_args(:min_age => configatron.min_age)}
         -if configatron.require_captcha_on_signup
           .right{:style => 'margin-top:2em;'}= recaptcha_tags
 
         %label{"for"=>"user_password"}
           =:type_your_password.l
-        = f.password_field :password
+        = f.password_field :password, "original-title" => :reg_password_instruct.l, :class => "reg_box"
         %label{"for"=>"user_password_confirmation"}
           =:re_type_your_password_to_confirm.l
         = f.password_field :password_confirmation
@@ -53,12 +55,12 @@
         %label{"for"=>"business_name"}
           =:business.l
           \:
-        = f.text_field :business_name
+        = f.text_field :business_name, "original-title" => :reg_business_instruct.l, :class => "reg_box"
 
         %label{"for"=>"country"}
           =:country.l
           \:
-        = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'})
+        = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => :reg_country_instruct.l, :class => "reg_box")
 
 
 

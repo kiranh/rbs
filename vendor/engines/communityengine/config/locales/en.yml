@@ -1110,11 +1110,11 @@ en:
   #en: required: required
   required: required
   #en: required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "(Required: We will send a confirmation e-mail to the address you enter.)"
-  required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "(Required: We will send a confirmation e-mail to the address you enter.)"
+  required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "Required: We will send a confirmation e-mail to the address you enter"
   #en: required_you_must_be_at_least_years_old_to_sign_up: "(Required: you must be at least %{min_age} years old to sign up.)"
-  required_you_must_be_at_least_years_old_to_sign_up: "(Required: you must be at least %{min_age} years old to sign up.)"
+  required_you_must_be_at_least_years_old_to_sign_up: "Required: you must be at least %{min_age} years old to sign up"
   #en: required_your_username_must_not_contain_numerals_spaces_or_special_characters: "(Required: Your username must not contain spaces or special characters.)"
-  required_your_username_must_not_contain_numerals_spaces_or_special_characters: "(Required: Your username must not contain spaces or special characters.)"
+  required_your_username_must_not_contain_numerals_spaces_or_special_characters: "Required: Your username must not contain spaces or special characters"
   #en: resend_my_activation_e_mail: Resend my activation e-mail
   resend_my_activation_e_mail: Resend my activation e-mail
   #en: resend_your_activation_e_mail: Resend your activation e-mail
@@ -1340,7 +1340,7 @@ en:
   #en: time_constrained: Time constrained
   time_constrained: Time constrained
   #en: tips: "Tips:"
-  tips: "Tips:"
+  tips: "Tips"
   #en: title: Title
   title: Title
   #en: title_required: "Title (required)"
@@ -1656,3 +1656,6 @@ en:
   back_to_photo_manager: "Back to photo manager"
 
   business: "Business"
+  reg_password_instruct: "Required: Use 6 to 32 characters. To make your password more secure :- Use letters and numbers"
+  reg_business_instruct: "Required: Your business name"
+  reg_country_instruct: "Required: Your country"
