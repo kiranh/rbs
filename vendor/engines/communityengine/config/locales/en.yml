@@ -1492,9 +1492,9 @@ en:
   #en: whats_fresh: What's fresh
   whats_fresh: Recent Activity
   #en: whats_hot: What's Hot
-  whats_hot: What's Hot
+  whats_hot: "What's Hot"
   #en: whats_popular: What's Popular
-  whats_popular: What's Popular
+  whats_popular: "What's Popular"
   #en: when: When
   when: When
   #en: where: Where
@@ -1534,7 +1534,7 @@ en:
   #en: you_can_browse_all_content_and_users_on: You can browse all content and users on
   you_can_browse_all_content_and_users_on: You can browse all content and users on
   #en: you_cant_delete_that_user: You can't delete that user.
-  you_cant_delete_that_user: You can't delete that user.
+  you_cant_delete_that_user: "You can't delete that user."
   #en: you_can_select_up_to_5_files_at_a_time: You can select up to 5 files at a time.
   you_can_select_up_to_5_files_at_a_time: You can select up to 5 files at a time.
   #en: you_could_tag_yourself: You could tag yourself
@@ -1602,7 +1602,7 @@ en:
   #en: your_username_was_emailed_to_you: Your username was emailed to you.
   your_username_was_emailed_to_you: Your username was emailed to you.
   #en: youve_been_logged_out_hope_you_come_back_soon: You've been logged out. Hope you come back soon!
-  youve_been_logged_out_hope_you_come_back_soon: You've been logged out. Hope you come back soon!
+  youve_been_logged_out_hope_you_come_back_soon: "You've been logged out. Hope you come back soon!"
   #en: zippostal_code: "ZIP/Postal code:"
   zippostal_code: "ZIP/Postal code:"
 
@@ -1654,3 +1654,5 @@ en:
   cancel_and_go_back_to_photo_manager: "Cancel and go back to photo manager"
   #en: back_to_photo_manager: "Back to photo manager"
   back_to_photo_manager: "Back to photo manager"
+
+  business: "Business"
