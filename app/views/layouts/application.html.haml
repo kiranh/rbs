@@ -25,7 +25,7 @@
 
 
         #ft
-          -if show_footer?(controller.controller_name, controller.action_name)
+          -if show_footer_content?
             .yui-gc#footer_content
               = image_tag 'spinner.gif', :plugin => 'community_engine'
               =:loading_recent_content.l
@@ -64,5 +64,6 @@
             %strong
               %a{:href => "#"} Join Us!
             %span.text-separator |
+            &copy; 2002-2009 Simple Organization. All rights Reserved
             %a.quiet{:href => "#top"} Page Top ↑
 

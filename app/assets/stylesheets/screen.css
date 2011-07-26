@@ -820,7 +820,6 @@ h6.all a {
 #CommunityFooter p {
     float: right;
     padding: 2px 0 2px 120px;
-    background: url(/assets/logo.gif) no-repeat left center;
 }
 
 /* =============================================== */
@@ -1268,7 +1267,6 @@ a img {
 html {
     height: 100%;
     padding-bottom: 1px; /* force scrollbars */
-    background:#ccc;
 }
 
 body {
