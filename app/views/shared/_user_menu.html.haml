@@ -1,4 +1,6 @@
 #user-menu
+  = "Search"
+  = text_field_tag  :search, nil, :class => "text", :size => 30
   =:logged_in.l
   = link_to current_user.login, dashboard_user_path(current_user)
   #user-menu-tip

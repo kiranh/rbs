@@ -274,7 +274,6 @@ img.polaroid {
 
 .alt {
     border: 1px solid #DDD;
-    background: #f9f9f9;
     padding: 1em;
 }
 
@@ -820,7 +819,6 @@ h6.all a {
 #CommunityFooter p {
     float: right;
     padding: 2px 0 2px 120px;
-    background: url(/assets/logo.gif) no-repeat left center;
 }
 
 /* =============================================== */
@@ -1268,7 +1266,6 @@ a img {
 html {
     height: 100%;
     padding-bottom: 1px; /* force scrollbars */
-    background:#ccc;
 }
 
 body {
@@ -1668,6 +1665,7 @@ input.text, textarea, select {
     border: 1px inset #AAA;
     margin: 0.5em 0;
     padding: 4px 5px;
+    margin-right:40px;
 }
 
 input.text:focus, textarea:focus, select:focus {
@@ -2127,6 +2125,7 @@ img.alignright, img.right {
 
 #main-nav ul li.current a {
     border-bottom: 2px solid #800517;
+    color: #002;
 }
 
 /* Subnav */
@@ -2316,4 +2315,50 @@ img.alignright, img.right {
 
 .navigation, #splash, .comment ul {
     min-height: 0.01%;
+}
+
+/*----- Theme Preference -------------*/
+
+#blue_box {
+    background-color: #ADDFFF;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+.blue_theme {
+    background-color: #ADDFFF;
+}
+#grey_box {
+    background-color: #DDD;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#green_box {
+    background-color: #CCFB5D;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#pink_box {
+    background-color: #FAAFBE;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#yellow_box {
+    background-color: #FFE87C;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
 }

@@ -1,0 +1,72 @@
+#welcome
+  .yui-gc
+    .yui-u.first
+      / "previous slide" button
+      %a.backward prev
+      / container for the slides
+      .images
+        / first slide
+        %div
+          %h3 First pane
+          =image_tag("handshake.jpg", :style => "float:left;margin:0 30px 20px 0", :height => 200, :width => 300)
+          %p{:style => "font-weight:bold"}
+            Aenean nec imperdiet ligula. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.
+        / second slide
+        %div
+          %h3 Second pane
+          =image_tag("business.jpg", :style => "float:left;margin:0 30px 20px 0", :height => 200, :width => 300)
+          %p{:style => "font-weight:bold"}
+            Consectetur adipiscing elit. Praesent bibendum eros ac nulla. Integer vel lacus ac neque viverra.
+        / third slide
+        %div
+          %h3 Third pane
+          =image_tag("people.jpg", :style => "float:left;margin:0 30px 20px 0", :height => 200, :width => 300)
+          %p{:style => "font-weight:bold"}
+            Consectetur adipiscing elit. Praesent bibendum eros ac nulla. Integer vel lacus ac neque viverra.
+      / "next slide" button
+      %a.forward next
+      %p
+        / the tabs
+        .slidetabs
+          %a{:href => "#"}
+          %a{:href => "#"}
+          %a{:href => "#"}
+        %div{:style => "clear:both;margin:0px;text-align:center;padding-right:40px"}
+          %button{:onClick => "jQuery(\".slidetabs\").data(\"slideshow\").play();"} Play
+          %button{:onClick => "jQuery(\".slidetabs\").data(\"slideshow\").stop();"} Stop
+        %script{:language => "JavaScript"}
+          jQuery.noConflict();
+          jQuery(".slidetabs").tabs(".images > div", {
+
+          \// enable "cross-fading" effect
+          effect: 'fade',
+          fadeOutSpeed: "slow",
+
+          \// start from the beginning after the last tab
+          rotate: true
+
+          \// use the slideshow plugin. It accepts its own configuration
+          }).slideshow();
+    .yui-u
+      .section
+        %div.section-title
+          ="Upcoming Events"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+        %p
+          %b="7 Aug 10:30am:"
+          %span="Business Meet up today with Buyers and sellers worldwide"
+

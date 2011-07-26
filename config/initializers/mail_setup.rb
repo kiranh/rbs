@@ -1,9 +1,11 @@
 ActionMailer::Base.smtp_settings = {
-  :address => "smtp.sendgrid.net",
-  :port => 25,
-  :domain => "localhost",
-  :authentication => :plain,
-  :user_name => "kiran1009",
-  :password => "kiranbb"
+  :address              => "smtp.gmail.com",
+  :port                 => 587,
+  :domain               => 'localhost',
+  :user_name            => 'collaborate.mailer',
+  :password             => 'c0llab0rate',
+  :authentication       => 'plain',
+  :enable_starttls_auto => true  
 }
-
+ActionMailer::Base.default_url_options[:host] = "50.19.105.161"
+Mail.register_interceptor(DevelopmentMailInterceptor) if Rails.env.development?
