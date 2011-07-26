@@ -16,9 +16,8 @@ class Post < ActiveRecord::Base
   
   before_save :transform_post
   before_validation :set_published_at
-
+  
   has_attached_file :video
-  validates_attachment_presence :video
   validates_attachment_content_type :video, :content_type => ['video/x-flv', 'video/mpeg', 'video/x-msvideo', 'video/x-ms-wmv', 'video/avi', 'application/x-flash-video']
 
   after_save do |post|
@@ -42,7 +41,7 @@ class Post < ActiveRecord::Base
   scope :tagged_with, lambda {|tag_name|
     where("tags.name = ?", tag_name).includes(:tags)
   }
-    
+
   def self.find_related_to(post, options = {})
     merged_options = options.merge({:limit => 8, 
         :order => 'published_at DESC', 

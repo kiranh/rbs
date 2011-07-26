@@ -1,0 +1,88 @@
+= javascript_include_tag 'swfobject'
+.yui-b
+  -box :id => 'category_tips' do
+    - if @post.category
+      = render :partial => "categories/tips", :locals => {:category => @post.category}
+    - else
+      = render :partial => "categories/tips", :locals => {:category => nil}
+  -if @post.video.present?
+    #add_video{:style=>'display:none;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+      %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();return false;"}=:upload_an_video_for_your_post.l
+  -else
+    #add_video{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').show();return false;"}=:upload_an_video_for_your_post.l
+#yui-main
+  .yui-b
+    -box do 
+      %h3=:editing_post.l
+
+      = error_messages_for :post
+      = form_for(:post, :url => user_post_path(@user, @post), :html => { :method => :put, :class =>'MainForm',:multipart=>true }) do |f|
+        =hidden_field_tag :delete_video, "0"
+        %label 
+          =:title.l
+          %em= '('+:required.l+')'
+        = f.text_field :title
+        %label
+          =:category.l
+          \:
+        = f.collection_select(:category_id, Category.find(:all), :id, :name, {}, {})
+        %label
+          =:body_text.l
+          %em= '('+:required.l+')'
+        = f.text_area :raw_post, :size => "86x15"
+        %label
+          =:tags.l
+          %em="(#{:optional_keywords_describing_this_post_separated_by_commas.l})"
+        = text_field_tag 'tag_list', @post.tag_list, {:autocomplete => "off", :size => 35}
+        #tag_list_auto_complete.auto_complete
+        = auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [','] }
+        -if @post.video.present?
+          #video_div{:style=>"text-align:left;margin-top:20px;"}
+            #player
+            %br
+            %span{:style=>'text-align:left;margin-top:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+              %a.button.positive{:href => '#', :onclick => "remove_video();return false;"}=:remove_video.l
+        %div{:id=>"add_video_div",:style => 'display:none;margin-top:20px;'}
+          = file_field_tag :post_video
+          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').hide();return false;"}=:remove.l
+        %label=:save_post_as.l
+        = f.select(:published_as, [[:published.l, 'live'], [:draft.l, 'draft']])
+        
+        %label
+          = f.check_box :send_comment_notifications        
+          =:send_comment_notifications.l        
+
+        
+        %p
+          = submit_tag :update.l
+          = :or.l
+          =link_to :cancel.l, user_post_path(current_user, @post)
+        %p
+          =link_to "#{image_tag 'icons/delete.png', :plugin => :community_engine} "+:delete_this_post.l, user_post_path(current_user, @post), :method => :delete, :confirm => :are_you_sure_you_want_to_delete_this_post.l
+
+  = observe_field  "post_category_id", {:url => {:action => 'category_tips_update'}, :with => "post_category_id", :update => "category_tips", :complete => visual_effect(:highlight, "category_tips", :duration => 0.5)}
+= javascript_include_tag 'jwplayer'
+:javascript
+  jwplayer("player").setup({
+    autostart: false,
+    controlbar: {
+      usefullscreen: "false",
+      allowfullscreen: "false"
+      },
+    file:"#{@post.video.url}",
+    width: "420px",
+    height: "240px",
+    flashplayer: "/player.swf",
+    stretching: 'uniform',
+    wmode: 'transparent',
+    usefullscreen: "false",
+    allowfullscreen: "false",
+    screencolor:"000000"
+  });
+  function remove_video(){
+    jQuery('#video_div').hide();
+    jQuery('#delete_video').attr('value',"1");
+   // jQuery('#add_video').show();
+  }
