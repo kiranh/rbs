@@ -274,7 +274,6 @@ img.polaroid {
 
 .alt {
     border: 1px solid #DDD;
-    background: #f9f9f9;
     padding: 1em;
 }
 
@@ -2316,4 +2315,50 @@ img.alignright, img.right {
 
 .navigation, #splash, .comment ul {
     min-height: 0.01%;
+}
+
+/*----- Theme Preference -------------*/
+
+#blue_box {
+    background-color: #ADDFFF;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+.blue_theme {
+    background-color: #ADDFFF;
+}
+#grey_box {
+    background-color: #DDD;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#green_box {
+    background-color: #CCFB5D;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#pink_box {
+    background-color: #FAAFBE;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
+}
+#yellow_box {
+    background-color: #FFE87C;
+    height:20px;
+    width:20px;
+    padding:2px;
+    margin:2px;
+    border: 1px solid #ccc;
 }
