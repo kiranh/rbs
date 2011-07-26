@@ -1,6 +1,7 @@
 class UsersController < BaseController
   include Viewable
   cache_sweeper :taggable_sweeper, :only => [:activate, :update, :destroy]
+  layout "application", :except => [:complete_profile, :getting_started]
 
   uses_tiny_mce do
     {:only => [:new, :create, :update, :edit, :welcome_about], :options => configatron.default_mce_options}
@@ -30,7 +31,7 @@ class UsersController < BaseController
     if @user and @user.activate
       self.current_user = @user
       @user.track_activity(:joined_the_site)
-      redirect_to welcome_photo_user_path(@user)
+      redirect_to getting_started_user_path(@user)
       flash[:notice] = :thanks_for_activating_your_account.l
       return
     end
@@ -99,6 +100,10 @@ class UsersController < BaseController
     else
       render :action => 'new'
     end
+  end
+
+  def getting_started
+    @user   = User.find(params[:id])
   end
 
   def edit
