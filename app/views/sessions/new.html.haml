@@ -1,3 +1,35 @@
+:javascript
+  jQuery(document).ready(function() {
+    jQuery('#login_a').tipsy({trigger: 'manual', gravity: 'w'});
+    jQuery('#password_a').tipsy({trigger: 'manual', gravity: 'w'});
+  });  
+  function validate_param(){
+    var false_l = 0;
+    if(validate_login()){if(is_login_valid()){} else{false_l = 1}} else{false_l = 1}
+    if(validate_password()){} else{false_l = 1}    
+    if(false_l == 1){
+      jQuery('#login').attr("original-title", "");
+      jQuery('#password').attr("original-title", "");
+      return false;
+    } else{return true;}
+  }
+  function validate_login(){
+    if(jQuery("#login").val() == ""){jQuery('#login_a').tipsy("show");return false;}
+    else{jQuery('#login_a').tipsy("hide");return true;}
+  }
+  function validate_password(){
+    if(jQuery("#password").val() == ""){jQuery('#password_a').tipsy("show");return false;}
+    else{jQuery('#password_a').tipsy("hide");return true;}
+  }
+  function is_login_valid(){
+    var alphaExp = /^[\sA-Za-z0-9_-]+$/;
+    if(jQuery("#login").val().match(alphaExp) != null){return true;}
+    else{
+      jQuery('#login_a').attr("original-title", "Enter a valid username!");
+      jQuery('#login_a').tipsy("show");      
+      return false;}
+  }
+
 .yui-b.sidebar=render :partial => 'shared/login_sidebar'
   
 #yui-main
@@ -5,11 +37,14 @@
     -box do
       %h3
         =:log_in_to_site.l(:site => configatron.community_name)
-      = form_tag sessions_path, :class => 'MainForm' do
+      = form_tag sessions_path, :class => 'MainForm', :onsubmit=>"return validate_param();" do
         %label{"for"=>"login"}=:username.l
-        = text_field_tag 'login', nil, :size => 35, "original-title" => :login_username.l, :class => "reg_box"
+        = text_field_tag 'login', params[:login], :size => 35, "original-title" => :login_username.l, :class => "reg_box"
+        %a#login_a{"original-title"=>"Username can't be blank!"}
+
         %label{"for"=>"password"}=:password.l
         = password_field_tag 'password', nil, :size => 35, "original-title" => :login_password.l, :class => "reg_box"
+        %a#password_a{"original-title"=>"Password can't be blank!"}
         %fieldset
           %label{"for"=>"remember_me"}
             =:remember_me.l

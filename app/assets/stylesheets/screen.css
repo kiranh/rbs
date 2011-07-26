@@ -1600,8 +1600,8 @@ table.data-table tr.even td {
 
 .notice {
     background: #F9F9F9;
-    color: #514721;
-    border-color: #DDD;
+    color: maroon;
+    border-color: red;
 }
 
 .notice a {
