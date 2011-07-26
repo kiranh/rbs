@@ -5,7 +5,7 @@ class UserNotifier < ActionMailer::Base
   include BaseHelper
   
   default_url_options[:host] = configatron.app_host
-  default :from => "#{:the_team.l(:site => configatron.community_name, :email => configatron.support_email)}"  
+  default :from => "#{:the_team.l(:site => configatron.community_name, :email => configatron.support_email)}", :reply_to => "#{:the_team.l(:site => configatron.community_name, :email => configatron.support_email)}"
 
   def signup_invitation(email, user, message)
     setup_sender_info
