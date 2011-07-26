@@ -127,7 +127,8 @@ class UserNotifier < ActionMailer::Base
   
   def setup_sender_info
     headers "Reply-to" => "#{configatron.support_email}"
-    @content_type = "text/plain"           
+    @content_type = "text/plain"
+    @from = "#{configatron.support_email}"
   end
   
 end
