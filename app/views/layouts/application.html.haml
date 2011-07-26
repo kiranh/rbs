@@ -11,6 +11,10 @@
         %meta{:name=>key[0], :content=>key[1]}
   
     = render :partial => "shared/scripts_and_styles"
+    :javascript
+      jQuery(document).ready(function() {
+        jQuery('.reg_box').tipsy({trigger: 'focus', gravity: 'w'});
+      });
     - if @rss_title && @rss_url
       = auto_discovery_link_tag(:rss, @rss_url, {:title => @rss_title})
   %body
