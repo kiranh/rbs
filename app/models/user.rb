@@ -338,11 +338,11 @@ class User < ActiveRecord::Base
   end
   
   def deliver_activation
-    #UserNotifier.activation(self).deliver if self.recently_activated?
+    UserNotifier.activation(self).deliver if self.recently_activated?
   end
   
   def deliver_signup_notification
-    #UserNotifier.signup_notification(self).deliver    
+    UserNotifier.signup_notification(self).deliver    
   end
 
   def update_last_login
