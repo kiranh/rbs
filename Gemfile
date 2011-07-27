@@ -28,7 +28,7 @@ gem 'jquery-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
-
+gem "rmagick", "~> 2.13.1"
 # Deploy with Capistrano
 # gem 'capistrano'
 
