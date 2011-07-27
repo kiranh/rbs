@@ -420,7 +420,7 @@ div.main .vcard ul {
 }
 
 .hentry .vcard ul li.share {
-/*	background-image: url(/assets/icons/group_go.png) */
+    /*	background-image: url(/assets/icons/group_go.png) */
     padding-left: 0;
 }
 
@@ -651,7 +651,7 @@ h6.all a {
     padding-right: 1em;
     background: #F1F1F1;
     border: 4px solid #888888;
-/*    color: #fff;*/
+    /*    color: #fff;*/
     margin: 1em 0;
     width: auto;
     cursor: pointer;
@@ -2361,4 +2361,67 @@ img.alignright, img.right {
     padding:2px;
     margin:2px;
     border: 1px solid #ccc;
+}
+
+.skip_step {
+    background-color: rgba(63, 143, 186, 0.8);
+    bottom: 0;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    left: 0;
+    padding: 12px 12px 10px;
+    position: fixed;
+    text-align: center;
+    width: 100%;
+}
+
+.skip_step a {
+    -moz-border-radius: 10px 10px 10px 10px;
+    background-color: #3F8FBA;
+    color: #FAFAFA;
+    padding: 8px;
+}
+.skip_step a:hover {
+    background-color: #22AAE0;
+}
+
+.getting_started_centered{
+    -moz-box-shadow: 0 1px 3px #333333;
+    background-color: white;
+    border-bottom: 1px solid #CCCCCC;
+    border-top: 1px solid white;
+    margin-bottom: 2em;
+    padding: 12px;
+    display:block;
+    position:relative;
+    top:50%;
+    left:35%;
+    width:275px;
+    cursor: pointer;
+    height:25px;
+}
+
+.margin_5{
+   margin: 5px;
+}
+
+.float_l{
+    float: left
+}
+
+.yui-b-split{
+    width: 100%
+}
+
+.yui-b-split h3 {
+    background-color: #F9F9F9;
+    border-top: 1px solid #DDDDDD;
+    color: black;
+    font: bold 1.2em sans-serif;
+    margin-bottom: 16px;
+    padding: 7px 10px 6px;
+}
+.width_50{
+    width:50%
 }
