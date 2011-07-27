@@ -1402,9 +1402,11 @@ en:
   #en: upload_an_image_for_your_post: Upload an image for your post
   upload_an_image_for_your_post: Upload an image for your post
   upload_an_video_for_your_post: Upload an video for your post
+  upload_an_doc_for_your_post: Upload an Document for your post
   #en: upload_and_continue_to_step_two: Upload, and continue to step two
   remove: Remove
   remove_video: Remove Video
+  remove_doc: Remove Document
   upload_and_continue_to_step_two: "Upload, and continue to step two"
   #en: uploaded_a_photo: "uploaded a photo:"
   uploaded_a_photo: "uploaded a photo:"

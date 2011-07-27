@@ -20,6 +20,9 @@ class Post < ActiveRecord::Base
   has_attached_file :video
   validates_attachment_content_type :video, :content_type => ['video/x-flv', 'video/mpeg', 'video/x-msvideo', 'video/x-ms-wmv', 'video/avi', 'application/x-flash-video']
 
+  has_attached_file :doc
+  validates_attachment_content_type :doc, :content_type => ['application/pdf', 'application/msword', 'application/vnd.ms-powerpoint', 'application/vnd.ms-excel', 'text/plain', 'text/html']
+
   after_save do |post|
     activity = Activity.find_by_item_type_and_item_id('Post', post.id)
     if post.is_live? && !activity

@@ -8,7 +8,9 @@
   -box :class => "alt" do
     %a.button.positive{:href => '#', :onclick => "tinyMCE.execCommand('mceCurblyAdvImage');return false;"}=:upload_an_image_for_your_post.l
   -box :class => "alt" do
-    %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();return false;"}=:upload_an_video_for_your_post.l
+    %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
+  -box :class => "alt" do
+    %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_an_doc_for_your_post.l
 #yui-main
   .yui-b
     -box do
@@ -50,11 +52,24 @@
             = :add_a_poll.l
           %em=:optional.l
         #poll-ui{:style => 'display:none'}=render :partial => 'polls/new'
-        #video_div{:style => 'display:none'}
+        #video_div{:style => 'display:none;border:2px solid #ccc;padding:10px;'}
           = f.file_field :video
           %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
             %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').hide();return false;"}=:remove.l
-        %label
+          %br
+          %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin:10px 0px;'}
+            only flv, mpeg, msvideo, wmv, avi, flash-video video files allowed to upload.
+          #div{:style=>"clear:both;"}
+        #doc_div{:style => 'display:none;border:2px solid #ccc;margin-top:15px;padding:10px;'}
+          = f.file_field :doc
+          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').hide();return false;"}=:remove.l
+          %br
+          %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin-top:10px;'}
+            only pdf,msword,ms-powerpoint,ms-excel,text/plain,text/html files allowed to upload.
+          #div{:style=>"clear:both;"}
+        #div{:style=>"clear:both;"}
+        %label{:style=>"float:left;"}
           =:save_post_as.l
         = f.select(:published_as, [[:published.l, 'live'], [:draft.l, 'draft']])
 

@@ -52,7 +52,15 @@
                 %li=link_to( t.name, tag_url(t), :rel => 'tag')
           - if @post.video.present?
             #video_div{:style=>"text-align:center;margin-top:10px;"}
+              %h5{:style=>"text-align:left;margin-left:20px;"} Attached Video
+              %br
               #player
+          - if @post.doc.present?
+            #doc_div{:style=>"text-align:left;margin-top:20px;margin-left:15px;"}
+              %h5 Attached File
+              %br
+              %a{:href=>"/posts/#{@post.id}/download_doc_file",:target=>"_blank"}
+                Click here to download file
         / entry-content
       / ends hentry
     -box :class => 'hfeed comments', :id => 'comments' do      
@@ -86,22 +94,23 @@
 
 %script{:type=>"text/javascript", :charset=>"utf-8"}
   = remote_function :url => {:controller => 'posts', :action => 'update_views', :user_id => @post.user, :id => @post}, :method => :put
-= javascript_include_tag 'jwplayer'
-:javascript
-  jwplayer("player").setup({
-    autostart: false,
-    controlbar: {
+-if @post.video.present?
+  = javascript_include_tag 'jwplayer'
+  :javascript
+    jwplayer("player").setup({
+      autostart: false,
+      controlbar: {
+        usefullscreen: "false",
+        allowfullscreen: "false"
+        },
+      file:"#{@post.video.url if @post.video.present?}",
+      width: "420px",
+      height: "240px",
+      flashplayer: "/player.swf",
+      stretching: 'uniform',
+      wmode: 'transparent',
       usefullscreen: "false",
-      allowfullscreen: "false"
-      },
-    file:"#{@post.video.url}",
-    width: "420px",
-    height: "240px",
-    flashplayer: "/player.swf",
-    stretching: 'uniform',
-    wmode: 'transparent',
-    usefullscreen: "false",
-    allowfullscreen: "false",
-    screencolor:"000000"
-  });
+      allowfullscreen: "false",
+      screencolor:"000000"
+    });
 

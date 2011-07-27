@@ -104,8 +104,11 @@ class PostsController < BaseController
 
   # POST /posts
   # POST /posts.xml
-  def create    
+  def create
     @user = User.find(params[:user_id])
+    @post = Post.new(params[:post])
+    @post.user = @user
+    @post.tag_list = params[:tag_list] || ''
     @post = Post.new(params[:post])
     @post.user = @user
     @post.tag_list = params[:tag_list] || ''
@@ -144,6 +147,11 @@ class PostsController < BaseController
         elsif params[:post_video].present?
           @post.video = params[:post_video]
         end
+        if params[:delete_doc] == "1"
+          @post.doc = nil
+        elsif params[:post_doc].present?
+          @post.doc = params[:post_doc]
+        end
         @post.save
         format.html { redirect_to user_post_path(@post.user, @post) }
       else
@@ -151,7 +159,10 @@ class PostsController < BaseController
       end
     end
   end
- 
+  
+  def download_doc_file
+    redirect_to Post.find(params[:id]).doc.url
+  end
   # DELETE /posts/1
   # DELETE /posts/1.xml
   def destroy
