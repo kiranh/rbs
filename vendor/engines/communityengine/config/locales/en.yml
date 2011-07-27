@@ -1064,7 +1064,7 @@ en:
   #en: question: Question
   question: Question
   #en: re_type_your_password_to_confirm: "Re-type your password to confirm:"
-  re_type_your_password_to_confirm: "Re-type your password to confirm:"
+  re_type_your_password_to_confirm: "Re-type your password to confirm :"
   #en: read_more: read more
   read_more: read more
   #en: recent: Recent
@@ -1377,8 +1377,8 @@ en:
   total_votes: Total votes
   #en: type_a_username: Type a username
   type_a_username: Type a username
-  #en: type_your_password: "Type your password:"
-  type_your_password: "Type your password:"
+  #en: type_your_password: "Type your password :"
+  type_your_password: "Type your password :"
   #en: uh_oh_we_couldnt_log_you_in_with_the_username_and_password_you_entered_try_again: "Uh oh. We couldn't log you in with the username and password you entered. Try again?"
   uh_oh_we_couldnt_log_you_in_with_the_username_and_password_you_entered_try_again: Uh oh. We couldn't log you in with the username and password you entered. Try again?
   #en: un_favorite_this: Un-favorite this

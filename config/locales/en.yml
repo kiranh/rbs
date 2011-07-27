@@ -9,3 +9,11 @@ en:
   reg_password_instruct: "Required: Use 6 to 32 characters. To make your password more secure :- Use letters and numbers"
   reg_business_instruct: "Required: Your business name"
   reg_country_instruct: "Required: Your country"
+
+  first_name: "First Name"
+  last_name: "Last Name"
+  your_last_name: "Your Last Name"
+  your_first_name: "Your First Name"
+  address_line1: Address Line 1
+  address_line2: Address Line 2
+  zip: Zip

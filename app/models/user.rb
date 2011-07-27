@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     has_many :invitations, :dependent => :destroy
     has_many :rsvps, :dependent => :destroy
     has_many :albums    
-
+    has_one :business_profile
     #friendship associations
     has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
     has_many :accepted_friendships, :class_name => "Friendship", :conditions => ['friendship_status_id = ?', 2]
@@ -475,7 +475,7 @@ class User < ActiveRecord::Base
     end
         
     def requires_valid_birthday?
-      !omniauthed?
+      false
     end
     
     def omniauthed?
