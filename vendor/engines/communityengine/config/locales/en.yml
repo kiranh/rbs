@@ -944,7 +944,7 @@ en:
   #en: pending_friendships: Pending Friendships
   pending_friendships: Pending Friendships
   #en: people: People
-  people: Members
+  people: People
   #en: people_who_sign_up_using_your_invitation_will_automatically_be_added_as_your_friends: People who sign up using your invitation will automatically be added as your friends
   people_who_sign_up_using_your_invitation_will_automatically_be_added_as_your_friends: People who sign up using your invitation will automatically be added as your friends.
   #en: people_who_sign_up_using_your_invitation_will_automatically_be_added_as_your_friends_on: People who sign up using your invitation will automatically be added as your friends on
@@ -1064,7 +1064,7 @@ en:
   #en: question: Question
   question: Question
   #en: re_type_your_password_to_confirm: "Re-type your password to confirm:"
-  re_type_your_password_to_confirm: "Re-type your password to confirm :"
+  re_type_your_password_to_confirm: "Re-type your password to confirm:"
   #en: read_more: read more
   read_more: read more
   #en: recent: Recent
@@ -1110,11 +1110,11 @@ en:
   #en: required: required
   required: required
   #en: required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "(Required: We will send a confirmation e-mail to the address you enter.)"
-  required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "Required: We will send a confirmation e-mail to the address you enter"
+  required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter: "(Required: We will send a confirmation e-mail to the address you enter.)"
   #en: required_you_must_be_at_least_years_old_to_sign_up: "(Required: you must be at least %{min_age} years old to sign up.)"
-  required_you_must_be_at_least_years_old_to_sign_up: "Required: you must be at least %{min_age} years old to sign up"
+  required_you_must_be_at_least_years_old_to_sign_up: "(Required: you must be at least %{min_age} years old to sign up.)"
   #en: required_your_username_must_not_contain_numerals_spaces_or_special_characters: "(Required: Your username must not contain spaces or special characters.)"
-  required_your_username_must_not_contain_numerals_spaces_or_special_characters: "Required: Your username must not contain spaces or special characters"
+  required_your_username_must_not_contain_numerals_spaces_or_special_characters: "(Required: Your username must not contain spaces or special characters.)"
   #en: resend_my_activation_e_mail: Resend my activation e-mail
   resend_my_activation_e_mail: Resend my activation e-mail
   #en: resend_your_activation_e_mail: Resend your activation e-mail
@@ -1216,7 +1216,7 @@ en:
   #en: showing_users: Showing users
   showing_users: Showing users
   #en: sign_up: Sign Up!
-  sign_up: Join Us
+  sign_up: Sign Up!
   #en: sign_up_for_an_account: Sign up for an account.
   sign_up_for_an_account: Sign up for an account.
   #en: sign_up_for_a_: Sign up for a
@@ -1340,7 +1340,7 @@ en:
   #en: time_constrained: Time constrained
   time_constrained: Time constrained
   #en: tips: "Tips:"
-  tips: "Tips"
+  tips: "Tips:"
   #en: title: Title
   title: Title
   #en: title_required: "Title (required)"
@@ -1377,8 +1377,8 @@ en:
   total_votes: Total votes
   #en: type_a_username: Type a username
   type_a_username: Type a username
-  #en: type_your_password: "Type your password :"
-  type_your_password: "Type your password :"
+  #en: type_your_password: "Type your password:"
+  type_your_password: "Type your password:"
   #en: uh_oh_we_couldnt_log_you_in_with_the_username_and_password_you_entered_try_again: "Uh oh. We couldn't log you in with the username and password you entered. Try again?"
   uh_oh_we_couldnt_log_you_in_with_the_username_and_password_you_entered_try_again: Uh oh. We couldn't log you in with the username and password you entered. Try again?
   #en: un_favorite_this: Un-favorite this
@@ -1401,10 +1401,7 @@ en:
   updated_their_profile: updated their profile
   #en: upload_an_image_for_your_post: Upload an image for your post
   upload_an_image_for_your_post: Upload an image for your post
-  upload_an_video_for_your_post: Upload an video for your post
   #en: upload_and_continue_to_step_two: Upload, and continue to step two
-  remove: Remove
-  remove_video: Remove Video
   upload_and_continue_to_step_two: "Upload, and continue to step two"
   #en: uploaded_a_photo: "uploaded a photo:"
   uploaded_a_photo: "uploaded a photo:"
@@ -1493,11 +1490,11 @@ en:
   #en: what_is_popular: What's Popular
   what_is_popular: What's Popular
   #en: whats_fresh: What's fresh
-  whats_fresh: Recent Activity
+  whats_fresh: What's fresh
   #en: whats_hot: What's Hot
-  whats_hot: "What's Hot"
+  whats_hot: What's Hot
   #en: whats_popular: What's Popular
-  whats_popular: "What's Popular"
+  whats_popular: What's Popular
   #en: when: When
   when: When
   #en: where: Where
@@ -1537,7 +1534,7 @@ en:
   #en: you_can_browse_all_content_and_users_on: You can browse all content and users on
   you_can_browse_all_content_and_users_on: You can browse all content and users on
   #en: you_cant_delete_that_user: You can't delete that user.
-  you_cant_delete_that_user: "You can't delete that user."
+  you_cant_delete_that_user: You can't delete that user.
   #en: you_can_select_up_to_5_files_at_a_time: You can select up to 5 files at a time.
   you_can_select_up_to_5_files_at_a_time: You can select up to 5 files at a time.
   #en: you_could_tag_yourself: You could tag yourself
@@ -1605,7 +1602,7 @@ en:
   #en: your_username_was_emailed_to_you: Your username was emailed to you.
   your_username_was_emailed_to_you: Your username was emailed to you.
   #en: youve_been_logged_out_hope_you_come_back_soon: You've been logged out. Hope you come back soon!
-  youve_been_logged_out_hope_you_come_back_soon: "You've been logged out. Hope you come back soon!"
+  youve_been_logged_out_hope_you_come_back_soon: You've been logged out. Hope you come back soon!
   #en: zippostal_code: "ZIP/Postal code:"
   zippostal_code: "ZIP/Postal code:"
 
@@ -1657,4 +1654,3 @@ en:
   cancel_and_go_back_to_photo_manager: "Cancel and go back to photo manager"
   #en: back_to_photo_manager: "Back to photo manager"
   back_to_photo_manager: "Back to photo manager"
-

@@ -1,7 +1,5 @@
 =javascript_include_tag 'community_engine'
-=javascript_include_tag 'jquery_slideshow'
 =stylesheet_link_tag 'community_engine'
-=stylesheet_link_tag 'tabs-slideshow'
 
 = include_tiny_mce_if_needed
 
@@ -12,13 +10,3 @@
   - unless @feed_icons.blank?
     - @feed_icons.each do |feed|
       = auto_discovery_link_tag :rss, feed[:url], :title => "Subscribe to '#{feed[:title]}'"
-
-/[if IE]
-  <style type="text/css">
-  \.images img {
-  background:#efefef url(/img/global/gradient/h300.png) repeat-x 0 -22px;
-  }
-  </style>
-
-:javascript
-  jQuery.noConflict();
