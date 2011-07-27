@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110725175012) do
+ActiveRecord::Schema.define(:version => 20110727115145) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -74,6 +74,24 @@ ActiveRecord::Schema.define(:version => 20110725175012) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "business_profiles", :force => true do |t|
+    t.string   "user_id"
+    t.string   "name"
+    t.string   "url"
+    t.string   "owner"
+    t.string   "business_type"
+    t.string   "no_of_employees"
+    t.string   "country_id"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "state"
+    t.string   "zip"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "business_profiles", ["user_id"], :name => "index_business_profiles_on_user_id"
 
   create_table "categories", :force => true do |t|
     t.string "name"
@@ -439,6 +457,11 @@ ActiveRecord::Schema.define(:version => 20110725175012) do
     t.string   "current_login_ip"
     t.string   "last_login_ip"
     t.string   "business_name"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address_line1"
+    t.string   "address_line2"
+    t.string   "state"
   end
 
   add_index "users", ["activated_at"], :name => "index_users_on_activated_at"
