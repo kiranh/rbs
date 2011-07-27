@@ -2386,7 +2386,7 @@ img.alignright, img.right {
     background-color: #22AAE0;
 }
 
-.centered{
+.getting_started_centered{
     -moz-box-shadow: 0 1px 3px #333333;
     background-color: white;
     border-bottom: 1px solid #CCCCCC;
@@ -2408,4 +2408,20 @@ img.alignright, img.right {
 
 .float_l{
     float: left
+}
+
+.yui-b-split{
+    width: 100%
+}
+
+.yui-b-split h3 {
+    background-color: #F9F9F9;
+    border-top: 1px solid #DDDDDD;
+    color: black;
+    font: bold 1.2em sans-serif;
+    margin-bottom: 16px;
+    padding: 7px 10px 6px;
+}
+.width_50{
+    width:50%
 }
