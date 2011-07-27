@@ -4,6 +4,7 @@ SocialCrm::Application.routes.draw do
     collection do
       post 'return_admin'      
       get 'complete_profile'
+      get 'autocomplete_user_login'
     end
     member do
       get 'getting_started'
