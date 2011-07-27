@@ -149,11 +149,58 @@
             \:
           = f.text_field :zip
           
-          %label{"for"=>"business_name"}
-            =:business.l
-            \:
-          = f.text_field :business_name, "original-title" => :reg_business_instruct.l, :class => "reg_box"
-          %a#business_a{"original-title"=>"Business can't be blank!"}
+          
+        .clear
+        %h3 Business Information
+        = f.fields_for :business_profile do |bp|
+          .float_l.width_50
+            %label{"for"=>"business_name"}
+              =:business.l
+              \:
+            = bp.text_field :name, "original-title" => :reg_business_instruct.l, :class => "reg_box"
+            %a#business_a{"original-title"=>"Business can't be blank!"}
+
+            %label{"for"=>"Url"}
+              =:url.l
+            = bp.text_field :url
+
+            %label{"for"=>"Owner"}
+              ="Owner"
+            = bp.text_field :owner
+
+            %label{"for"=>"business_type"}
+              ="Business Type"
+            = bp.text_field :business_type
+            %label{"for"=>"no_of_employees"}
+              ="No of Employees"
+            = bp.text_field :no_of_employees
+            
+          .float_l.width_50
+            %label{"for"=>"country"}
+              =:country.l
+              \:
+            = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => "Business Country", :class => "reg_box")
+            %a#country_a{"original-title"=>"Select your country!"}
+            
+            %label{"for"=>"user_address_line1"}
+              =:address_line1.l
+              \:
+            = f.text_field :address_line1
+
+            %label{"for"=>"user_address_line2"}
+              =:address_line2.l
+              \:
+            = f.text_field :address_line2
+
+            %label{"for"=>"user_state"}
+              =:state.l
+              \:
+            = f.text_field :state
+
+            %label{"for"=>"user_zip"}
+              =:zip.l
+              \:
+            = f.text_field :zip
 
         %div.clear
         = hidden_field_tag :inviter_id, params[:inviter_id]
