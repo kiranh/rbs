@@ -32,7 +32,7 @@ gem 'unicorn'
 gem 'rails3-jquery-autocomplete', :path => "vendor/git/rails3-jquery-autocomplete-0.9.0"
 
 
-#gem "rmagick", "~> 2.13.1"
+gem "rmagick", :path => "vendor/git/rmagick-2.13.1"
 # Deploy with Capistrano
 # gem 'capistrano'
 
