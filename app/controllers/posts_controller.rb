@@ -152,6 +152,11 @@ class PostsController < BaseController
         elsif params[:post_doc].present?
           @post.doc = params[:post_doc]
         end
+        if params[:delete_picture] == "1"
+          @post.picture = nil
+        elsif params[:post_picture].present?
+          @post.picture = params[:post_picture]
+        end
         @post.save
         format.html { redirect_to user_post_path(@post.user, @post) }
       else

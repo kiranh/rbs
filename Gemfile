@@ -31,7 +31,8 @@ group :development do
   gem "ruby-graphviz"
   gem "rails-erd"
 end
-#gem "rmagick", "~> 2.13.1"
+
+gem "rmagick", :path => "vendor/git/rmagick-2.13.1"
 # Deploy with Capistrano
 # gem 'capistrano'
 

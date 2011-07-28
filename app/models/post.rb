@@ -23,6 +23,9 @@ class Post < ActiveRecord::Base
   has_attached_file :doc
   validates_attachment_content_type :doc, :content_type => ['application/pdf', 'application/msword', 'application/vnd.ms-powerpoint', 'application/vnd.ms-excel', 'text/plain', 'text/html']
 
+  has_attached_file :picture, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :picture, :content_type => configatron.photo.validation_options.content_type
+
   after_save do |post|
     activity = Activity.find_by_item_type_and_item_id('Post', post.id)
     if post.is_live? && !activity

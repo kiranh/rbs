@@ -5,20 +5,20 @@ common: &common
   host: localhost
   username: root
   password: password 
-
+# MySQL.  Versions 4.1 and 5.0 are recommended.
+#
+#
+# Be sure to use new-style password hashing:
+#   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   <<: *common
   database: rbs_dev
 
 test:
   <<: *common
-  database: rbs_test
+  database: rbs_dev_test
 
 production:
   <<: *common
   database: rbs_dev
-
-cucumber:
-  <<: *common
-  database: rbs_test
 

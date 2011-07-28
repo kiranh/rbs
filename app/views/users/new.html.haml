@@ -5,6 +5,7 @@
     jQuery('#password_a1').tipsy({trigger: 'manual', gravity: 'w'});
     jQuery('#email_a').tipsy({trigger: 'manual', gravity: 'w'});
     jQuery('#business_a').tipsy({trigger: 'manual', gravity: 'w'});
+    jQuery('#business_t').tipsy({trigger: 'manual', gravity: 'w'});
     jQuery('#country_a').tipsy({trigger: 'manual', gravity: 'w'});
     jQuery('#date_tip').tipsy({trigger: 'manual', gravity: 'w'});
     jQuery('#user_birthday_1i, #user_birthday_2i, #user_birthday_3i').focus(function() {
@@ -22,6 +23,7 @@
     if(validate_password1()){} else{false_l = 1}
     if(validate_email()){if(is_email_valid()){} else{false_l = 1}} else{false_l = 1}
     if(validate_business()){} else{false_l = 1}
+    if(validate_business_type()){} else{false_l = 1}
     if(validate_country()){} else{false_l = 1}
     if(validate_password() && (validate_password1())){if(validate_password_match()){} else{false_l = 1}}else{}
     if(false_l == 1){
@@ -29,7 +31,8 @@
       jQuery('#user_password').attr("original-title", "");
       jQuery('#user_password_confirmation').attr("original-title", "");
       jQuery('#user_email').attr("original-title", "");
-      jQuery('#user_business_name').attr("original-title", "");
+      jQuery('#user_business_profile_name').attr("original-title", "");
+      jQuery('#user_business_profile_business_type').attr("original-title", "");
       jQuery('#user_country_id').attr("original-title", "");
       return false;
     } else{return true;}
@@ -61,8 +64,12 @@
     else{jQuery('#country_a').tipsy("hide");return true;}
   }
   function validate_business(){
-    if(jQuery("#user_business_name").val() == ""){jQuery('#business_a').tipsy("show");return false;}
+    if(jQuery("#user_business_profile_name").val() == ""){jQuery('#business_a').tipsy("show");return false;}
     else{jQuery('#business_a').tipsy("hide");return true;}
+  }
+  function validate_business_type(){
+    if(jQuery("#user_business_profile_business_type").val() == ""){jQuery('#business_t').tipsy("show");return false;}
+    else{jQuery('#business_t').tipsy("hide");return true;}
   }
   function validate_email(){
     if(jQuery("#user_email").val() == ""){jQuery('#email_a').tipsy("show");return false;}
@@ -171,6 +178,7 @@
             %label{"for"=>"business_type"}
               ="Business Type"
             = bp.text_field :business_type
+            %a#business_t{"original-title"=>"Business Type can't be blank!"}
             %label{"for"=>"no_of_employees"}
               ="No of Employees"
             = bp.text_field :no_of_employees
@@ -179,28 +187,28 @@
             %label{"for"=>"country"}
               =:country.l
               \:
-            = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => "Business Country", :class => "reg_box")
+            = select("user[business_profile]", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => "Business Country", :class => "reg_box")
             %a#country_a{"original-title"=>"Select your country!"}
             
             %label{"for"=>"user_address_line1"}
               =:address_line1.l
               \:
-            = f.text_field :address_line1
+            = bp.text_field :address_line1
 
             %label{"for"=>"user_address_line2"}
               =:address_line2.l
               \:
-            = f.text_field :address_line2
+            = bp.text_field :address_line2
 
             %label{"for"=>"user_state"}
               =:state.l
               \:
-            = f.text_field :state
+            = bp.text_field :state
 
             %label{"for"=>"user_zip"}
               =:zip.l
               \:
-            = f.text_field :zip
+            = bp.text_field :zip
 
         %div.clear
         = hidden_field_tag :inviter_id, params[:inviter_id]

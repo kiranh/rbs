@@ -1,9 +1,9 @@
 class Post < ActiveRecord::Base
+  include UrlUpload
   acts_as_commentable
   acts_as_taggable
   acts_as_activity :user, :if => Proc.new{|r| r.is_live?}
   acts_as_publishable :live, :draft
-  
   belongs_to :user
   belongs_to :category
   has_many   :polls, :dependent => :destroy
@@ -16,7 +16,11 @@ class Post < ActiveRecord::Base
   
   before_save :transform_post
   before_validation :set_published_at
-  
+
+#  has_attached_file :video
+#  validates_attachment_presence :video
+#  validates_attachment_content_type :video, :content_type => ['video/x-flv', 'video/mpeg', 'video/x-msvideo', 'video/x-ms-wmv', 'video/avi', 'application/x-flash-video']
+
   after_save do |post|
     activity = Activity.find_by_item_type_and_item_id('Post', post.id)
     if post.is_live? && !activity
@@ -43,7 +47,7 @@ class Post < ActiveRecord::Base
     merged_options = options.merge({:limit => 8, 
         :order => 'published_at DESC', 
         :conditions => [ 'posts.id != ? AND published_as = ?', post.id, 'live' ]
-    })
+      })
   
     find_tagged_with(post.tag_list, merged_options).uniq
   end
@@ -74,7 +78,7 @@ class Post < ActiveRecord::Base
       :group => self.columns.map{|column| self.table_name + "." + column.name}.join(","),
       :order => 'comments_count DESC',
       :limit => limit
-      )
+    )
   end
   
   def display_title
@@ -105,8 +109,8 @@ class Post < ActiveRecord::Base
   
   ## transform the text and title into valid html
   def transform_post
-   self.post  = white_list(self.raw_post)
-   self.title = white_list(self.title)
+    self.post  = white_list(self.raw_post)
+    self.title = white_list(self.title)
   end
   
   def set_published_at
@@ -140,7 +144,7 @@ class Post < ActiveRecord::Base
     self.new(
       :title => "#{params[:title] || params[:uri]}",
       :raw_post => "<a href='#{params[:uri]}'>#{params[:uri]}</a>#{params[:selection] ? "<p>#{params[:selection]}</p>" : ''}"
-      )
+    )
   end
   
   def image_for_excerpt

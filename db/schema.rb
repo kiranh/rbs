@@ -342,6 +342,10 @@ ActiveRecord::Schema.define(:version => 20110728122350) do
     t.string   "doc_content_type"
     t.integer  "doc_file_size"
     t.datetime "doc_updated_at"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
   end
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
@@ -497,6 +501,15 @@ ActiveRecord::Schema.define(:version => 20110728122350) do
   add_index "users", ["login_slug"], :name => "index_users_on_login_slug"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
   add_index "users", ["vendor"], :name => "index_users_on_vendor"
+
+  create_table "videos", :force => true do |t|
+    t.integer  "post_id"
+    t.string   "file_name"
+    t.integer  "content_type"
+    t.integer  "file_size"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
