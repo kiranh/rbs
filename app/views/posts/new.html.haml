@@ -6,11 +6,11 @@
       = render :partial => "categories/tips", :locals => {:category => nil}
 
   -box :class => "alt" do
-    %a.button.positive{:href => '#', :onclick => "tinyMCE.execCommand('mceCurblyAdvImage');return false;"}=:upload_an_image_for_your_post.l
+    %a.button.positive{:href => '#', :onclick => "jQuery('#picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#picture_div').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
   -box :class => "alt" do
     %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
   -box :class => "alt" do
-    %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_an_doc_for_your_post.l
+    %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
 #yui-main
   .yui-b
     -box do
@@ -52,6 +52,14 @@
             = :add_a_poll.l
           %em=:optional.l
         #poll-ui{:style => 'display:none'}=render :partial => 'polls/new'
+        #picture_div{:style => 'display:none;border:2px solid #ccc;padding:10px;'}
+          = f.file_field :picture
+          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "jQuery('#picture_div').hide();return false;"}=:remove.l
+          %br
+          %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin:10px 0px;'}
+            only jpg, jpeg, pjpeg, gif, png, x-png files allowed to upload.
+          #div{:style=>"clear:both;"}
         #video_div{:style => 'display:none;border:2px solid #ccc;padding:10px;'}
           = f.file_field :video
           %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
@@ -76,7 +84,6 @@
         %label
           = f.check_box :send_comment_notifications
           =:send_comment_notifications.l
-
 
         %p
           = submit_tag :save.l

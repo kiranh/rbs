@@ -50,8 +50,13 @@
             %ul.tags
               - @post.tags.each do |t|
                 %li=link_to( t.name, tag_url(t), :rel => 'tag')
+          - if @post.picture.present?
+            #picture_div{:style=>"text-align:left;margin-top:10px;margin-left:20px;"}
+              %h5{:style=>""} Attached Photo
+              %br
+              %img{:src=>"#{@post.picture.url(:medium)}"}
           - if @post.video.present?
-            #video_div{:style=>"text-align:center;margin-top:10px;"}
+            #video_div{:style=>"text-align:center;margin-top:20px;"}
               %h5{:style=>"text-align:left;margin-left:20px;"} Attached Video
               %br
               #player

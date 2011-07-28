@@ -5,6 +5,12 @@
       = render :partial => "categories/tips", :locals => {:category => @post.category}
     - else
       = render :partial => "categories/tips", :locals => {:category => nil}
+  -if @post.picture.present?
+    #add_picture{:style=>'display:none;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;margin-bottom:5px;'}
+      %a.button.positive{:href => '#', :onclick => "jQuery('#picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#picture_div').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
+  -else
+    #add_video{:style=>'margin-bottom:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_picture_div').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
   -if @post.video.present?
     #add_video{:style=>'display:none;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
       %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
@@ -13,10 +19,10 @@
       %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
   -if @post.doc.present?
     #add_doc{:style=>'display:none;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_an_doc_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
   -else
     #add_doc{:style=>'margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#add_doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_doc_div').offset().top}, 'slow');return false;"}=:upload_an_doc_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_doc_div').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
 #yui-main
   .yui-b
     -box do 
@@ -26,6 +32,7 @@
       = form_for(:post, :url => user_post_path(@user, @post), :html => { :method => :put, :class =>'MainForm',:multipart=>true }) do |f|
         =hidden_field_tag :delete_video, "0"
         =hidden_field_tag :delete_doc, "0"
+        =hidden_field_tag :delete_picture, "0"
         %label 
           =:title.l
           %em= '('+:required.l+')'
@@ -45,11 +52,28 @@
         #tag_list_auto_complete.auto_complete
         = auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [','] }
         %br
+        -if @post.picture.present?
+          #picture_div{:style=>"text-align:left;margin:15px 0px;"}
+            %h5 Attached Photo
+            %img{:src=>"#{@post.picture.url(:medium)}"}
+            %br
+            %span{:style=>'float:left;text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+              %a.button.positive{:href => '#', :onclick => "remove_picture();return false;"}=:remove_picture.l
+            %div{:style=>"clear:both;"}
+        %div{:id=>"add_picture_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
+          = file_field_tag :post_picture
+          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "jQuery('#add_picture_div').hide();return false;"}=:remove.l
+          %br
+          %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin-top:10px;'}
+            only jpg, jpeg, pjpeg, gif, png, x-png files allowed to upload.
+          #div{:style=>"clear:both;"}
         -if @post.video.present?
+          %h5 Attached Video
           #video_div{:style=>"text-align:left;margin:15px 0px;"}
             #player
             %br
-            %span{:style=>'text-align:left;margin-top:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %span{:style=>'text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
               %a.button.positive{:href => '#', :onclick => "remove_video();return false;"}=:remove_video.l
         %div{:id=>"add_video_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
           = file_field_tag :post_video
@@ -65,7 +89,8 @@
             %br
             %a{:href=>"/posts/#{@post.id}/download_doc_file",:target=>"_blank"}
               Click here to download file
-            %span{:style=>'text-align:left;margin-top:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %br
+            %span{:style=>'float:left;text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
               %a.button.positive{:href => '#', :onclick => "remove_doc();return false;"}=:remove_doc.l
         %div{:id=>"add_doc_div",:style => 'display:none;border:2px solid #ccc;margin-top:15px;padding:10px;'}
           = file_field_tag :post_doc
@@ -118,5 +143,10 @@
   function remove_doc(){
     jQuery('#doc_div').hide();
     jQuery('#delete_doc').attr('value',"1");
+   // jQuery('#add_video').show();
+  }
+  function remove_picture(){
+    jQuery('#picture_div').hide();
+    jQuery('#delete_picture').attr('value',"1");
    // jQuery('#add_video').show();
   }

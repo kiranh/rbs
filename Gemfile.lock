@@ -109,6 +109,11 @@ PATH
       rails (~> 3.0)
 
 PATH
+  remote: vendor/git/rmagick-2.13.1
+  specs:
+    rmagick (2.13.1)
+
+PATH
   remote: vendor/git/sprockets
   specs:
     sprockets (2.0.0.beta.10)
@@ -276,6 +281,7 @@ DEPENDENCIES
   prototype-rails!
   rails!
   rails3-jquery-autocomplete!
+  rmagick!
   sass
   sprockets!
   turn

@@ -104,7 +104,8 @@ class PostsController < BaseController
 
   # POST /posts
   # POST /posts.xml
-  def create    
+  def create
+    p "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<,"
     @user = User.find(params[:user_id])
     @post = Post.new(params[:post])
     @post.user = @user
