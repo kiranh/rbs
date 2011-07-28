@@ -1,0 +1,9 @@
+- title "Edit Page"
+.span-12.prepend-6.last
+  .floating
+    %h3 #{t('.edit_group_for_socialtango')}
+    = render 'form'
+    %p
+      = link_to "Show", @group
+      |
+      \#{link_to "View All", groups_path}

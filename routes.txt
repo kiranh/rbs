@@ -1,4 +1,64 @@
                         community_engine        /                                                              {:to=>CommunityEngine::Engine}
+                      return_admin_users POST   /users/return_admin(.:format)                                  {:action=>"return_admin", :controller=>"users"}
+                  complete_profile_users GET    /users/complete_profile(.:format)                              {:action=>"complete_profile", :controller=>"users"}
+                    getting_started_user GET    /users/:id/getting_started(.:format)                           {:action=>"getting_started", :controller=>"users"}
+                          dashboard_user GET    /users/:id/dashboard(.:format)                                 {:action=>"dashboard", :controller=>"users"}
+                       edit_account_user GET    /users/:id/edit_account(.:format)                              {:action=>"edit_account", :controller=>"users"}
+                             invite_user GET    /users/:id/invite(.:format)                                    {:action=>"invite", :controller=>"users"}
+                   signup_completed_user GET    /users/:id/signup_completed(.:format)                          {:action=>"signup_completed", :controller=>"users"}
+                           activate_user GET    /users/:id/activate(.:format)                                  {:action=>"activate", :controller=>"users"}
+                   toggle_moderator_user PUT    /users/:id/toggle_moderator(.:format)                          {:action=>"toggle_moderator", :controller=>"users"}
+                    toggle_featured_user PUT    /users/:id/toggle_featured(.:format)                           {:action=>"toggle_featured", :controller=>"users"}
+               change_profile_photo_user PUT    /users/:id/change_profile_photo(.:format)                      {:action=>"change_profile_photo", :controller=>"users"}
+                     update_account_user PUT    /users/:id/update_account(.:format)                            {:action=>"update_account", :controller=>"users"}
+                         deactivate_user PUT    /users/:id/deactivate(.:format)                                {:action=>"deactivate", :controller=>"users"}
+                      welcome_photo_user GET    /users/:id/welcome_photo(.:format)                             {:action=>"welcome_photo", :controller=>"users"}
+                      welcome_about_user GET    /users/:id/welcome_about(.:format)                             {:action=>"welcome_about", :controller=>"users"}
+                     welcome_invite_user GET    /users/:id/welcome_invite(.:format)                            {:action=>"welcome_invite", :controller=>"users"}
+                   welcome_complete_user GET    /users/:id/welcome_complete(.:format)                          {:action=>"welcome_complete", :controller=>"users"}
+                             assume_user POST   /users/:id/assume(.:format)                                    {:action=>"assume", :controller=>"users"}
+                         statistics_user        /users/:id/statistics(.:format)                                {:action=>"statistics", :controller=>"users"}
+                 crop_profile_photo_user        /users/:id/crop_profile_photo(.:format)                        {:action=>"crop_profile_photo", :controller=>"users"}
+               upload_profile_photo_user        /users/:id/upload_profile_photo(.:format)                      {:action=>"upload_profile_photo", :controller=>"users"}
+                  metro_area_update_user        /users/:id/metro_area_update(.:format)                         {:action=>"metro_area_update", :controller=>"users"}
+                                   users GET    /users(.:format)                                               {:action=>"index", :controller=>"users"}
+                                         POST   /users(.:format)                                               {:action=>"create", :controller=>"users"}
+                                new_user GET    /users/new(.:format)                                           {:action=>"new", :controller=>"users"}
+                               edit_user GET    /users/:id/edit(.:format)                                      {:action=>"edit", :controller=>"users"}
+                                    user GET    /users/:id(.:format)                                           {:action=>"show", :controller=>"users"}
+                                         PUT    /users/:id(.:format)                                           {:action=>"update", :controller=>"users"}
+                                         DELETE /users/:id(.:format)                                           {:action=>"destroy", :controller=>"users"}
+                            manage_posts GET    /posts/manage(.:format)                                        {:action=>"manage", :controller=>"posts"}
+                     send_to_friend_post        /posts/:id/send_to_friend(.:format)                            {:action=>"send_to_friend", :controller=>"posts"}
+                       update_views_post        /posts/:id/update_views(.:format)                              {:action=>"update_views", :controller=>"posts"}
+                  download_doc_file_post        /posts/:id/download_doc_file(.:format)                         {:action=>"download_doc_file", :controller=>"posts"}
+                         remove_doc_post        /posts/:id/remove_doc(.:format)                                {:action=>"remove_doc", :controller=>"posts"}
+                       remove_video_post        /posts/:id/remove_video(.:format)                              {:action=>"remove_video", :controller=>"posts"}
+                                   posts GET    /posts(.:format)                                               {:action=>"index", :controller=>"posts"}
+                                         POST   /posts(.:format)                                               {:action=>"create", :controller=>"posts"}
+                                new_post GET    /posts/new(.:format)                                           {:action=>"new", :controller=>"posts"}
+                               edit_post GET    /posts/:id/edit(.:format)                                      {:action=>"edit", :controller=>"posts"}
+                                    post GET    /posts/:id(.:format)                                           {:action=>"show", :controller=>"posts"}
+                                         PUT    /posts/:id(.:format)                                           {:action=>"update", :controller=>"posts"}
+                                         DELETE /posts/:id(.:format)                                           {:action=>"destroy", :controller=>"posts"}
+                                  groups GET    /groups(.:format)                                              {:action=>"index", :controller=>"groups"}
+                                         POST   /groups(.:format)                                              {:action=>"create", :controller=>"groups"}
+                               new_group GET    /groups/new(.:format)                                          {:action=>"new", :controller=>"groups"}
+                              edit_group GET    /groups/:id/edit(.:format)                                     {:action=>"edit", :controller=>"groups"}
+                                   group GET    /groups/:id(.:format)                                          {:action=>"show", :controller=>"groups"}
+                                         PUT    /groups/:id(.:format)                                          {:action=>"update", :controller=>"groups"}
+                                         DELETE /groups/:id(.:format)                                          {:action=>"destroy", :controller=>"groups"}
+                         add_page_member        /groups/add_member/:id(.:format)                               {:controller=>"groups", :action=>"add_member"}
+                      accept_page_member        /groups/accept_member/:page&:member(.:format)                  {:controller=>"groups", :action=>"accept_member"}
+                      reject_page_member        /groups/reject_member/:page&:member(.:format)                  {:controller=>"groups", :action=>"reject_member"}
+                          make_moderator        /groups/make_moderator/:page&:member(.:format)                 {:controller=>"groups", :action=>"make_moderator"}
+                        remove_moderator        /groups/remove_moderator/:page&:member(.:format)               {:controller=>"groups", :action=>"remove_moderator"}
+                              admin_page        /groups/index/:id(.:format)                                    {:controller=>"groups", :action=>"index"}
+                              leave_page        /groups/leave/:id(.:format)                                    {:controller=>"groups", :action=>"leave"}
+                                 invites        /groups/invite/:id(.:format)                                   {:controller=>"groups", :action=>"invite"}
+                          invite_friends        /groups/invite_friends/:id(.:format)                           {:controller=>"groups", :action=>"invite_friends"}
+                             search_page        /group/search(.:format)                                        {:controller=>"groups", :action=>"search"}
+                             page_search        /group/term_search(.:format)                                   {:controller=>"groups", :action=>"term_search"}
                                                 /base/:action(.:format)                                        {:controller=>"base"}
                       recent_forum_posts        /forums/recent(.:format)                                       {:controller=>"sb_posts", :action=>"index"}
                           authorizations GET    /authorizations(.:format)                                      {:action=>"index", :controller=>"authorizations"}
@@ -85,7 +145,7 @@
                                          POST   /admin/pages(.:format)                                         {:action=>"create", :controller=>"pages"}
                           new_admin_page GET    /admin/pages/new(.:format)                                     {:action=>"new", :controller=>"pages"}
                          edit_admin_page GET    /admin/pages/:id/edit(.:format)                                {:action=>"edit", :controller=>"pages"}
-                              admin_page GET    /admin/pages/:id(.:format)                                     {:action=>"show", :controller=>"pages"}
+                                         GET    /admin/pages/:id(.:format)                                     {:action=>"show", :controller=>"pages"}
                                          PUT    /admin/pages/:id(.:format)                                     {:action=>"update", :controller=>"pages"}
                                          DELETE /admin/pages/:id(.:format)                                     {:action=>"destroy", :controller=>"pages"}
                                    pages        /pages/:id(.:format)                                           {:controller=>"pages", :action=>"show"}
@@ -222,26 +282,26 @@
                                 activity GET    /activities/:id(.:format)                                      {:action=>"show", :controller=>"activities"}
                                          PUT    /activities/:id(.:format)                                      {:action=>"update", :controller=>"activities"}
                                          DELETE /activities/:id(.:format)                                      {:action=>"destroy", :controller=>"activities"}
-                      return_admin_users POST   /users/return_admin(.:format)                                  {:action=>"return_admin", :controller=>"users"}
-                          dashboard_user GET    /users/:id/dashboard(.:format)                                 {:action=>"dashboard", :controller=>"users"}
-                       edit_account_user GET    /users/:id/edit_account(.:format)                              {:action=>"edit_account", :controller=>"users"}
-                             invite_user GET    /users/:id/invite(.:format)                                    {:action=>"invite", :controller=>"users"}
-                   signup_completed_user GET    /users/:id/signup_completed(.:format)                          {:action=>"signup_completed", :controller=>"users"}
-                           activate_user GET    /users/:id/activate(.:format)                                  {:action=>"activate", :controller=>"users"}
-                   toggle_moderator_user PUT    /users/:id/toggle_moderator(.:format)                          {:action=>"toggle_moderator", :controller=>"users"}
-                    toggle_featured_user PUT    /users/:id/toggle_featured(.:format)                           {:action=>"toggle_featured", :controller=>"users"}
-               change_profile_photo_user PUT    /users/:id/change_profile_photo(.:format)                      {:action=>"change_profile_photo", :controller=>"users"}
-                     update_account_user PUT    /users/:id/update_account(.:format)                            {:action=>"update_account", :controller=>"users"}
-                         deactivate_user PUT    /users/:id/deactivate(.:format)                                {:action=>"deactivate", :controller=>"users"}
-                      welcome_photo_user GET    /users/:id/welcome_photo(.:format)                             {:action=>"welcome_photo", :controller=>"users"}
-                      welcome_about_user GET    /users/:id/welcome_about(.:format)                             {:action=>"welcome_about", :controller=>"users"}
-                     welcome_invite_user GET    /users/:id/welcome_invite(.:format)                            {:action=>"welcome_invite", :controller=>"users"}
-                   welcome_complete_user GET    /users/:id/welcome_complete(.:format)                          {:action=>"welcome_complete", :controller=>"users"}
-                             assume_user POST   /users/:id/assume(.:format)                                    {:action=>"assume", :controller=>"users"}
-                         statistics_user        /users/:id/statistics(.:format)                                {:action=>"statistics", :controller=>"users"}
-                 crop_profile_photo_user        /users/:id/crop_profile_photo(.:format)                        {:action=>"crop_profile_photo", :controller=>"users"}
-               upload_profile_photo_user        /users/:id/upload_profile_photo(.:format)                      {:action=>"upload_profile_photo", :controller=>"users"}
-                  metro_area_update_user        /users/:id/metro_area_update(.:format)                         {:action=>"metro_area_update", :controller=>"users"}
+                                         POST   /users/return_admin(.:format)                                  {:action=>"return_admin", :controller=>"users"}
+                                         GET    /users/:id/dashboard(.:format)                                 {:action=>"dashboard", :controller=>"users"}
+                                         GET    /users/:id/edit_account(.:format)                              {:action=>"edit_account", :controller=>"users"}
+                                         GET    /users/:id/invite(.:format)                                    {:action=>"invite", :controller=>"users"}
+                                         GET    /users/:id/signup_completed(.:format)                          {:action=>"signup_completed", :controller=>"users"}
+                                         GET    /users/:id/activate(.:format)                                  {:action=>"activate", :controller=>"users"}
+                                         PUT    /users/:id/toggle_moderator(.:format)                          {:action=>"toggle_moderator", :controller=>"users"}
+                                         PUT    /users/:id/toggle_featured(.:format)                           {:action=>"toggle_featured", :controller=>"users"}
+                                         PUT    /users/:id/change_profile_photo(.:format)                      {:action=>"change_profile_photo", :controller=>"users"}
+                                         PUT    /users/:id/update_account(.:format)                            {:action=>"update_account", :controller=>"users"}
+                                         PUT    /users/:id/deactivate(.:format)                                {:action=>"deactivate", :controller=>"users"}
+                                         GET    /users/:id/welcome_photo(.:format)                             {:action=>"welcome_photo", :controller=>"users"}
+                                         GET    /users/:id/welcome_about(.:format)                             {:action=>"welcome_about", :controller=>"users"}
+                                         GET    /users/:id/welcome_invite(.:format)                            {:action=>"welcome_invite", :controller=>"users"}
+                                         GET    /users/:id/welcome_complete(.:format)                          {:action=>"welcome_complete", :controller=>"users"}
+                                         POST   /users/:id/assume(.:format)                                    {:action=>"assume", :controller=>"users"}
+                                                /users/:id/statistics(.:format)                                {:action=>"statistics", :controller=>"users"}
+                                                /users/:id/crop_profile_photo(.:format)                        {:action=>"crop_profile_photo", :controller=>"users"}
+                                                /users/:id/upload_profile_photo(.:format)                      {:action=>"upload_profile_photo", :controller=>"users"}
+                                                /users/:id/metro_area_update(.:format)                         {:action=>"metro_area_update", :controller=>"users"}
                accepted_user_friendships GET    /users/:user_id/friendships/accepted(.:format)                 {:action=>"accepted", :controller=>"friendships"}
                 pending_user_friendships GET    /users/:user_id/friendships/pending(.:format)                  {:action=>"pending", :controller=>"friendships"}
                  denied_user_friendships GET    /users/:user_id/friendships/denied(.:format)                   {:action=>"denied", :controller=>"friendships"}
@@ -347,11 +407,11 @@ auto_complete_for_username_user_messages        /users/:user_id/messages/auto_co
                               user_album GET    /users/:user_id/albums/:id(.:format)                           {:action=>"show", :controller=>"albums"}
                                          PUT    /users/:user_id/albums/:id(.:format)                           {:action=>"update", :controller=>"albums"}
                                          DELETE /users/:user_id/albums/:id(.:format)                           {:action=>"destroy", :controller=>"albums"}
-                                   users GET    /users(.:format)                                               {:action=>"index", :controller=>"users"}
+                                         GET    /users(.:format)                                               {:action=>"index", :controller=>"users"}
                                          POST   /users(.:format)                                               {:action=>"create", :controller=>"users"}
-                                new_user GET    /users/new(.:format)                                           {:action=>"new", :controller=>"users"}
-                               edit_user GET    /users/:id/edit(.:format)                                      {:action=>"edit", :controller=>"users"}
-                                    user GET    /users/:id(.:format)                                           {:action=>"show", :controller=>"users"}
+                                         GET    /users/new(.:format)                                           {:action=>"new", :controller=>"users"}
+                                         GET    /users/:id/edit(.:format)                                      {:action=>"edit", :controller=>"users"}
+                                         GET    /users/:id(.:format)                                           {:action=>"show", :controller=>"users"}
                                          PUT    /users/:id(.:format)                                           {:action=>"update", :controller=>"users"}
                                          DELETE /users/:id(.:format)                                           {:action=>"destroy", :controller=>"users"}
                                    votes GET    /votes(.:format)                                               {:action=>"index", :controller=>"votes"}

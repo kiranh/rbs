@@ -1,0 +1,49 @@
+- content_for :head do
+  = include_javascripts :home
+  = include_javascripts :people
+  = javascript_include_tag 'vanish'
+
+- content_for :group_title do
+  = @group.title
+
+.span-8.append-1.last
+  = render :partial => 'groups/group_info_sidebar', :locals => {:group => @group }
+
+.span-15.last
+  %h3
+    = @group.title
+    - if !(@group.members.include?(currentuser.person))
+      .right
+        %span
+        = link_to t('.join'), add_group_member_path(@group.id),
+                :class => 'share_with button',
+                :rel => 'facebox', :id => 'like'
+    -else
+      .right
+        %span
+        = link_to t('.invite'), invites_path, :class => 'button', :rel => 'facebox'
+
+    .description
+      - if @group.public
+        = "(Anyone can join)"
+      %p
+        %br/
+        = @group.description
+  - if @group_member
+    = render 'shared/publisher', :aspect => :group
+  - if @posts.count > 0
+    -if @post_type == :photos
+      = render 'photos/index', :photos => @posts
+    - else
+      #main_stream.stream
+        = render 'shared/stream', :posts => @fakes
+        %a.paginate
+          = t("more")
+    = will_paginate @posts
+
+  - else
+    #main_stream.stream
+      = render 'shared/stream', :posts => @fakes
+    #stream
+      %li{:style=>"text-align:center;"}
+      .dull= t('.no_posts')

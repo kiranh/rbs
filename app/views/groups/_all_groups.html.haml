@@ -1,0 +1,17 @@
+%ul#list_groups
+  - for group in @groups
+    %li{:data=>{:group_id=>group.id}}
+      - if group.logo && group.logo.url(:thumb_small)
+        = image_tag group.logo.url(:thumb_small).to_s
+      - else
+        = image_tag "logo_default.png", :height => "50px", :width => "50px"
+      %h4.name
+        = link_to group.title, group
+        .description
+          = group.members.count
+          = t('groups.group_likes')
+      .right
+        - unless @my_groups.include?(group)
+          = link_to "Like", group
+        - else
+          = link_to "View", group

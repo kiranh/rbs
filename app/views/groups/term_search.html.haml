@@ -1,0 +1,29 @@
+%h4 Search Results for #{params[:group_search]}
+%br/
+%span{:style => "padding-left:660px;"}
+  = link_to t('.search'), search_group_path,
+  :class => 'share_with button', :rel => 'facebox'
+- for group in @groups
+  %div
+    %span.group_logo{:style=>"width:10%;"}
+      - if group.logo && group.logo.url(:thumb_small)
+        = image_tag group.logo.url(:thumb_small).to_s
+      - else
+        = image_tag "logo_default.png", :height => "50px", :width => "50px"
+    %span.most_active_groups{:style=>"width:30%;"}
+      %h4= link_to group.title, group
+    %span.group_likes{:style=>"width:10%;"}
+      = group.members.count
+      = t('groups.group_likes')
+      %br/
+      = group.posts.count
+      = t('groups.group_posts')
+    %span{:style => "width:10%;float:left;"}
+      %br/
+      - unless @my_groups.include?(group)
+        = link_to "Like", group
+      - else
+        = link_to "View", group
+    %div{:style => "clear:both;"}
+    %hr{:style=>"width:550px;"}
+= will_paginate @groups

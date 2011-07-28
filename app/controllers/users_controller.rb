@@ -2,7 +2,6 @@ class UsersController < BaseController
   include Viewable
   cache_sweeper :taggable_sweeper, :only => [:activate, :update, :destroy]
   layout "application", :except => [:complete_profile, :getting_started]
-  autocomplete :user, :login, :full => true
 
   uses_tiny_mce do
     {:only => [:new, :create, :update, :edit, :welcome_about], :options => configatron.default_mce_options}

@@ -1,0 +1,36 @@
+- title "Pages"
+%h3
+  = t('.my_groups')
+%table
+  %tr
+    %th Title
+    %th Owner
+    %th Moderator(s)
+    %th Public
+    %th Member(s)
+    %th Total-Members
+  -# for group in @groups
+  - group = @group
+  %tr
+    %td= link_to group.title, group
+    %td= person_image_link group.person
+    %td
+      - PageMember.moderator(group).each do |moderator|
+        = person_image_link Person.find(moderator.member_id)
+        = link_to t('.remove_moderator'), remove_moderator_path(group.id, moderator.member) if group.person_id == currentuser.person.id
+        %br/
+    %td
+      - if group.public
+        = "YES"
+      - else
+        = "NO"
+    %td
+      - group.members.each do |member|
+        - if !PageMember.moderator?(group,member)
+          =  person_image_link member
+          =  link_to t('.make_moderator'), make_moderator_path(group.id, member) if group.person_id == currentuser.person.id
+          %br/
+    %td= group.members.count
+    %td= link_to "Edit", edit_group_path(group) if group.person_id == currentuser.person.id
+    %td= link_to "Destroy", group, :confirm => 'Are you sure?', :method => :delete if group.person_id == currentuser.person.id
+%p= link_to "Create a New Page", new_group_path if group.person_id == currentuser.person.id

@@ -1,0 +1,58 @@
+-#   Copyright (c) 2010, Diaspora Inc.  This file is
+-#   licensed under the Affero General Public License version 3 or later.  See
+-#   the COPYRIGHT file.
+
+- content_for :head do
+  = include_javascripts :people
+
+:javascript
+  $(document).ready(function () {
+    var data = $.parseJSON( $('#contact_json').val() ),
+        autocompleteInput = $("#contact_autocomplete");
+
+    autocompleteInput.autoSuggest(data, {
+      selectedItemProp: "name",
+      searchObjProps: "name",
+      asHtmlID: "contact_ids",
+      keyDelay: 0,
+      startText: '',
+      emptyText: '#{t('.no_results')}',
+      preFill: [{ 'name' : "#{params[:name]}",
+                 'value' : "#{params[:contact_id]}"}]
+      });
+
+    autocompleteInput.focus();
+  });
+
+= hidden_field_tag :contact_json, @all_contacts_and_ids.to_json
+
+#new_message_pane
+  .span-12.last
+    #facebox_header
+      %h4
+        = t('.send_invitation')
+
+    = form_tag invite_friends_url do
+      %br
+      .span-2
+        %h4
+          = t('.to')
+      .span-10.last
+        = text_field_tag "contact_autocomplete"
+      %br/
+      %br/
+      .span-2
+        %h4
+          = t('.invitation')
+      .span-10.last
+        = t('.invitation_content', :group => @group.title.upcase)
+        %br/
+        %br/
+        = t('.invitation_more_details', :more_details => @group.description)
+      .text-right
+        = submit_tag t('.send'), :class => 'button'
+        = link_to t('cancel'), group_path
+
+
+
+

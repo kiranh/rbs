@@ -1,0 +1,42 @@
+- content_for :head do
+  = include_javascripts :aspects
+:javascript
+  $(function() {
+    $("#groups_search input").keyup(function() {
+      var search = $(this);
+      var list   = $("#list_groups")
+      //$(this).siblings();
+      //("ul").first();
+      var query  = new RegExp(search.val(),'i');
+      $("li", list).each( function() {
+        var element = $(this);
+        if( !element.text().match(query) ) {
+          if( !element.hasClass('hidden') ) {
+            element.addClass('hidden');
+          }
+        } else {
+          element.removeClass('hidden');
+        }
+      });
+     return false;
+    });
+  });
+
+
+#aspect_edit_pane
+  #facebox_header{:data=>{:guid=>10}}
+
+    %h3#aspect_name_title
+      %span.name ST Fan-Pages
+  - if @groups.count > 0
+    .contact_list
+      - form_tag group_search_path, :method => :get, :id => 'groups_search' do
+        = search_field_tag :group_search, "", :class => 'contact_list_search', :placeholder => t('.all_groups')
+      %div{:id => 'groups'}
+        = render "all_groups"
+
+  %br
+  %div{:style => "text-align:right;"}
+    = link_to t('.done'), '#', :class => 'button', :rel => 'close'
+    
+

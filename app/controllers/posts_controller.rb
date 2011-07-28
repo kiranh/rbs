@@ -36,7 +36,7 @@ class PostsController < BaseController
     @posts = @post.where('category_id = ?', @category.id) if @category
     @posts = @posts.page(params[:page]).per(10)
     
-    @is_current_user = @user.eql?(current_user)
+    @is_currentuser = @user.eql?(currentuser)
 
     @popular_posts = @user.posts.order("view_count DESC").limit(10).all
     
@@ -66,7 +66,7 @@ class PostsController < BaseController
     @post = Post.find(params[:id])
 
     @user = @post.user
-    @is_current_user = @user.eql?(current_user)
+    @is_currentuser = @user.eql?(currentuser)
     @comment = Comment.new(params[:comment])
 
     @comments = @post.comments.includes(:user).order('created_at DESC').limit(20)
@@ -86,7 +86,7 @@ class PostsController < BaseController
   
   def preview
     @post = Post.unscoped.find(params[:id])
-    redirect_to(:controller => 'sessions', :action => 'new') and return false unless @post.user.eql?(current_user) || admin? || moderator?
+    redirect_to(:controller => 'sessions', :action => 'new') and return false unless @post.user.eql?(currentuser) || admin? || moderator?
   end
   
   # GET /posts/new
@@ -183,7 +183,7 @@ class PostsController < BaseController
       render :partial => 'posts/send_to_friend', :locals => {:user_id => params[:user_id], :post_id => params[:post_id]} and return
     end
     @post = Post.find(params[:id])
-    if @post.send_to(params[:emails], params[:message], (current_user || nil))
+    if @post.send_to(params[:emails], params[:message], (currentuser || nil))
       render :inline => "It worked!"            
     else
       render :inline => "You entered invalid addresses: <ul>"+ @post.invalid_emails.collect{|email| '<li>'+email+'</li>' }.join+"</ul> Please correct these and try again.", :status => 500
@@ -259,7 +259,7 @@ class PostsController < BaseController
   def require_ownership_or_moderator
     @user ||= User.find(params[:user_id])
     @post ||= Post.find(params[:id]) if params[:id]
-    unless admin? || moderator? || (@post && (@post.user.eql?(current_user))) || (!@post && @user && @user.eql?(current_user))
+    unless admin? || moderator? || (@post && (@post.user.eql?(currentuser))) || (!@post && @user && @user.eql?(currentuser))
       redirect_to :controller => 'sessions', :action => 'new' and return false
     end
     return @user

@@ -1,0 +1,72 @@
+= javascript_include_tag 'vanish'
+#group
+  .group_photo
+    - if @group.logo && @group.logo.url(:thumb_large)
+      = link_to image_tag(@group.logo.url(:thumb_large).to_s), @group
+    - else
+      = link_to image_tag("logo_default.png"), @group
+    %br/
+    - if @currentuser_pending
+      %h4= t('.group_pending_request')
+    - if @member_is_moderator
+      = link_to "Edit This Page", edit_group_path(@group)
+      %br/
+      = link_to "Admin", admin_group_path(@group)
+      - if @pending_members && @pending_members.length > 0
+        %hr{:style=>"width:300px;"}
+        .section.contact_pictures
+          %b
+            = @pending_members.length
+            = t('.pending_requests')
+          - for person in @pending_members
+            %br/
+            = person_image_link person
+            = person.first_name
+            = person.last_name
+            = link_to "Accept", accept_group_member_path(:group => @group, :member => person), :id => 'like'
+            = link_to "Reject", reject_group_member_path(:group => @group, :member => person), :id => 'like'
+
+  .span-8.last
+    -if @group_member
+      %hr{:style=>"width:300px;"}
+        = link_to "[Add Wiki Link]", add_wiki_on_fan_group_path(:id => @group.id)
+        - if @wikigroups && @wikigroups.length > 0
+          - for wiki in @wikigroups
+            %br/
+            = link_to wiki.title, show_wiki_on_fan_group_path(wiki.id)
+        - elsif @public_wikigroups
+          - for wiki in @public_wikigroups
+            %br/
+            = link_to wiki.title, show_wiki_on_fan_group_path(wiki.id)
+        - elsif @private_wikigroups
+          - for wiki in @private_wikigroups
+            %br/
+            = link_to wiki.title, show_wiki_on_fan_group_path(wiki.id)
+ 
+    %hr{:style=>"width:300px;"}
+    %b
+      = image_tag "gold_badge.png"
+      = t('.group_owner')
+    .section.contact_pictures
+      = person_image_link @owner
+      = person_link @owner
+    %b
+      = image_tag "silver_badge.png"
+      = t('.moderators')
+    .section.contact_pictures
+      - for person in @moderators
+        = person_image_link person
+        = person_link person
+        %br/
+    %hr{:style=>"width:300px;"}
+    .section.contact_pictures
+      %h4
+        = @members.length
+        = t('.members_list')
+      - for person in @members
+        = person_image_link person
+      %br/
+      - if (@group.members.include?(currentuser.person)) && (currentuser.person != @owner)
+        = link_to "Leave the group", leave_group_path(@group)
+       
+

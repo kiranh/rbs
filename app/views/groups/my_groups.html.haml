@@ -1,0 +1,38 @@
+.span-24.last
+  %span{:style => "font-size:14px;font-weight:bold;"}= t('.popular')
+  %span= link_to t('.search'), search_group_path,
+    :rel => 'facebox'
+
+  %span{:style => "padding-left:200px;"}
+    = link_to t('.create_group'), new_group_path,
+              :class => 'share_with button'
+
+.span-15.append-1
+  %br/
+  - for group in @popular_groups
+    %div
+      %span.group_logo{:style=>"width:10%;"}
+        - if group.logo && group.logo.url(:thumb_small)
+          = image_tag group.logo.url(:thumb_small).to_s
+        - else
+          = image_tag "logo_default.png", :height => "50px", :width => "50px"
+      %span.most_active_groups{:style=>"width:50%;"}
+        %h4= link_to group.title, group
+      %span.group_likes{:style=>"width:20%;"}
+        = group.members.count
+        = t('groups.group_likes')
+        %br/
+        = group.posts.count
+        = t('groups.group_posts')
+      %span{:style => "width:20%;float:left;"}
+        %br/
+        - unless @my_groups.include?(group)
+          = link_to "Like", group
+        - else
+          = link_to "View", group
+      %div{:style => "clear:both;"}
+      %hr{:style => "width:500px;"}
+  =will_paginate @popular_groups
+.span-8.last
+  = sanitize(t('.why_fan_group'))
+

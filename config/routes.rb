@@ -4,7 +4,6 @@ SocialCrm::Application.routes.draw do
     collection do
       post 'return_admin'      
       get 'complete_profile'
-      get 'autocomplete_user_login'
     end
     member do
       get 'getting_started'
@@ -58,7 +57,18 @@ SocialCrm::Application.routes.draw do
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
-
+  resources :groups
+  match 'groups/add_member/:id',          :to => 'groups#add_member', :as => 'add_group_member'
+  match 'groups/accept_member/:page&:member',          :to => 'groups#accept_member', :as => 'accept_group_member'
+  match 'groups/reject_member/:page&:member',          :to => 'groups#reject_member', :as => 'reject_group_member'
+  match 'groups/make_moderator/:page&:member',         :to => 'groups#make_moderator',:as => 'make_moderator'
+  match 'groups/remove_moderator/:page&:member',         :to => 'groups#remove_moderator',:as => 'remove_moderator'
+  match 'groups/index/:id',               :to => 'groups#index',  :as => 'admin_group'
+  match 'groups/leave/:id',               :to => 'groups#leave',  :as => 'leave_group'
+  match 'groups/invite/:id',              :to => 'groups#invite', :as => 'invites'
+  match 'groups/invite_friends/:id',      :to => 'groups#invite_friends', :as => 'invite_friends'
+  match 'group/search',                  :to => 'groups#search', :as => 'search_group'
+  match 'group/term_search',                  :to => 'groups#term_search', :as => 'group_search'
   # Sample resource route with options:
   #   resources :products do
   #     member do

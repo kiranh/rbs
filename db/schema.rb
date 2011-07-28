@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110727115145) do
+ActiveRecord::Schema.define(:version => 20110728122350) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -194,6 +194,26 @@ ActiveRecord::Schema.define(:version => 20110727115145) do
   add_index "friendships", ["friendship_status_id"], :name => "index_friendships_on_friendship_status_id"
   add_index "friendships", ["user_id"], :name => "index_friendships_on_user_id"
 
+  create_table "group_members", :force => true do |t|
+    t.integer  "group_id"
+    t.integer  "member_id"
+    t.boolean  "moderator"
+    t.string   "aasm_state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "description"
+    t.string   "logo"
+    t.boolean  "public"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "logo_id"
+  end
+
   create_table "homepage_features", :force => true do |t|
     t.datetime "created_at"
     t.string   "url"
@@ -318,6 +338,10 @@ ActiveRecord::Schema.define(:version => 20110727115145) do
     t.string   "video_content_type"
     t.integer  "video_file_size"
     t.datetime "video_updated_at"
+    t.string   "doc_file_name"
+    t.string   "doc_content_type"
+    t.integer  "doc_file_size"
+    t.datetime "doc_updated_at"
   end
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
