@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110728122350) do
+ActiveRecord::Schema.define(:version => 20110728134053) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -501,15 +501,6 @@ ActiveRecord::Schema.define(:version => 20110728122350) do
   add_index "users", ["login_slug"], :name => "index_users_on_login_slug"
   add_index "users", ["persistence_token"], :name => "index_users_on_persistence_token"
   add_index "users", ["vendor"], :name => "index_users_on_vendor"
-
-  create_table "videos", :force => true do |t|
-    t.integer  "post_id"
-    t.string   "file_name"
-    t.integer  "content_type"
-    t.integer  "file_size"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"

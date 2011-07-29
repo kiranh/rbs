@@ -283,8 +283,8 @@ DEPENDENCIES
   prototype-rails!
   rails!
   rails-erd
-  ruby-graphviz
   rmagick!
+  ruby-graphviz
   sass
   sprockets!
   turn
