@@ -200,7 +200,7 @@ class User < ActiveRecord::Base
 
   def self.recent_activity(options = {})
     options.reverse_merge! :per_page => 10, :page => 1
-    Activity.joins("LEFT JOIN users ON users.id = activities.user_id").where('users.activated_at IS NOT NULL').select('activities.*').page(options[:page]).per(options[:per_page])
+    Activity.joins("LEFT JOIN users ON users.id = activities.user_id").where('users.activated_at IS NOT NULL').select('activities.*').order("activities.created_at desc").page(options[:page]).per(options[:per_page])
   end
 
   def self.currently_online
