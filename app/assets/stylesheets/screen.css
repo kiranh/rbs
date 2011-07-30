@@ -264,10 +264,11 @@ img.polaroid {
 }
 
 .box h3 {
-    background-color: #0D82CF;
-    color: white;
+    color: #0D82CF;
     margin-bottom: 16px;
     padding: 7px 10px 6px;
+    font-weight:bold;
+    border-bottom:2px solid #0D82CF;
 }
 
 .alt {
@@ -281,6 +282,8 @@ img.polaroid {
     padding: .5em;
     background: #0D82CF;
     color: white;
+    font-size:15px;
+    font-weight:bold;
 }
 
 .first_alt {
@@ -725,8 +728,8 @@ h6.all a {
 }
 
 #ft .yui-u .box h3 {
-    color: white;
-    border-color: #666;
+    color: #0D82CF;
+    border-color: #0D82CF;
 }
 
 /* whats fresh */
@@ -994,7 +997,7 @@ div.user_list div.vcard ul {
 }
 
 .box h3 a{
-    color: white;
+    color: #0D82CF;
 }
 
 ul.subnav li {
@@ -1165,7 +1168,7 @@ table.poll td.bars div.bar-container .bar {
     font-size: 10px;
     position: absolute;
     right: 0;
-    top: -9999px;
+    top: 20px;
     *width: 150px;
     border: 2px solid #F9F9F9;
     border-top: none;
@@ -1176,6 +1179,8 @@ table.poll td.bars div.bar-container .bar {
 
 #user-menu {
     padding-right: 15px;
+    width:100px;
+    float:right;
     position: relative;
     background: url(/assets/icons/bullet_arrow_down_50.png) no-repeat right;
 }

@@ -1,9 +1,13 @@
 #search_panel
-  .ddl_container
-    %select.ddl
-      %option Member
   %input.searchbox{:type => "text"}/
   %input.btnsearch{:type => "submit", :value => ""}/
+  - if logged_in?
+    = render :partial => 'shared/user_menu'
+    - if current_user.unread_messages?
+      #newmail
+        = link_to :unread_messages.l(:count => current_user.unread_message_count), user_messages_path(current_user)
+  - else
+    =:welcome_message.l(:login_link => link_to(:log_in.l, login_path), :signup_link => link_to(:sign_up.l, signup_path))
   .spacerdiv
 .main_logo
   %a{:href=>home_url, :title=>"#{configatron.community_name}"}

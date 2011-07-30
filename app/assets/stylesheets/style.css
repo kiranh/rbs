@@ -657,9 +657,8 @@ select {
 
 #search_panel {
     float: right;
-    width: 320px;
+    width: 400px;
     padding: 23px 0 0 0;
-    1 background-color: #fdf;
 }
 
 #search_panel input {
