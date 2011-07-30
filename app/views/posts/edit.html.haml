@@ -7,22 +7,22 @@
       = render :partial => "categories/tips", :locals => {:category => nil}
   -if @post.picture.present?
     #add_picture{:style=>'display:none;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;margin-bottom:5px;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#picture_div').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
   -else
     #add_video{:style=>'margin-bottom:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#add_picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_picture_div').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_picture_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_an_image_for_your_post.l
   -if @post.video.present?
     #add_video{:style=>'display:none;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
   -else
     #add_video{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_video_div').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_an_video_for_your_post.l
   -if @post.doc.present?
     #add_doc{:style=>'display:none;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#doc_div').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
   -else
     #add_doc{:style=>'margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 1em;'}
-      %a.button.positive{:href => '#', :onclick => "jQuery('#add_doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#add_doc_div').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
+      %a.button.positive{:href => '#', :onclick => "jQuery('#add_doc_div').show();jQuery('html, body').animate({scrollTop:jQuery('#tag_list').offset().top}, 'slow');return false;"}=:upload_a_doc_for_your_post.l
 #yui-main
   .yui-b
     -box do 
@@ -60,25 +60,29 @@
             %span{:style=>'float:left;text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
               %a.button.positive{:href => '#', :onclick => "remove_picture();return false;"}=:remove_picture.l
             %div{:style=>"clear:both;"}
-        %div{:id=>"add_picture_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
+        %fieldset{:id=>"add_picture_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
+          %legend
+            Upload Photo
           = file_field_tag :post_picture
-          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
-            %a.button.positive{:href => '#', :onclick => "jQuery('#add_picture_div').hide();return false;"}=:remove.l
+          %span{:style=>'margin-left:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "remove_add_picture();return false;"}=:remove.l
           %br
           %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin-top:10px;'}
             only jpg, jpeg, pjpeg, gif, png, x-png files allowed to upload.
           #div{:style=>"clear:both;"}
         -if @post.video.present?
-          %h5 Attached Video
           #video_div{:style=>"text-align:left;margin:15px 0px;"}
+            %h5 Attached Video
             #player
             %br
             %span{:style=>'text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
               %a.button.positive{:href => '#', :onclick => "remove_video();return false;"}=:remove_video.l
-        %div{:id=>"add_video_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
+        %fieldset{:id=>"add_video_div",:style => 'display:none;margin:15px 0px;border:2px solid #ccc;padding:10px;'}
+          %legend
+            Upload Video
           = file_field_tag :post_video
-          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
-            %a.button.positive{:href => '#', :onclick => "jQuery('#add_video_div').hide();return false;"}=:remove.l
+          %span{:style=>'margin-left:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "remove_video_picture();return false;"}=:remove.l
           %br
           %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin-top:10px;'}
             only flv, mpeg, msvideo, wmv, avi, flash-video video files allowed to upload.
@@ -86,16 +90,17 @@
         -if @post.doc.present?
           #doc_div{:style=>"text-align:left;margin:15px 0px;"}
             %h5 Attached File
-            %br
             %a{:href=>"/posts/#{@post.id}/download_doc_file",:target=>"_blank"}
               Click here to download file
             %br
             %span{:style=>'float:left;text-align:left;margin-top:5px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
               %a.button.positive{:href => '#', :onclick => "remove_doc();return false;"}=:remove_doc.l
-        %div{:id=>"add_doc_div",:style => 'display:none;border:2px solid #ccc;margin-top:15px;padding:10px;'}
+        %fieldset{:id=>"add_doc_div",:style => 'display:none;border:2px solid #ccc;margin-top:15px;padding:10px;'}
+          %legend
+            Upload Document
           = file_field_tag :post_doc
-          %span{:style=>'margin-left:60px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
-            %a.button.positive{:href => '#', :onclick => "jQuery('#add_doc_div').hide();return false;"}=:remove.l
+          %span{:style=>'margin-left:10px;background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 5px;'}
+            %a.button.positive{:href => '#', :onclick => "remove_doc_picture();return false;"}=:remove.l
           %br
           %span{:style=>'background: none repeat scroll 0 0 #F9F9F9;border: 1px solid #DDDDDD;padding: 2px;float:left;margin-top:10px;'}
             only pdf,msword,ms-powerpoint,ms-excel,text/plain,text/html files allowed to upload.
@@ -114,8 +119,8 @@
           = :or.l
           =link_to :cancel.l, user_post_path(current_user, @post)
         %p
-          =link_to "#{image_tag 'icons/delete.png', :plugin => :community_engine} "+:delete_this_post.l, user_post_path(current_user, @post), :method => :delete, :confirm => :are_you_sure_you_want_to_delete_this_post.l
-
+          =link_to (image_tag 'icons/delete.png', :plugin => :community_engine), user_post_path(current_user, @post), :method => :delete, :confirm => :are_you_sure_you_want_to_delete_this_post.l
+          =link_to :delete_this_post.l, user_post_path(current_user, @post), :method => :delete, :confirm => :are_you_sure_you_want_to_delete_this_post.l
   = observe_field  "post_category_id", {:url => {:action => 'category_tips_update'}, :with => "post_category_id", :update => "category_tips", :complete => visual_effect(:highlight, "category_tips", :duration => 0.5)}
 = javascript_include_tag 'jwplayer'
 :javascript
@@ -150,3 +155,16 @@
     jQuery('#delete_picture').attr('value',"1");
    // jQuery('#add_video').show();
   }
+  function remove_add_picture(){
+  jQuery('#add_picture_div').hide();
+  jQuery("#post_picture").replaceWith("<input type='file' id='post_picture' />");
+  }
+  function remove_add_video(){
+  jQuery('#add_video_div').hide();
+  jQuery("#post_video").replaceWith("<input type='file' id='post_video' />");
+  }
+  function remove_add_doc(){
+  jQuery('#add_doc_div').hide();
+  jQuery("#post_doc").replaceWith("<input type='file' id='post_doc' />");
+  }
+  

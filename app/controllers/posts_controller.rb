@@ -166,7 +166,7 @@ class PostsController < BaseController
   end
   
   def download_doc_file
-    redirect_to Post.find(params[:id]).doc.url
+   redirect_to Post.find(params[:id]).doc.url
   end
   # DELETE /posts/1
   # DELETE /posts/1.xml
@@ -178,7 +178,7 @@ class PostsController < BaseController
     respond_to do |format|
       format.html { 
         flash[:notice] = :your_post_was_deleted.l
-        redirect_to manage_user_posts_url(@user)   
+        redirect_to user_posts_url(@user)
       }
     end
   end
