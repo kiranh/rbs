@@ -65,8 +65,8 @@
               %h5 Attached File
               %br
               %a{:href=>"/posts/#{@post.id}/download_doc_file"}
+                %br
                 Click here to download file
-        / entry-content
       / ends hentry
     -box :class => 'hfeed comments', :id => 'comments' do      
       %h3= :post_comments.l 
