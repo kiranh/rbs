@@ -19,23 +19,23 @@
         / Header Start
         .header
           = render :partial => "shared/header"
-        #navigation
+        #navigation{:style => "font-size:10px;"}
           - if !logged_in?
             = link_to :log_in.l , login_path, :class => "rt"
           - else
             %a.rt{:href=>logout_url, :title=>:log_out_of_your.l + " #{configatron.community_name} " + :account.l}
               =:log_out.l
           %ul
-            %li
-              %a.current{:href => "#"} ACTIVITY
-            %li
-              %a{:href => "#"} CONTACTS
-            %li
-              %a{:href => "#"} GROUPS
-            %li
-              %a{:href => "#"} EVENTS
-            %li
-              %a{:href => "#"} CONTENT
+            - Category.find(:all).each do |c|
+              = topnav_tab c.name, {:url => category_path(c), :section => [c.name]}
+            = topnav_tab :forums.l, { :url => forums_path, :section => ['forums'] }
+            = topnav_tab :popular.l, { :url => popular_path, :section => ['popular'] }
+            = topnav_tab :people.l, { :url => users_path, :section => ['users'] }
+            - if current_user
+              = topnav_tab :my_profile.l, { :url => user_path(current_user), :section => ['my_profile']}
+            - if @header_tabs.any?
+              - @header_tabs.each do |tab|
+                = topnav_tab tab[:name], {:url => tab[:url], :section => [tab[:section]] }
           .spacerdiv
         / Header End
         / container Start

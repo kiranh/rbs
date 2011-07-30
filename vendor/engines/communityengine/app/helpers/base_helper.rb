@@ -196,7 +196,7 @@ module BaseHelper
     classes = [options.delete(:class)]
     classes << 'current' if options[:section] && (options.delete(:section).to_a.include?(@section))
     
-    string = "<li class='#{classes.join(' ')}'>" + link_to( content_tag(:span, name), options.delete(:url), options) + "</li>"
+    string = "<li>" + link_to(name, options.delete(:url), :class => "#{classes.join(' ')}")  + "</li>"
     string.html_safe
   end
 

@@ -766,7 +766,7 @@ select {
     background: #ed0d92;
     background: -moz-linear-gradient(top, #ec008c 0%, #ed0d92 100%);
     background: -webkit-linear-gradient(top, #ec008c 0%, #ed0d92 100%);
-    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ec008c), to(#ed0d92));
+    background: -webkit-gradient(linear, 1% 1%, 10% 110%, from(#EC008C), to(#ED0D92), color-stop(.1, #FAFAF9), color-stop(.1, #075E95), color-stop(.5, #0E91EA), color-stop(.9, #0E669D), color-stop(.9, #AEAEAD));
 }
 
 #content {
