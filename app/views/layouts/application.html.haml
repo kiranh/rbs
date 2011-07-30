@@ -26,13 +26,13 @@
             %a.rt{:href=>logout_url, :title=>:log_out_of_your.l + " #{configatron.community_name} " + :account.l}
               =:log_out.l
           %ul
+            - if current_user
+              = topnav_tab :dashboard.l, { :url => dashboard_user_path(current_user), :section => ['my_profile'] }
             - Category.find(:all).each do |c|
               = topnav_tab c.name, {:url => category_path(c), :section => [c.name]}
             = topnav_tab :forums.l, { :url => forums_path, :section => ['forums'] }
             = topnav_tab :popular.l, { :url => popular_path, :section => ['popular'] }
             = topnav_tab :people.l, { :url => users_path, :section => ['users'] }
-            - if current_user
-              = topnav_tab :my_profile.l, { :url => user_path(current_user), :section => ['my_profile']}
             - if @header_tabs.any?
               - @header_tabs.each do |tab|
                 = topnav_tab tab[:name], {:url => tab[:url], :section => [tab[:section]] }
