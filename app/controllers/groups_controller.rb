@@ -20,12 +20,12 @@ class GroupsController < BaseController
     @members = GroupMember.members(@group)
     @owner = @group
     @moderators = GroupMember.moderator(@group)
-    @currentuser_pending = GroupMember.find_pending(@group, currentuser)
+    @current_user_pending = GroupMember.find_pending(@group, current_user)
     @post_type = :all
     @posts = @group.posts.order('updated_at DESC').paginate(:per_page => 15, :page => params[:page])
     @fakes = PostsFake.new(@posts)
-    @group_member = true if GroupMember.actual_member(@group, currentuser)
-    @member_is_moderator = GroupMember.moderator?(@group, currentuser) if @group_member
+    @group_member = true if GroupMember.actual_member(@group, current_user)
+    @member_is_moderator = GroupMember.moderator?(@group, current_user) if @group_member
   end
 
   def show
@@ -34,16 +34,16 @@ class GroupsController < BaseController
   end
 
   def new
-    @user = currentuser
+    @user = current_user
     @group = @user.groups.new
   end
 
   def create
-    @user = currentuser
+    @user = current_user
     @group = @user.groups.new(params[:group])
-    @group.members << currentuser
+    @group.members << current_user
     if @group.save
-      member = GroupMember.get_record(@group.id, currentuser.id)
+      member = GroupMember.get_record(@group.id, current_user.id)
       member.accept!
       member.moderator = true
       member.save
@@ -55,13 +55,13 @@ class GroupsController < BaseController
   end
 
   def edit
-    @user = currentuser
+    @user = current_user
     @group = @user.member_groups.where(['guid = ?', params[:id]]).first
     render :back, :notice => "You dont have rights to edit this group" if !@group
   end
 
   def update
-    @user = currentuser
+    @user = current_user
     @group = @user.member_groups.where(['guid = ?', params[:id]]).first
     if @group.update_attributes(params[:group])
       Resque.enqueue(Job::PageLogo, @group.guid)
@@ -89,8 +89,8 @@ class GroupsController < BaseController
   end
 
   def send_request_to_moderator
-    if !(@group.members.include?(currentuser))
-      @group.members << currentuser
+    if !(@group.members.include?(current_user))
+      @group.members << current_user
       render :text => "<h4>Request has been sent to the Moderator to approve !</h4>"
     else
       render :text => "<h4> Your Request is already in queue !</h4>"
@@ -98,9 +98,9 @@ class GroupsController < BaseController
   end
 
   def accept_member_directly
-    if !(@group.members.include?(currentuser))
-      @group.members << currentuser
-      group_member = GroupMember.get_record(@group.id, currentuser.id)
+    if !(@group.members.include?(current_user))
+      @group.members << current_user
+      group_member = GroupMember.get_record(@group.id, current_user.id)
       if group_member.accept!
         render :text => "<h4>You are now a member to this Page </h4>"
       end
@@ -149,15 +149,15 @@ class GroupsController < BaseController
 
   def leave
     group = Group.find(params[:id])
-    group_member = GroupMember.get_record(group, currentuser.id)
+    group_member = GroupMember.get_record(group, current_user.id)
     group_member.destroy
     redirect_to root_url, :notice => "You left the #{group.title} Page successfully."
   end
 
   def invite
     @group = Group.find(params[:id])
-    @all_contacts_and_ids = currentuser.contacts.map { |c| {:value => c.id, :name => c.email} }
-    @contact = currentuser.contacts.find(params[:contact_id]) if params[:contact_id]
+    @all_contacts_and_ids = current_user.contacts.map { |c| {:value => c.id, :name => c.email} }
+    @contact = current_user.contacts.find(params[:contact_id]) if params[:contact_id]
     render :layout => false
   end
 
@@ -171,22 +171,22 @@ class GroupsController < BaseController
     end
     @group = params[:id]
     @group_object = Page.find_by_guid(@group)
-    @sender_id = currentuser.email
-    Postzord::Dispatch.new(currentuser, @group_object, nil).invite_group_members(person_ids)
+    @sender_id = current_user.email
+    Postzord::Dispatch.new(current_user, @group_object, nil).invite_group_members(person_ids)
     redirect_to :back
   end
 
   def search
     @groups = Page.all.paginate(
         :group => params[:group], :per_group => 30)
-    @my_groups = currentuser.member_groups
+    @my_groups = current_user.member_groups
     render :action => "search", :layout => false
   end
 
   def term_search
     @groups = Page.search(params[:group_search]).paginate(
         :group => params[:group], :per_group => 30)
-    @my_groups = currentuser.member_groups
+    @my_groups = current_user.member_groups
     respond_to do |format|
       format.js
       format.html

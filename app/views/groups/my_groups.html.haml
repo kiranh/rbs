@@ -1,7 +1,6 @@
 .span-24.last
   %span{:style => "font-size:14px;font-weight:bold;"}= t('.popular')
-  %span= link_to t('.search'), search_group_path,
-    :rel => 'facebox'
+  %span= link_to t('.search'), search_group_path
 
   %span{:style => "padding-left:200px;"}
     = link_to t('.create_group'), new_group_path,

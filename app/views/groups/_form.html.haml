@@ -2,26 +2,19 @@
   %p
     = f.error_messages
   %p
-    = f.label :title, t('groups.new.title')
-    = f.text_field :title, :title => t('.enter_title')
+    = f.label :title, :title.l
+    = f.text_field :title
   %p
-    = f.label :description, t('groups.new.description')
-    = f.text_area :description, :title => t('.enter_description')
+    = f.label :description, :description.l
+    = f.text_area :description
   %p
-    = f.label :logo, t('groups.new.logo')
+    = f.label :logo, :logo.l
     %br/
-    - if @group.logo && @group.logo.url(:thumb_small)
-      = image_tag @group.logo.url(:thumb_small).to_s
-    = f.file_field :logo
-    = f.hidden_field :logo_cache 
   %p
     %br/
     = f.radio_button :public, "true", :checked => true
-    = t('groups.new.anyone_can_join')
+    = "Anyone can Join"
     %br/
     = f.radio_button :public, false
-    = t('groups.new.to_be_moderated')
-    %br/
-    %br/
-  %p
+    = "To be Moderated" %p
     = f.submit

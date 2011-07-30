@@ -103,11 +103,6 @@ PATH
       thor (~> 0.14.6)
 
 PATH
-  remote: vendor/git/rmagick-2.13.1
-  specs:
-    rmagick (2.13.1)
-
-PATH
   remote: vendor/git/sprockets
   specs:
     sprockets (2.0.0.beta.10)
@@ -239,6 +234,7 @@ GEM
     rest-client (1.6.3)
       mime-types (>= 1.16)
     ri_cal (0.8.8)
+    rmagick (2.13.1)
     ruby-graphviz (0.9.18)
     ruby-openid (2.1.8)
     ruby-openid-apps-discovery (1.2.0)
@@ -283,7 +279,7 @@ DEPENDENCIES
   prototype-rails!
   rails!
   rails-erd
-  rmagick!
+  rmagick
   ruby-graphviz
   sass
   sprockets!

@@ -32,3 +32,14 @@
 
   / NavBar
   / header
+#search_panel
+  .ddl_container
+    %select.ddl
+      %option Member
+  %input.searchbox{:type => "text"}/
+  %input.btnsearch{:type => "submit", :value => ""}/
+  .spacerdiv
+.main_logo
+  %a{:href=>home_url, :title=>"#{configatron.community_name}"}
+    = image_tag "logo.png", :alt => "logo", :height => "69", :width => "251"
+.spacerdiv

@@ -32,7 +32,7 @@ group :development do
   gem "rails-erd"
 end
 
-gem "rmagick", :path => "vendor/git/rmagick-2.13.1"
+gem "rmagick"
 # Deploy with Capistrano
 # gem 'capistrano'
 
