@@ -6,6 +6,7 @@ class Post < ActiveRecord::Base
   acts_as_publishable :live, :draft
   belongs_to :user
   belongs_to :category
+  belongs_to :group
   has_many   :polls, :dependent => :destroy
   has_many :favorites, :as => :favoritable, :dependent => :destroy
   
