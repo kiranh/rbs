@@ -1,37 +1,3 @@
-#header
-  #top
-    #logo.left
-      %a{:href=>home_url, :title=>"#{configatron.community_name}"}
-        =image_tag("IconWithTitle.png", :alt => "", :width => "250")
-    #main-nav.left.navigation
-      %div.top-message
-        - if logged_in?
-          = render :partial => 'shared/user_menu'
-          - if current_user.unread_messages?
-            #newmail
-              = link_to :unread_messages.l(:count => current_user.unread_message_count), user_messages_path(current_user)
-        - else
-          = "Search"
-          = text_field_tag 'search', nil, :class => 'text'
-          =:welcome_message.l(:login_link => link_to(:log_in.l, login_path), :signup_link => link_to(:sign_up.l, signup_path))
-      %ul.tabbed
-        - if current_user
-          = topnav_tab :dashboard.l, { :url => dashboard_user_path(current_user), :section => ['dashboard'] }
-        - Category.find(:all).each do |c|
-          = topnav_tab c.name, {:url => category_path(c), :section => [c.name]}
-        = topnav_tab :forums.l, { :url => forums_path, :section => ['forums'] }
-        =# topnav_tab :popular.l, { :url => popular_path, :section => ['popular'] }
-        = topnav_tab :blogs.l, { :url => user_posts_path(current_user), :section => ['popular'] }
-        = topnav_tab :people.l, { :url => users_path, :section => ['users'] }
-        = topnav_tab :events.l, { :url => events_path, :section => ['events'] }
-        - if @header_tabs.any?
-          - @header_tabs.each do |tab|
-            = topnav_tab tab[:name], {:url => tab[:url], :section => [tab[:section]] }
-      .clearer  
-    .clearer  
-
-  / NavBar
-  / header
 #search_panel
   .ddl_container
     %select.ddl
