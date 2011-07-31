@@ -3,12 +3,15 @@ class Group < ActiveRecord::Base
   belongs_to :user
   has_many :group_members, :dependent => :destroy
   has_many :members, :through => :group_members
-  belongs_to  :avatar, :class_name => "Photo", :foreign_key => "logo_id"
+
+  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  validates_attachment_content_type :logo, :content_type => configatron.photo.validation_options.content_type
+
   has_many :posts, :dependent => :destroy
 
   validates_uniqueness_of :title, :case_sensitive => false
   validates_presence_of :title, :description
-  attr_accessible :user_id, :title, :description, :public
+  attr_accessible :user_id, :title, :description, :public, :logo
 
   def self.popular(limit = 0)
     #find(:all, :include => :posts).sort_by {|p| p.posts.size}.reverse.first(limit)

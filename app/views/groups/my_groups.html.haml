@@ -11,10 +11,10 @@
   - for group in @popular_groups
     %div
       %span.group_logo{:style=>"width:10%;"}
-        - if group.logo && group.logo.url(:thumb_small)
-          = image_tag group.logo.url(:thumb_small).to_s
+        - if group.logo && group.logo.url(:thumb)
+          = image_tag(group.logo.url(:thumb), :class => "polaroid")
         - else
-          = image_tag "logo_default.png", :height => "50px", :width => "50px"
+          = image_tag "default_group_original.png", :height => "50px", :width => "50px"
       %span.most_active_groups{:style=>"width:50%;"}
         %h4= link_to group.title, group
       %span.group_likes{:style=>"width:20%;"}

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110730022822) do
+ActiveRecord::Schema.define(:version => 20110731161101) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -207,11 +207,13 @@ ActiveRecord::Schema.define(:version => 20110730022822) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.string   "logo"
     t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "logo_id"
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
   end
 
   create_table "homepage_features", :force => true do |t|

@@ -3,18 +3,22 @@
     = f.error_messages
   %p
     = f.label :title, :title.l
-    = f.text_field :title
+    = f.text_field :title, :class => "textlarge"
   %p
     = f.label :description, :description.l
-    = f.text_area :description
-  %p
-    = f.label :logo, :logo.l
     %br/
+    = f.text_area :description, :rows => 5, :cols => 100
+  %p
+    %label
+      =:choose_a_logo_to_upload.l
+    = f.file_field :logo, :size => "20"
   %p
     %br/
     = f.radio_button :public, "true", :checked => true
     = "Anyone can Join"
     %br/
     = f.radio_button :public, false
-    = "To be Moderated" %p
+    = "To be Moderated"
+  %p
     = f.submit
+
