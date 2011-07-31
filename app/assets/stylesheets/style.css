@@ -762,10 +762,11 @@ select {
 
 #navigation ul li a.current {
     color: #fff;
+    font-weight:bold;
     background: #ed0d92;
     background: -moz-linear-gradient(top, #ec008c 0%, #ed0d92 100%);
     background: -webkit-linear-gradient(top, #ec008c 0%, #ed0d92 100%);
-    background: -webkit-gradient(linear, 1% 1%, 10% 110%, from(#EC008C), to(#ED0D92), color-stop(.1, #FAFAF9), color-stop(.1, #075E95), color-stop(.5, #0E91EA), color-stop(.9, #0E669D), color-stop(.9, #AEAEAD));
+    background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#fafaf9), to(#e6e6e5), color-stop(.1, #fafaf9), color-stop(.1, #075e95), color-stop(.5, #0e91ea), color-stop(.9, #0e669d), color-stop(.9, #aeaead));
 }
 
 #content {

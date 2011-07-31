@@ -51,11 +51,12 @@ span.localized {
 }
 
 a {
-    color: #06f;
+    color: #0d82cf;
+    font-size:12px;
 }
 
 a:hover {
-    color: #06f;
+    color: #0d82cf;
     text-decoration: none;
 }
 
@@ -317,6 +318,7 @@ img.polaroid {
 .hentry h4 a {
     text-decoration: none;
     color: #0D82CF;
+    font-size:14px;
 }
 
 .hentry h4 a:hover {
@@ -715,7 +717,7 @@ h6.all a {
 /* =============================================== */
 #ft {
     padding-bottom: 1em;
-    border-top: 1px solid #ccc;
+    border: 1px solid #ccc;
     text-align:left;
 }
 
@@ -742,13 +744,13 @@ h6.all a {
 
 .fresh dt {
     float: left;
-    width: 10.8461em; /* about 180px - 3em */
-    *width: 10.5em; /* for IE */
+    width: 6.8461em; /* about 180px - 3em */
+    *width: 6.5em; /* for IE */
 }
 
 .fresh dd {
-    margin-left: 12.3846em; /* about 200px - 3em*/
-    *margin-left: 12em; /* about 200px */
+    margin-left: 9.3846em; /* about 200px - 3em*/
+    *margin-left: 9em; /* about 200px */
     text-align:left;
 }
 
@@ -920,32 +922,32 @@ div.pagination a.active {
 
 /* Tag Clouds */
 .nube1 {
-    font-size: 1.0em;
+    font-size: 0.7em;
     color: #0D82CF;
 }
 
 .nube2 {
-    font-size: 1.3em;
+    font-size: 1.0em;
      color: #0D82CF;
 }
 
 .nube3 {
-    font-size: 1.4em;
+    font-size: 1.1em;
      color: #0D82CF;
 }
 
 .nube4 {
-    font-size: 1.5em;
+    font-size: 1.2em;
      color: #0D82CF;
 }
 
 .nube5 {
-    font-size: 1.6em;
+    font-size: 1.3em;
      color: #0D82CF;
 }
 
 .nube6 {
-    font-size: 1.8em;
+    font-size: 1.5em;
      color: #0D82CF;
 }
 
