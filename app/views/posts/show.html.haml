@@ -1,7 +1,3 @@
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/util.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/basic.js"}
-%script{"type"=>"text/javascript", "src"=>"http://www.plaxo.com/css/m/js/abc_launcher.js"}
-= javascript_include_tag 'swfobject'
 - @section = (@post.category && @post.category.name)
 - @meta = { :title => "#{@post.title}", :description => "#{truncate_words(@post.post, 75, '...' )}", :keywords => "#{@post.tags.join(", ") unless @post.tags.nil?}", :robots => configatron.robots_meta_show_content }
 
@@ -44,7 +40,7 @@
               
         / vcard
         .entry-content
-          = @post.post
+          = @post.post.html_safe
           = render :partial => 'polls/poll_ui', :locals => {:poll => @post.polls.first} unless @post.polls.empty?
           - unless @post.tags.empty?
             %ul.tags
