@@ -83,7 +83,7 @@
                 = f.text_field :industry_type
             .row
               %label
-                Location
+                Location:
               .rel
                 = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'})
           .spacerdiv
