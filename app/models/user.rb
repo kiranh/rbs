@@ -26,10 +26,10 @@ class User < ActiveRecord::Base
   tracks_unlinked_activities [:logged_in, :invited_friends, :updated_profile, :joined_the_site]
 
   #callbacks  
-  before_create :make_activation_code
+  before_create :make_activation_code, :assign_names
   after_create :update_last_login
   after_create :deliver_signup_notification
-  before_save :whitelist_attributes, :assign_names
+  before_save :whitelist_attributes
   after_save :deliver_activation
   after_save :recount_metro_area_users
   after_destroy :recount_metro_area_users
