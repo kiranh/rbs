@@ -479,7 +479,7 @@ input.hover {
 .reg-page {
     width: 904px;
     height: auto;
-    margin: 45px auto 0;
+/*    margin: 45px auto 0;*/
     background: #fafaf9;
     border: 1px solid #ccc;
     border-radius: 5px;
