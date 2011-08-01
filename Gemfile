@@ -33,7 +33,7 @@ group :development do
   gem "ruby-graphviz"
   gem "rails-erd"
 end
-gem 'therubyracer'
+#gem 'therubyracer'
 gem "rmagick"
 # Deploy with Capistrano
 # gem 'capistrano'
