@@ -1,62 +1,65 @@
+=javascript_include_tag 'jquery.ddown'
+=javascript_include_tag 'jquery.validate'
 :javascript
   jQuery(document).ready(function() {
-    jQuery('#login_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#password_a').tipsy({trigger: 'manual', gravity: 'w'});
-  });  
-  function validate_param(){
-    var false_l = 0;
-    if(validate_login()){if(is_login_valid()){} else{false_l = 1}} else{false_l = 1}
-    if(validate_password()){} else{false_l = 1}    
-    if(false_l == 1){
-      jQuery('#login').attr("original-title", "");
-      jQuery('#password').attr("original-title", "");
-      return false;
-    } else{return true;}
-  }
-  function validate_login(){
-    if(jQuery("#login").val() == ""){jQuery('#login_a').tipsy("show");return false;}
-    else{jQuery('#login_a').tipsy("hide");return true;}
-  }
-  function validate_password(){
-    if(jQuery("#password").val() == ""){jQuery('#password_a').tipsy("show");return false;}
-    else{jQuery('#password_a').tipsy("hide");return true;}
-  }
-  function is_login_valid(){
-    var alphaExp = /^[\sA-Za-z0-9_-]+$/;
-    if(jQuery("#login").val().match(alphaExp) != null){return true;}
-    else{
-      jQuery('#login_a').attr("original-title", "Enter a valid username!");
-      jQuery('#login_a').tipsy("show");      
-      return false;}
-  }
+      jQuery('select').customStyle();
+      jQuery(".btn").hover(function() {
+          jQuery(this).addClass("hover");
+      }, function() {
+          jQuery(this).removeClass("hover");
+      });
 
-.yui-b.sidebar=render :partial => 'shared/login_sidebar'
-  
-#yui-main
-  .yui-b.main_column
-    -box do
-      %h3
-        =:log_in_to_site.l(:site => configatron.community_name)
-      = form_tag sessions_path, :class => 'MainForm', :onsubmit=>"return validate_param();" do
-        %label{"for"=>"login"}=:username.l
-        = text_field_tag 'login', params[:login], :size => 35, "original-title" => :login_username.l, :class => "reg_box"
-        %a#login_a{"original-title"=>"Username can't be blank!"}
+      jQuery("input.field").focus(function() {
+          jQuery(this).next().show();
+      });
+      jQuery("input.field").blur(function() {
+          jQuery(this).next().hide();
+      });
+      jQuery("#form").validate();
+  });
+.main-container
+  .left-section
+    .stretch
+      .nav
+        %ul
+          %li
+            %a.connect.current{:href => "#"} Connect
+          %li
+            %a.share{:href => "#"} Share
+          %li
+            %a.search{:href => "#"} Search
+          %li
+            %a.manage{:href => "#"} Manage
+      .banner
+        .banner-text
+          %p
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas non dui eu ipsum
 
-        %label{"for"=>"password"}=:password.l
-        = password_field_tag 'password', nil, :size => 35, "original-title" => :login_password.l, :class => "reg_box"
-        %a#password_a{"original-title"=>"Password can't be blank!"}
-        %fieldset
-          %label{"for"=>"remember_me"}
-            =:remember_me.l
-            = check_box_tag 'remember_me'
-        %p
-          = submit_tag :log_in.l
-
-    -if configatron.auth_providers.to_hash.keys.any?      
-      -box :class => "alt" do
-        %h3= t 'sessions.new.omniauth.header'
-        -configatron.auth_providers.to_hash.keys.each do |provider|
-          -alt = t('sessions.new.omniauth.button_alt', :provider => provider.capitalize)
-          = link_to(image_tag("auth/#{provider.to_s}_64.png", :alt => alt), "/auth/#{provider.to_s}", :title => alt)
-
-        
+            egestas vehicula eu ac eros.
+          %input{:onclick => "location.href='/signup'", :src => "/assets/btn_getstarted.png", :type => "image"}/
+  .right-section
+    .logo
+      %a{:href => "#"}
+        %img{:alt => "Collaborate", :height => "69", :src => "/assets/logo.png", :title => "logo", :width => "251"}/
+      %h1
+        New to Collaborate?
+        %a{:href => "/signup"} Sign Up
+    = form_tag sessions_path, :id => "form" do
+      .login-box
+        .row
+          %label Username:
+          .rel
+            = text_field_tag 'login', params[:login], :id => "username", :class => "text field required"
+            %span.tip Enter Username
+            %span.loginpopup Enter Valid Username
+        .row
+          %label Password:
+          .rel
+            %input.text.field{:name => "password", :type => "password"}
+            %span.loginpopup Enter Valid Password
+            %span.tip Enter password
+        .spacerdiv
+        .row
+          %label &nbsp;
+          %input.btn.loginbtn.1thickbox{:alt => "#TB_inline?height=320&width=300&inlineId=myOnPageContent", :title => "Import Contacts", :type => "submit", :value => "Login"}/
+  .spacerdiv
