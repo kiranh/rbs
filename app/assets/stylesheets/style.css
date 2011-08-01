@@ -1257,3 +1257,13 @@ select {
     *width: 162px;
     background: #fff url(/assets/select_arrow.gif) no-repeat center right;
 }
+.auto_complete{
+    margin-top:20px;
+}
+.auto_complete li{
+    cursor: pointer;
+    text-align: left;
+    z-index: 10
+ }
+
+

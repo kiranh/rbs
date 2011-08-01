@@ -39,6 +39,12 @@ SocialCrm::Application.routes.draw do
       get :callback
     end
   end
+
+  resources :search do
+    collection do
+      get :auto_complete
+    end
+  end  
   
   resources :posts do
     collection do

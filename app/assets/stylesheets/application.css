@@ -3,3 +3,13 @@
  *= require_self
  *= require_tree . 
 */
+
+
+.auto_complete{
+    margin-top:20px;
+}
+.auto_complete li{
+    cursor: pointer;
+    text-align: left;
+    z-index: 10
+ }
