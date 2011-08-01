@@ -477,8 +477,9 @@ input.hover {
 }
 
 .reg-page {
-    width: 904px;
     height: auto;
+    margin-bottom: 20px;
+    width: 946px;
 /*    margin: 45px auto 0;*/
     background: #fafaf9;
     border: 1px solid #ccc;
@@ -1013,7 +1014,7 @@ select {
     position: absolute;
     width: 123px;
     top: 0px;
-    right: -21px;
+    right: 0px;
     height: 29px;
     line-height: 29px;
     padding: 0 0 0 15px;
@@ -1047,7 +1048,7 @@ select {
     height: 26px;
     padding: 9px 0 0 15px;
     position: absolute;
-    right: -23px;
+    right: 0px;
     top: 0;
     width: 124px;
     color: #fff;
