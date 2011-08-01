@@ -1,0 +1,5 @@
+%div{:style => "padding:130px;"}
+  %p{:style => "font-family:Tahoma, Geneva, sans-serif; font-size:13px; font-weight:bold; color:#737373"} Thank you for registering with collabarate!
+  %p{:style => "font-family:Tahoma, Geneva, sans-serif; font-size:12px;color:#737373 "} Please go to your email box to activate your account. You may now close this window.
+  %h3= :no_activation_email.l
+  = link_to(:resend_my_activation_e_mail.l, "/resend_activation?id=#{@user.to_param}", :method => 'post')
