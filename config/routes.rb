@@ -33,6 +33,12 @@ SocialCrm::Application.routes.draw do
       match 'metro_area_update'
     end
   end
+
+  resources :contacts do
+    collection do
+      get :callback
+    end
+  end
   
   resources :posts do
     collection do

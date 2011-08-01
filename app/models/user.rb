@@ -112,7 +112,7 @@ class User < ActiveRecord::Base
                   :profile_public, :state_id, :stylesheet, :time_zone, :vendor, :zip, :avatar_attributes, :birthday,
                   :business_name
 
-  attr_accessor :authorizing_from_omniauth
+  attr_accessor :authorizing_from_omniauth, :name, :industry_type
 
   ## Class Methods
 
@@ -221,6 +221,12 @@ class User < ActiveRecord::Base
 
 
   ## Instance Methods
+
+  def name=(params)
+     arr = params.split(" ")
+     first_name = arr[0]
+     last_name = arr[1..-1]
+  end
 
   def moderator_of?(forum)
     moderatorships.count(:all, :conditions => ['forum_id = ?', (forum.is_a?(Forum) ? forum.id : forum)]) == 1
