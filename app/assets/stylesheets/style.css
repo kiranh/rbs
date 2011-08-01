@@ -706,8 +706,8 @@ select {
 }
 
 .styleselect .customStyleSelectBoxInner {
-    width: 68px !important;
-    background: url("arrow_ddl.gif") no-repeat 97% 50%;
+/*    width: 68px !important;*/
+/*    background: url("arrow_ddl.gif") no-repeat 97% 50%;*/
 }
 
 #navigation {
@@ -1045,7 +1045,7 @@ select {
     background: url("errorpopup.png") no-repeat scroll 0 0 transparent;
     display: table;
     height: 26px;
-    padding: 4px 0 0 15px;
+    padding: 9px 0 0 15px;
     position: absolute;
     right: -23px;
     top: 0;
@@ -1266,4 +1266,7 @@ select {
     z-index: 10
  }
 
-
+ .errorExplanation h2{
+     background-color: #FFCC00;
+     color:#6B5E2B
+}

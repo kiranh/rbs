@@ -3,8 +3,7 @@
 =javascript_include_tag 'jquery.validate'
 
 :javascript
-  jQuery(function() {
-    jQuery('select').customStyle();
+  jQuery(document).ready(function() {
     jQuery(".btn").hover(function() {
         jQuery(this).addClass("hover");
     }, function() {
@@ -20,45 +19,44 @@
         jQuery(this).parent().find(".regpopup").hide();
     });
 
-    jQuery("#form").validate({
-        rules: { username: "required", email: { required: true, email: true }, password: "required", cpassword: "required", name: "required",  bname: "required", },
-        messages: { username: "Invalid Username.", password: "Invalid password", cpassword: "Please Confirm your password ", fname: "Enter your first name", lname: "Enter your last name",  bname: "Enter Business Name", bowner: "Enter Business Owner" }
-    });
+    jQuery("#form").validate();
   });
 
 .reg-page
-  = form_for :user, :url => users_path, :html => {:class => 'form'} do |f|
+  = form_for :user, :url => users_path, :html => {:class => 'form', :id => "form"} do |f|
     .reg-form
       .spacerdiv
       .business-info
         %h2
           Signup
+        = error_messages_for :user
         .twocol
           .col.one
             .row
               %label
-                User Name:
+                Full Name:
               .rel
-                = f.text_field :login
-                %span.regpopup Enter User Name
+                = f.text_field :fullname, :class => "required"
+                %span.regpopup Enter Name
+            .row
+              %label
+                Username:
+              .rel
+                = f.text_field :login, :class => "required"
+                %span.regpopup Enter Username
             .row
               %label
                 Password:
               .rel
-                = f.password_field :password
+                = f.password_field :password, :class => "required"
                 %span.regpopup Enter Password
             .row
               %label
                 Confirm Password:
               .rel
-                = f.password_field :password_confirmation
+                = f.password_field :password_confirmation, :class => "required"
                 %span.regpopup Enter Confirm Password
-            .row
-              %label
-                Name:
-              .rel
-                = f.text_field :name
-                %span.regpopup Enter Name
+            
             .row
               %label
                 &nbsp;
@@ -68,22 +66,23 @@
               %label
                 email ID:
               .rel
-                = f.text_field :email
+                = f.text_field :email, :class => "required email"
                 %span.regpopup Enter Email
             .row
               %label
                 Organization/Business:
               .rel
-                = f.text_field :business_name
+                = f.text_field :business_name, :class => "required"
                 %span.regpopup Enter Organization/Business
             .row
               %label
                 Industry/Business:
               .rel
-                = f.text_field :industry_type
+                = f.text_field :industry_type, :class => "required"
+                %span.regpopup Industry / Business Type
             .row
               %label
                 Location:
               .rel
-                = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'})
+                = select_tag "user[state]", options_for_select(scotland_states, params[:user_state])
           .spacerdiv

@@ -29,13 +29,15 @@ class User < ActiveRecord::Base
   before_create :make_activation_code
   after_create :update_last_login
   after_create :deliver_signup_notification
-  before_save :whitelist_attributes
+  before_save :whitelist_attributes, :assign_names
   after_save :deliver_activation
   after_save :recount_metro_area_users
   after_destroy :recount_metro_area_users
 
   #validation
-  validates_presence_of :metro_area, :if => Proc.new { |user| user.state }
+  #validates_presence_of :metro_area, :if => Proc.new { |user| user.state }
+  validates_presence_of :fullname
+  validates_presence_of :industry_type
   validates_uniqueness_of :login
   validates_exclusion_of :login, :in => configatron.reserved_logins
 
@@ -72,7 +74,7 @@ class User < ActiveRecord::Base
 
   belongs_to :avatar, :class_name => "Photo", :foreign_key => "avatar_id", :inverse_of => :user_as_avatar
   belongs_to :metro_area
-  belongs_to :state
+  #belongs_to :state
   belongs_to :country
   has_many :comments_as_author, :class_name => "Comment", :foreign_key => "user_id", :order => "created_at desc", :dependent => :destroy
   has_many :comments_as_recipient, :class_name => "Comment", :foreign_key => "recipient_id", :order => "created_at desc", :dependent => :destroy
@@ -82,16 +84,16 @@ class User < ActiveRecord::Base
   #messages
   has_many :all_sent_messages, :class_name => "Message", :foreign_key => "sender_id", :dependent => :destroy
   has_many :sent_messages,
-           :class_name => 'Message',
-           :foreign_key => 'sender_id',
-           :order => "messages.created_at DESC",
-           :conditions => ["messages.sender_deleted = ?", false]
+    :class_name => 'Message',
+    :foreign_key => 'sender_id',
+    :order => "messages.created_at DESC",
+    :conditions => ["messages.sender_deleted = ?", false]
 
   has_many :received_messages,
-           :class_name => 'Message',
-           :foreign_key => 'recipient_id',
-           :order => "message.created_at DESC",
-           :conditions => ["message.recipient_deleted = ?", false]
+    :class_name => 'Message',
+    :foreign_key => 'recipient_id',
+    :order => "message.created_at DESC",
+    :conditions => ["message.recipient_deleted = ?", false]
   has_many :message_threads_as_recipient, :class_name => "MessageThread", :foreign_key => "recipient_id"
 
   #named scopes
@@ -106,13 +108,13 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :avatar
   attr_accessible :avatar_id, :company_name, :country_id, :description, :email,
-                  :firstname, :fullname, :gender, :lastname, :login, :metro_area_id,
-                  :middlename, :notify_comments, :notify_community_news,
-                  :notify_friend_requests, :password, :password_confirmation,
-                  :profile_public, :state_id, :stylesheet, :time_zone, :vendor, :zip, :avatar_attributes, :birthday,
-                  :business_name
+    :firstname, :fullname, :gender, :lastname, :login, :metro_area_id,
+    :middlename, :notify_comments, :notify_community_news,
+    :notify_friend_requests, :password, :password_confirmation,
+    :profile_public, :state_id, :stylesheet, :time_zone, :vendor, :zip, :avatar_attributes, :birthday,
+    :business_name, :state, :industry_type
 
-  attr_accessor :authorizing_from_omniauth, :name, :industry_type
+  attr_accessor :authorizing_from_omniauth, :fullname
 
   ## Class Methods
 
@@ -174,12 +176,12 @@ class User < ActiveRecord::Base
     options.reverse_merge! :limit => 30, :require_avatar => true, :since => 7.days.ago
 
     activities = Activity.since(options[:since]).find(:all,
-                                                      :select => 'activities.user_id, count(*) as count',
-                                                      :group => 'activities.user_id',
-                                                      :conditions => "#{options[:require_avatar] ? ' users.avatar_id IS NOT NULL AND ' : ''} users.activated_at IS NOT NULL",
-                                                      :order => 'count DESC',
-                                                      :joins => "LEFT JOIN users ON users.id = activities.user_id",
-                                                      :limit => options[:limit]
+      :select => 'activities.user_id, count(*) as count',
+      :group => 'activities.user_id',
+      :conditions => "#{options[:require_avatar] ? ' users.avatar_id IS NOT NULL AND ' : ''} users.activated_at IS NOT NULL",
+      :order => 'count DESC',
+      :joins => "LEFT JOIN users ON users.id = activities.user_id",
+      :limit => options[:limit]
     )
     activities.map { |a| find(a.user_id) }
   end
@@ -222,12 +224,6 @@ class User < ActiveRecord::Base
 
   ## Instance Methods
 
-  def name=(params)
-     arr = params.split(" ")
-     first_name = arr[0]
-     last_name = arr[1..-1]
-  end
-
   def moderator_of?(forum)
     moderatorships.count(:all, :conditions => ['forum_id = ?', (forum.is_a?(Forum) ? forum.id : forum)]) == 1
   end
@@ -267,10 +263,10 @@ class User < ActiveRecord::Base
       authorizations.first.picture_url
     else
       case size
-        when :thumb
-          configatron.photo.missing_thumb.to_s
-        else
-          configatron.photo.missing_medium.to_s
+      when :thumb
+        configatron.photo.missing_thumb.to_s
+      else
+        configatron.photo.missing_medium.to_s
       end
     end
   end
@@ -387,9 +383,9 @@ class User < ActiveRecord::Base
   def recommended_posts(since = 1.week.ago)
     return [] if tags.empty?
     rec_posts = Post.find_tagged_with(tags.map(&:name),
-                                      :conditions => ['posts.user_id != ? AND published_at > ?', self.id, since],
-                                      :order => 'published_at DESC',
-                                      :limit => 10
+      :conditions => ['posts.user_id != ? AND published_at > ?', self.id, since],
+      :order => 'published_at DESC',
+      :limit => 10
     )
 
     if rec_posts.empty?
@@ -491,4 +487,9 @@ class User < ActiveRecord::Base
     authorizing_from_omniauth || authorizations.any?
   end
 
+  def assign_names
+    arr = self.fullname.split("\s")
+    self.first_name = arr[0]
+    self.last_name = arr[1..-1]
+  end
 end
