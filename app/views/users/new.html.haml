@@ -1,216 +1,89 @@
+%title ::Registration::
+=javascript_include_tag 'jquery.ddown'
+=javascript_include_tag 'jquery.validate'
+
 :javascript
-  jQuery(document).ready(function() {
-    jQuery('#login_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#password_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#password_a1').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#email_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#business_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#business_t').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#country_a').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#date_tip').tipsy({trigger: 'manual', gravity: 'w'});
-    jQuery('#user_birthday_1i, #user_birthday_2i, #user_birthday_3i').focus(function() {
-      jQuery('#date_tip').tipsy("show");
+  jQuery(function() {
+    jQuery('select').customStyle();
+    jQuery(".btn").hover(function() {
+        jQuery(this).addClass("hover");
+    }, function() {
+        jQuery(this).removeClass("hover");
     });
-    jQuery('#user_birthday_1i, #user_birthday_2i, #user_birthday_3i').focusout(function() {
-      jQuery('#date_tip').tipsy("hide");
+
+    jQuery("input[type='text'],input[type='password']").focus(function() {
+        jQuery(this).parent().find("span.error").hide();
+        jQuery(this).parent().find(".regpopup").show();
+    });
+
+    jQuery("input[type='text'],input[type='password']").blur(function() {
+        jQuery(this).parent().find(".regpopup").hide();
+    });
+
+    jQuery("#form").validate({
+        rules: { username: "required", email: { required: true, email: true }, password: "required", cpassword: "required", name: "required",  bname: "required", },
+        messages: { username: "Invalid Username.", password: "Invalid password", cpassword: "Please Confirm your password ", fname: "Enter your first name", lname: "Enter your last name",  bname: "Enter Business Name", bowner: "Enter Business Owner" }
     });
   });
 
-  function validate_param(){
-    var false_l = 0;
-    if(validate_login()){if(is_login_valid()){} else{false_l = 1}} else{false_l = 1}
-    if(validate_password()){} else{false_l = 1}
-    if(validate_password1()){} else{false_l = 1}
-    if(validate_email()){if(is_email_valid()){} else{false_l = 1}} else{false_l = 1}
-    if(validate_business()){} else{false_l = 1}
-    if(validate_business_type()){} else{false_l = 1}
-    if(validate_country()){} else{false_l = 1}
-    if(validate_password() && (validate_password1())){if(validate_password_match()){} else{false_l = 1}}else{}
-    if(false_l == 1){
-      jQuery('#user_login').attr("original-title", "");
-      jQuery('#user_password').attr("original-title", "");
-      jQuery('#user_password_confirmation').attr("original-title", "");
-      jQuery('#user_email').attr("original-title", "");
-      jQuery('#user_business_profile_name').attr("original-title", "");
-      jQuery('#user_business_profile_business_type').attr("original-title", "");
-      jQuery('#user_country_id').attr("original-title", "");
-      return false;
-    } else{return true;}
-  }
-
-  function validate_login(){
-    if(jQuery("#user_login").val() == ""){jQuery('#login_a').tipsy("show");return false;}
-    else{jQuery('#login_a').tipsy("hide");return true;}
-  }
-
-  function validate_password_match(){
-    if(jQuery("#user_password").val() == jQuery("#user_password_confirmation").val()){jQuery('#password_a').tipsy("hide");return true;}
-    else{
-        jQuery('#password_a1').attr("original-title", "Must match password!");
-        jQuery('#password_a1').tipsy("show");
-        return false;}
-  }
-
-  function validate_password(){
-    if(jQuery("#user_password").val() == ""){jQuery('#password_a').tipsy("show");return false;}
-    else{jQuery('#password_a').tipsy("hide");return true;}
-  }
-  function validate_password1(){
-    if(jQuery("#user_password_confirmation").val() == ""){jQuery('#password_a1').tipsy("show");return false;}
-    else{jQuery('#password_a1').tipsy("hide");return true;}
-  }
-  function validate_country(){
-    if(jQuery("#user_country_id").val() == ""){jQuery('#country_a').tipsy("show");return false;}
-    else{jQuery('#country_a').tipsy("hide");return true;}
-  }
-  function validate_business(){
-    if(jQuery("#user_business_profile_name").val() == ""){jQuery('#business_a').tipsy("show");return false;}
-    else{jQuery('#business_a').tipsy("hide");return true;}
-  }
-  function validate_business_type(){
-    if(jQuery("#user_business_profile_business_type").val() == ""){jQuery('#business_t').tipsy("show");return false;}
-    else{jQuery('#business_t').tipsy("hide");return true;}
-  }
-  function validate_email(){
-    if(jQuery("#user_email").val() == ""){jQuery('#email_a').tipsy("show");return false;}
-    else{jQuery('#email_a').tipsy("hide");return true;}
-  }
-
-  function is_login_valid(){
-    var alphaExp = /^[\sA-Za-z0-9_-]+$/;
-    if(jQuery("#user_login").val().match(alphaExp) != null){return true;}
-    else{
-      jQuery('#login_a').attr("original-title", "Enter a valid username!");
-      jQuery('#login_a').tipsy("show");
-      return false;}
-  }
-  function is_email_valid(){
-    var alphaExp = /^([^@\s]+)@((?:[-a-z0-9A-Z]+\.)+[a-zA-Z]{2,})$/;
-    if(jQuery("#user_email").val().match(alphaExp) != null){return true;}
-    else{
-      jQuery('#email_a').attr("original-title", "Enter a valid email!");
-      jQuery('#email_a').tipsy("show");
-      return false;}
-  }
-
-
-#yui-main
-  .yui-b-split
-    %h3 Personal Information
-    -box do      
-      = error_messages_for :user
-      = form_for :user, :url => users_path, :html => {:class => 'MainForm', :onsubmit=>"return validate_param();" } do |f|
-        .float_l.width_50
-          %label{"for"=>"user_login"}
-            =:username.l
-            \:
-          = f.text_field :login, "original-title" => :required_your_username_must_not_contain_numerals_spaces_or_special_characters.l, :class => "reg_box"
-          %a#login_a{"original-title"=>"Username can't be blank!"}
-          %label{"for"=>"user_password"}
-            =:type_your_password.l
-          = f.password_field :password, "original-title" => :reg_password_instruct.l, :class => "reg_box"
-          %a#password_a{"original-title"=>"Password can't be blank!"}
-          %label{"for"=>"user_password_confirmation"}
-            =:re_type_your_password_to_confirm.l
-          = f.password_field :password_confirmation
-          %a#password_a1{"original-title"=>"Confirm password can't be blank!"}
-          %label{"for"=>"user_first_name"}
-            =:first_name.l
-            \:
-          = f.text_field :first_name, "original-title" => :your_first_name.l, :class => "reg_box"
-          
-          %label{"for"=>"user_last_name"}
-            =:last_name.l
-            \:
-          = f.text_field :last_name, "original-title" => :your_last_name.l, :class => "reg_box"
-          
-          %label{"for"=>"user_email"}
-            =:e_mail_address.l
-            \:
-          = f.text_field :email, "original-title" => :required_we_will_send_a_confirmation_e_mail_to_the_address_you_enter.l, :class => "reg_box"
-          %a#email_a{"original-title"=>"Email can't be blank!"}          
-          
-        .float_l.width_50
-          %label{"for"=>"country"}
-            =:country.l
-            \:
-          = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => :reg_country_instruct.l, :class => "reg_box")
-          %a#country_a{"original-title"=>"Select your country!"}
-          %label{"for"=>"user_address_line1"}
-            =:address_line1.l
-            \:
-          = f.text_field :address_line1
-          
-          %label{"for"=>"user_address_line2"}
-            =:address_line2.l
-            \:
-          = f.text_field :address_line2
-          
-          %label{"for"=>"user_state"}
-            =:state.l
-            \:
-          = f.text_field :state
-
-          %label{"for"=>"user_zip"}
-            =:zip.l
-            \:
-          = f.text_field :zip
-          
-          
-        .clear
-        %h3 Business Information
-        = f.fields_for :business_profile do |bp|
-          .float_l.width_50
-            %label{"for"=>"business_name"}
-              =:business.l
-              \:
-            = bp.text_field :name, "original-title" => :reg_business_instruct.l, :class => "reg_box"
-            %a#business_a{"original-title"=>"Business can't be blank!"}
-
-            %label{"for"=>"Url"}
-              =:url.l
-            = bp.text_field :url
-
-            %label{"for"=>"Owner"}
-              ="Owner"
-            = bp.text_field :owner
-
-            %label{"for"=>"business_type"}
-              ="Business Type"
-            = bp.text_field :business_type
-            %a#business_t{"original-title"=>"Business Type can't be blank!"}
-            %label{"for"=>"no_of_employees"}
-              ="No of Employees"
-            = bp.text_field :no_of_employees
-            
-          .float_l.width_50
-            %label{"for"=>"country"}
-              =:country.l
-              \:
-            = select("user[business_profile]", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'}, "original-title" => "Business Country", :class => "reg_box")
-            %a#country_a{"original-title"=>"Select your country!"}
-            
-            %label{"for"=>"user_address_line1"}
-              =:address_line1.l
-              \:
-            = bp.text_field :address_line1
-
-            %label{"for"=>"user_address_line2"}
-              =:address_line2.l
-              \:
-            = bp.text_field :address_line2
-
-            %label{"for"=>"user_state"}
-              =:state.l
-              \:
-            = bp.text_field :state
-
-            %label{"for"=>"user_zip"}
-              =:zip.l
-              \:
-            = bp.text_field :zip
-
-        %div.clear
-        = hidden_field_tag :inviter_id, params[:inviter_id]
-        = hidden_field_tag :inviter_code, params[:inviter_code]
-        %p= submit_tag :sign_up.l
+.reg-page
+  = form_for :user, :url => users_path, :html => {:class => 'form'} do |f|
+    .reg-form
+      .spacerdiv
+      .business-info
+        %h2
+          Signup
+        .twocol
+          .col.one
+            .row
+              %label
+                User Name:
+              .rel
+                = f.text_field :login
+                %span.regpopup Enter User Name
+            .row
+              %label
+                Password:
+              .rel
+                = f.password_field :password
+                %span.regpopup Enter Password
+            .row
+              %label
+                Confirm Password:
+              .rel
+                = f.password_field :password_confirmation
+                %span.regpopup Enter Confirm Password
+            .row
+              %label
+                Name:
+              .rel
+                = f.text_field :name
+                %span.regpopup Enter Name
+            .row
+              %label
+                &nbsp;
+              %input.btn{:type => "submit", :value => "Signup"}
+          .col.two
+            .row
+              %label
+                email ID:
+              .rel
+                = f.text_field :email
+                %span.regpopup Enter Email
+            .row
+              %label
+                Organization/Business:
+              .rel
+                = f.text_field :business_name
+                %span.regpopup Enter Organization/Business
+            .row
+              %label
+                Industry/Business:
+              .rel
+                = f.text_field :industry_type
+            .row
+              %label
+                Location
+              .rel
+                = select("user", "country_id", Country.all.collect {|p| [ p.name, p.id ] }, {:include_blank => 'select one'})
+          .spacerdiv

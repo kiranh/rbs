@@ -44,8 +44,8 @@
             #bd
               = render :partial => "shared/messages"
               = yield
-          #ft
-            -if show_footer_content?
+          -if show_footer?(controller.controller_name, controller.action_name)
+            #ft
               .yui-gc#footer_content
                 = image_tag 'spinner.gif', :plugin => 'community_engine'
                 =:loading_recent_content.l

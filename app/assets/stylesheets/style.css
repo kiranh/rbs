@@ -355,7 +355,7 @@ input.textlarge {
     height: 29px;
     line-height: 29px;
     padding: 0 0 0 15px;
-    background: url(../images/popupimg.png) no-repeat;
+    background: url(/assets/popupimg.png) no-repeat;
     color: #fff;
 }
 
@@ -625,7 +625,7 @@ select {
     padding: 4px 5px;
     width: 160px;
     *width: 162px;
-    background: #fff url("select_arrow.gif") no-repeat center right;
+    background: #fff url(/assets/select_arrow.gif) no-repeat center right;
 }
 
 .reg-form .b-1 ol li, .reg-form .b-2 ol li {
@@ -1240,3 +1240,4 @@ select {
     -moz-box-shadow: 0 0 6px #fff;
     -webkit-box-shadow: 0 0 6px #fff;
 }
+
