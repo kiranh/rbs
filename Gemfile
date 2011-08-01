@@ -26,12 +26,14 @@ gem 'jquery-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
+gem 'linkedin', :path => "vendor/git/linkedin-0.3.1"
+gem 'hashie', :path => "vendor/git/hashie-1.0.0"
 
 group :development do
   gem "ruby-graphviz"
   gem "rails-erd"
 end
-
+gem 'therubyracer'
 gem "rmagick"
 # Deploy with Capistrano
 # gem 'capistrano'
