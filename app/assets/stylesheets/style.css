@@ -1241,3 +1241,19 @@ select {
     -webkit-box-shadow: 0 0 6px #fff;
 }
 
+.twocol input{
+    height: 22px;
+}
+
+.twocol{
+    font: 12px/1.231 Tahoma, arial,helvetica,clean,sans-serif;
+}
+
+.twocol .customStyleSelectBox {
+    border: 1px solid #a9a9a9;
+    border-radius: 3px;
+    padding: 4px 5px;
+    width: 160px;
+    *width: 162px;
+    background: #fff url(/assets/select_arrow.gif) no-repeat center right;
+}
