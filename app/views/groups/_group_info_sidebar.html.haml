@@ -6,48 +6,45 @@
       = link_to image_tag("logo_default.png"), @group
     %br/
     - if @current_user_pending
-      %h4= t('.group_pending_request')
+      %h4= t('groups.group_pending_request')
     - if @member_is_moderator
-      = link_to "Edit This Page", edit_group_path(@group)
+      = link_to "Edit This Group", edit_group_path(@group)
       %br/
       = link_to "Admin", admin_group_path(@group)
       - if @pending_members && @pending_members.length > 0
-        %hr{:style=>"width:300px;"}
-        .section.contact_pictures
+        %hr{:style=>"width:200px;"}
+        .group_member_display
           %b
             = @pending_members.length
-            = t('.pending_requests')
+            = t('groups.pending_requests')
           - for person in @pending_members
             %br/
             = image_tag(person.member.avatar_photo_url(:thumb), :class => "group_member")
-            = person.first_name
-            = person.last_name
-            = link_to "Accept", accept_group_member_path(:group => @group, :member => person), :id => 'like'
-            = link_to "Reject", reject_group_member_path(:group => @group, :member => person), :id => 'like'
-    %hr{:style=>"width:300px;"}
+            = person.member.login
+            = link_to "Accept", accept_group_member_path(:group => @group.id, :member => person.member.id)
+            = link_to "Reject", reject_group_member_path(:group => @group.id, :member => person.member.id)
+    %hr{:style=>"width:200px;"}
     %b
       = image_tag "gold_badge.png"
-      = t('.group_owner')
-    .section.contact_pictures
-      = image_tag(@owner.avatar_photo_url(:thumb), :class => "group_member")
+      = t('groups.group_owner')
+    .group_member_display
       = link_to @owner.login, user_path(@owner)
     %b
       = image_tag "silver_badge.png"
-      = t('.moderators')
-    .section.contact_pictures
+      = t('groups.moderators')
+    .group_member_display
       - for person in @moderators
-        = image_tag(person.member.avatar_photo_url(:thumb), :class => "group_member")
-        = link_to user_path(person.member)
+        = link_to person.member.login, user_path(person.member)
         %br/
-    %hr{:style=>"width:300px;"}
-    .section.contact_pictures
+    %hr{:style=>"width:200px;"}
+    .group_member_display
       %h4
         = @members.length
-        = t('.members_list')
+        = t('groups.members_list')
       - for person in @members
         = link_to(image_tag(person.member.avatar_photo_url(:thumb), :class => "group_member"), user_path(person.member))
-      %br/
-      - if (@group.members.include?(current_user)) && (current_user != @owner)
-        = link_to "Leave the group", leave_group_path(@group)
+      %br
+      %br
+      
        
 

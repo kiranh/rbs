@@ -1,35 +1,27 @@
-= javascript_include_tag 'vanish'
-
 - content_for :group_title do
   = @group.title
+%div{:style => "margin-bottom:25px;padding:10px;"}
+  %div{:style => "float:left;"}
+    = render :partial => 'groups/group_info_sidebar', :locals => {:group => @group }
 
-.span-8.append-1.last
-  = render :partial => 'groups/group_info_sidebar', :locals => {:group => @group }
-
-.span-15.last
-  %h3
-    = @group.title
-    - if !(@group.members.include?(current_user))
-      .right
+  %div{:style => "float:left;width:650px;"}
+    .group_title
+      = @group.title
+      - if !(@group.members.include?(current_user))
         %span
-        = link_to t('.join'), add_group_member_path(@group.id),
-                :class => 'share_with button',
-                :rel => 'facebox', :id => 'like'
-    -else
-      .right
-        %span
-        = link_to t('.invite'), invites_path, :class => 'button', :rel => 'facebox'
+          = link_to t('groups.join'), add_group_member_path(@group.id)
+      - if (@group.members.include?(current_user)) && (current_user != @owner)
+        %span= link_to "Leave the group", leave_group_path(@group)
 
-    .description
+    .group_description
       - if @group.public
         = "(Anyone can join)"
       %p
-        %br/
         = @group.description
-  - if @group_member
-    = render :text => "Posts come here"
-    = will_paginate @posts
-  - else
-    #stream
-      %li{:style=>"text-align:center;"}
-      .dull= t('groups.no_posts')
+    - if @group_member
+      = render :text => "Posts come here"
+      = will_paginate @posts
+    - else
+      #stream
+        %li{:style=>"text-align:center;"}
+        .dull= t('groups.no_posts')

@@ -41,6 +41,19 @@ PATH
     calendar_date_select (1.16.3)
 
 PATH
+  remote: vendor/git/hashie-1.0.0
+  specs:
+    hashie (1.0.0)
+
+PATH
+  remote: vendor/git/linkedin-0.3.1
+  specs:
+    linkedin (0.3.1)
+      hashie (~> 1.0.0)
+      multi_json (~> 1.0.3)
+      oauth (~> 0.4.5)
+
+PATH
   remote: vendor/git/meta_search
   specs:
     meta_search (1.1.0.pre2)
@@ -272,7 +285,9 @@ DEPENDENCIES
   calendar_date_select!
   coffee-script
   community_engine!
+  hashie!
   jquery-rails
+  linkedin!
   meta_search!
   mysql2
   omniauth

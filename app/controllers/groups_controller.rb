@@ -45,28 +45,27 @@ class GroupsController < BaseController
       member.accept!
       member.moderator = true
       member.save
-      redirect_to groups_url, :notice => "Successfully created #{@group.title} Page."
+      redirect_to group_url(:id => @group.id), :notice => "Successfully created #{@group.title} Group."
     else
-      flash[:error] = "Failed to Create the #{@group.title} Page"
+      flash[:error] = "Failed to Create the #{@group.title} Group"
       render :action => 'new'
     end
   end
 
   def edit
     @user = current_user
-    @group = @user.member_groups.where(['guid = ?', params[:id]]).first
+    @group = @user.member_groups.find(params[:id])
     render :back, :notice => "You dont have rights to edit this group" if !@group
   end
 
   def update
     @user = current_user
-    @group = @user.member_groups.where(['guid = ?', params[:id]]).first
+    @group = @user.member_groups.find(params[:id])
     if @group.update_attributes(params[:group])
-      Resque.enqueue(Job::PageLogo, @group.guid)
-      flash[:notice] = "Successfully updated #{@group.title} Page."
-      redirect_to edit_group_url(@group.guid)
+      flash[:notice] = "Successfully updated #{@group.title} Group."
+      redirect_to edit_group_url(@group.id)
     else
-      flash[:error] = "Failed to edit the #{@group.title} Page"
+      flash[:error] = "Failed to edit the #{@group.title} Group"
       render :action => 'edit'
     end
   end
@@ -74,11 +73,11 @@ class GroupsController < BaseController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to root_url, :notice => "Successfully destroyed #{@group.title} Page."
+    redirect_to root_url, :notice => "Successfully destroyed #{@group.title} Group."
   end
 
   def add_member
-    @group = Page.find(params[:id])
+    @group = Group.find(params[:id])
     if @group.public
       accept_member_directly
     else
@@ -89,9 +88,9 @@ class GroupsController < BaseController
   def send_request_to_moderator
     if !(@group.members.include?(current_user))
       @group.members << current_user
-      render :text => "<h4>Request has been sent to the Moderator to approve !</h4>"
+      redirect_to group_url(:id => @group.id), :notice => "Request has been sent to the Moderator to approve !"
     else
-      render :text => "<h4> Your Request is already in queue !</h4>"
+      redirect_to group_url(:id => @group.id), :notice => "Your Request is already in queue !"
     end
   end
 
@@ -100,56 +99,58 @@ class GroupsController < BaseController
       @group.members << current_user
       group_member = GroupMember.get_record(@group.id, current_user.id)
       if group_member.accept!
-        render :text => "<h4>You are now a member to this Page </h4>"
+        redirect_to group_url(:id => @group.id), :notice => "#{group_member.member.login} accepted as a member to this Group"
       end
     else
-      render :text => "<h4> You are already a member !</h4>"
+      group_member = GroupMember.get_record(@group.id, current_user.id)
+      redirect_to group_url(:id => @group.id), :notice => "#{group_member.member.login} is already a member to this Group"
     end
   end
 
   def accept_member
-    group = Page.find(params[:group])
+    group = Group.find(params[:group])
+    Rails.logger.info("Group => #{params[:group]}")
     group_member = GroupMember.get_record(group.id, params[:member])
     if group_member.accept!
-      redirect_to group_url(:id => group), :notice => "#{group_member.member.first_name} accepted as a member to this Page"
+      redirect_to group_url(:id => group), :notice => "#{group_member.member.login} accepted as a member to this Group"
     else
-      render :text => "#{group_member.member.first_name} cannot be accepted as a member to this Page"
+      redirect_to group_url(:id => group), :notice => "#{group_member.member.login} cannot be accepted as a member to this Group"
     end
   end
 
   def reject_member
-    group = Page.find(params[:group])
+    group = Group.find(params[:group])
     group_member = GroupMember.get_record(group, params[:member])
     if group_member.reject!
-      redirect_to group_url(:id => group), :notice => "#{group_member.member.first_name} rejected as a member to this Page"
+      redirect_to group_url(:id => group), :notice => "#{group_member.member.login} rejected as a member to this Group"
     else
-      render :text => "<h4>#{group_member.member.first_name} cannot be rejected as a member to this Page</h4>"
+      redirect_to group_url(:id => group), :notice => "#{group_member.member.login} cannot be rejected as a member to this Group"
     end
   end
 
   def make_moderator
-    group = Page.find(params[:group])
+    group = Group.find(params[:group])
     group_member = GroupMember.get_record(group, params[:member])
     group_member.moderator = true
     group_member.save
-    flash[:notice] = "Successfully updated as a Moderator to the Page #{group.title}."
-    redirect_to groups_url(:id => group.guid)
+    flash[:notice] = "Successfully updated as a Moderator to the Group #{group.title}."
+    redirect_to group_url(:id => group.id)
   end
 
   def remove_moderator
-    group = Page.where(['guid = ? or id = ?', params[:group], params[:group]]).first
+    group = Group.find(params[:group])
     group_member = GroupMember.get_record(group, params[:member])
     group_member.moderator = false
     group_member.save
-    flash[:notice] = "Successfully Removed as a Moderator to the Page #{group.title}."
-    redirect_to groups_url(:id => group.guid)
+    flash[:notice] = "Successfully Removed as a Moderator to the Group #{group.title}."
+    redirect_to group_url(:id => group.id)
   end
 
   def leave
     group = Group.find(params[:id])
     group_member = GroupMember.get_record(group, current_user.id)
     group_member.destroy
-    redirect_to root_url, :notice => "You left the #{group.title} Page successfully."
+    redirect_to group_url(:id => group.id), :notice => "You left the #{group.title} Group successfully."
   end
 
   def invite
@@ -168,21 +169,20 @@ class GroupsController < BaseController
       end
     end
     @group = params[:id]
-    @group_object = Page.find_by_guid(@group)
+    @group_object = Group.find(@group)
     @sender_id = current_user.email
-    Postzord::Dispatch.new(current_user, @group_object, nil).invite_group_members(person_ids)
     redirect_to :back
   end
 
   def search
-    @groups = Page.all.paginate(
+    @groups = Group.all.paginate(
         :group => params[:group], :per_group => 30)
     @my_groups = current_user.member_groups
     render :action => "search", :layout => false
   end
 
   def term_search
-    @groups = Page.search(params[:group_search]).paginate(
+    @groups = Group.search(params[:group_search]).paginate(
         :group => params[:group], :per_group => 30)
     @my_groups = current_user.member_groups
     respond_to do |format|
