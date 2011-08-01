@@ -20,7 +20,7 @@
     -box :id => "about_me" do
       %h3
         =:about_me.l
-      %p= @user.description
+      %p= @user.description.html_safe
 
   -box :class => 'alt', :id => 'friends' do
     %h3
