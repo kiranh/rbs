@@ -1,7 +1,4 @@
-- content_for :head do
-  = include_javascripts :home
-  = include_javascripts :people
-  = javascript_include_tag 'vanish'
+= javascript_include_tag 'vanish'
 
 - content_for :group_title do
   = @group.title
@@ -12,7 +9,7 @@
 .span-15.last
   %h3
     = @group.title
-    - if !(@group.members.include?(currentuser.person))
+    - if !(@group.members.include?(current_user))
       .right
         %span
         = link_to t('.join'), add_group_member_path(@group.id),
@@ -30,20 +27,9 @@
         %br/
         = @group.description
   - if @group_member
-    = render 'shared/publisher', :aspect => :group
-  - if @posts.count > 0
-    -if @post_type == :photos
-      = render 'photos/index', :photos => @posts
-    - else
-      #main_stream.stream
-        = render 'shared/stream', :posts => @fakes
-        %a.paginate
-          = t("more")
+    = render :text => "Posts come here"
     = will_paginate @posts
-
   - else
-    #main_stream.stream
-      = render 'shared/stream', :posts => @fakes
     #stream
       %li{:style=>"text-align:center;"}
-      .dull= t('.no_posts')
+      .dull= t('groups.no_posts')

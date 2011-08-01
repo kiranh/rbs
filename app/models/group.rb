@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
   has_many :group_members, :dependent => :destroy
   has_many :members, :through => :group_members
 
-  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+  has_attached_file :logo, :styles => { :medium => "250x250>", :thumb => "50x50>" }, :default_url => 'default_group_original.jpg'
   validates_attachment_content_type :logo, :content_type => configatron.photo.validation_options.content_type
 
   has_many :posts, :dependent => :destroy

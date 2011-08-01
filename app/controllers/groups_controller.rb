@@ -18,12 +18,10 @@ class GroupsController < BaseController
   def assign_values
     @pending_members = GroupMember.pending_members(@group)
     @members = GroupMember.members(@group)
-    @owner = @group
+    @owner = @group.user
     @moderators = GroupMember.moderator(@group)
     @current_user_pending = GroupMember.find_pending(@group, current_user)
-    @post_type = :all
     @posts = @group.posts.order('updated_at DESC').paginate(:per_page => 15, :page => params[:page])
-    @fakes = PostsFake.new(@posts)
     @group_member = true if GroupMember.actual_member(@group, current_user)
     @member_is_moderator = GroupMember.moderator?(@group, current_user) if @group_member
   end

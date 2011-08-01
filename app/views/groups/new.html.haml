@@ -1,6 +1,7 @@
 #yui-main
   .yui-b
     -box do
-      %h3 #{t('.create_new_group')}
-      = render 'form'
-      %p= link_to "Back to List", groups_path
+      %div{:style => "margin-left:250px;padding:10px;padding-left:25px;padding-right:10px;border:1px solid #ccc;"}
+        %h3 #{t('.create_new_group')}
+        = render 'form'
+        %p= link_to "Back to List", groups_path
