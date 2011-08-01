@@ -1,19 +1,21 @@
 = form_for @group, :html => {:multipart => true} do |f|
   %p
     = f.error_messages
-  %p{:style => "font-weight:bold;"}
-    = f.label :title, t('groups.title')
+  %p
+    %span{:style => "font-weight:bold;"}
+      = f.label :title, t('groups.title')
     = f.text_field :title, :class => "textlarge"
-  %p{:style => "font-weight:bold;"}
-    = f.label :description, t('groups.description')
+  %p
+    %span{:style => "font-weight:bold;"}
+      = f.label :description, t('groups.description')
     %br/
     = f.text_area :description, :rows => 8, :cols => 50
-  %p{:style => "font-weight:bold;"}
-    %label
+  %p
+    %span{:style => "font-weight:bold;"}
       =t('groups.choose_a_logo_to_upload')
     %br/
     - if @group.logo && @group.logo.file?
-      = image_tag @group.logo.url(:thumb_small).to_s
+      = image_tag @group.logo.url(:thumb).to_s, :class => "group_member"
     = f.file_field :logo, :size => "20"
   %p
     = f.radio_button :public, "true", :checked => true

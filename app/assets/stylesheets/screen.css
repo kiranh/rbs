@@ -107,13 +107,6 @@ img.polaroid {
     border: 1px solid #A2A19B;
 }
 
-img.group_member {
-    padding: 2px;
-    border: 1px solid #A2A19B;
-    height: 30px;
-    width: 30px;
-}
-
 /* =============================================== */
 /* 2. HEADER                                       */
 /* =============================================== */
@@ -1309,4 +1302,35 @@ table.poll td.bars div.bar-container .bar {
     padding:2px;
     margin:2px;
     border: 1px solid #ccc;
+}
+
+/*  Groups */
+hr {
+    background: transparent;
+	color: transparent;
+	border-left:  none;
+	border-right: none;
+	border-top:   none;
+	border-bottom: 1px dashed #ccc;
+}
+
+.group_member_display a{
+    padding-left: 20px;
+}
+
+.group_title {
+    color: #0D82CF;
+    font-size:16px;
+}
+
+.group_description {
+    color: #ccc;
+    font-size:13px;
+}
+
+img.group_member {
+    padding: 2px;
+    border: 1px solid #A2A19B;
+    height: 30px;
+    width: 30px;
 }

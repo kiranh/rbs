@@ -65,10 +65,10 @@ SocialCrm::Application.routes.draw do
   #   resources :products
   resources :groups
   match 'groups/add_member/:id',          :to => 'groups#add_member', :as => 'add_group_member'
-  match 'groups/accept_member/:page&:member',          :to => 'groups#accept_member', :as => 'accept_group_member'
-  match 'groups/reject_member/:page&:member',          :to => 'groups#reject_member', :as => 'reject_group_member'
-  match 'groups/make_moderator/:page&:member',         :to => 'groups#make_moderator',:as => 'make_moderator'
-  match 'groups/remove_moderator/:page&:member',         :to => 'groups#remove_moderator',:as => 'remove_moderator'
+  match 'groups/accept_member/:group&:member',          :to => 'groups#accept_member', :as => 'accept_group_member'
+  match 'groups/reject_member/:group&:member',          :to => 'groups#reject_member', :as => 'reject_group_member'
+  match 'groups/make_moderator/:group&:member',         :to => 'groups#make_moderator',:as => 'make_moderator'
+  match 'groups/remove_moderator/:group&:member',         :to => 'groups#remove_moderator',:as => 'remove_moderator'
   match 'groups/index/:id',               :to => 'groups#index',  :as => 'admin_group'
   match 'groups/leave/:id',               :to => 'groups#leave',  :as => 'leave_group'
   match 'groups/invite/:id',              :to => 'groups#invite', :as => 'invites'

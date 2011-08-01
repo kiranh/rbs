@@ -18,6 +18,12 @@ en:
     title: "Name:"
     description: "Whats your group all about?:"
     choose_a_logo_to_upload: "Choose Logo for your group:"
+    members_list: "Member(s)"
+    moderators: "Moderator(s)"
+    group_owner: "Group Owner"
+    pending_requests: "Pending Request(s)"
+    join: "Join this Group"
+    edit_group: "Edit this Group"
   authorizations:
     create:
       success_existing_user: "Successfully added %{provider} authentication"
