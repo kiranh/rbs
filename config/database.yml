@@ -12,7 +12,7 @@ common: &common
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 development:
   <<: *common
-  database: rbs_dev
+  database: rbs_development
 
 test:
   <<: *common

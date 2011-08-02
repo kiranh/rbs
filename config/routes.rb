@@ -40,7 +40,7 @@ SocialCrm::Application.routes.draw do
     end
   end
 
-  resources :search do
+  resources :lookfor do
     collection do
       get :auto_complete
     end

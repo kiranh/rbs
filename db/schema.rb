@@ -207,6 +207,7 @@ ActiveRecord::Schema.define(:version => 20110801134147) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
+    t.string   "logo"
     t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"

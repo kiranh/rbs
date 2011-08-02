@@ -39,8 +39,8 @@ class GroupsController < BaseController
   def create
     @user = current_user
     @group = @user.groups.new(params[:group])
-    @group.members << current_user
     if @group.save
+      @group.members << current_user
       member = GroupMember.get_record(@group.id, current_user.id)
       member.accept!
       member.moderator = true

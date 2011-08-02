@@ -1,37 +1,39 @@
+- @section = 'groups'
 .span-24.last
-  %span{:style => "font-size:14px;font-weight:bold;"}= t('.popular')
-  %span= link_to t('.search'), search_group_path
+  %span{:style => "font-size:14px;font-weight:bold;"}= t('groups.popular')
+  %span= link_to t('.search'), "#"
 
-  %span{:style => "padding-left:200px;"}
-    = link_to t('.create_group'), new_group_path,
-              :class => 'share_with button'
+  %span{:style => "padding-left:350px;"}
+    = link_to t('.create_group'), new_group_path
 
-.span-15.append-1
+%div{:style => "float:left;"}
   %br/
   - for group in @popular_groups
     %div
       %span.group_logo{:style=>"width:10%;"}
         - if group.logo && group.logo.url(:thumb)
-          = image_tag(group.logo.url(:thumb), :height => "50px", :width => "50px")
+          = image_tag(group.logo.url(:thumb), :class => "groups_logo")
         - else
-          = image_tag "default_group_original.png"
+          = image_tag "default_group_original.png", :class => "groups_logo"
       %span.most_active_groups{:style=>"width:50%;"}
         %h4= link_to group.title, group
-      %span.group_likes{:style=>"width:20%;"}
+      %span.group_likes{:style=>"width:20%;float:left;"}
         = group.members.count
         = t('groups.group_likes')
         %br/
         = group.posts.count
         = t('groups.group_posts')
-      %span{:style => "width:20%;float:left;"}
+      %span{:style => "width:20%;text-align:right;"}
         %br/
         - unless @my_groups.include?(group)
-          = link_to "Like", group
+          = link_to "Join", group
         - else
           = link_to "View", group
       %div{:style => "clear:both;"}
       %hr{:style => "width:500px;"}
   =will_paginate @popular_groups
-.span-8.last
-  = sanitize(t('.why_fan_group'))
+%div{:style=> "float:right;"}
+  .yui-b
+    -box do  
+      = (t('groups.why_group')).html_safe
 
