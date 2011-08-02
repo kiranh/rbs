@@ -33,6 +33,7 @@
             = topnav_tab :forums.l, { :url => forums_path, :section => ['forums'] }
             = topnav_tab :blogs.l, { :url => popular_path, :section => ['popular'] }
             = topnav_tab :people.l, { :url => users_path, :section => ['users'] }
+            = topnav_tab :group.l, {:url => groups_path, :section => ['groups'] }
             - if @header_tabs.any?
               - @header_tabs.each do |tab|
                 = topnav_tab tab[:name], {:url => tab[:url], :section => [tab[:section]] }

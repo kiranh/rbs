@@ -13,7 +13,9 @@ en:
   address_line1: Address Line 1
   address_line2: Address Line 2
   zip: Zip
-
+  
+  search_tag: "Search Tag:"
+  group: "Groups"
   groups:
     title: "Name:"
     description: "Whats your group all about?:"
@@ -24,6 +26,8 @@ en:
     pending_requests: "Pending Request(s)"
     join: "Join this Group"
     edit_group: "Edit this Group"
+    why_group: "A Group allows you to share and start your discussions.<br/><br/> Features provided:  <br/>* Create a Group, edit or update.<br/>* Join a Group and become a member <br/>* Every post shared will trigger mail to all Group Members.<br/>* Multiple Moderators.<br/>* Separate Admin section for the Owner of the Group.<br/>* Silver Badge posts by Moderator along with Gold Badge posts by the Group-Owner<br/>* Provides options like Anyone can Join or Groups has to be moderated where in the Members join only upon approval."
+    popular: "Popular Groups"
   authorizations:
     create:
       success_existing_user: "Successfully added %{provider} authentication"

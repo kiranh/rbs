@@ -4,7 +4,7 @@
   %div{:style => "float:left;"}
     = render :partial => 'groups/group_info_sidebar', :locals => {:group => @group }
 
-  %div{:style => "float:left;width:650px;"}
+  %div{:style => "float:left;width:650px;padding-left: 20px;"}
     .group_title
       = @group.title
       - if !(@group.members.include?(current_user))

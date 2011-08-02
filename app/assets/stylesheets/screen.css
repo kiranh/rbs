@@ -1330,3 +1330,25 @@ hr {
     font-size:16px;
 }
 
+.group_logo {
+  float: left;
+  width: 20%; }
+
+.most_active_groups {
+  float: left;
+  width: 60%;
+  display: inline; }
+
+.group_likes {
+  float: left;
+  width: 20%;
+  font: 10px;
+  color: #cccccc; }
+
+img.groups_logo {
+    padding: 2px;
+    border: 1px solid #A2A19B;
+    height: 40px;
+    width: 40px;
+}
+
