@@ -37,7 +37,6 @@ class User < ActiveRecord::Base
   #validation
   #validates_presence_of :metro_area, :if => Proc.new { |user| user.state }
   validates_presence_of :fullname
-  validates_presence_of :industry_type
   validates_uniqueness_of :login
   validates_exclusion_of :login, :in => configatron.reserved_logins
 
@@ -51,6 +50,7 @@ class User < ActiveRecord::Base
   has_many :rsvps, :dependent => :destroy
   has_many :albums
   has_one :business_profile
+  has_one :industry_type
   #friendship associations
   has_many :friendships, :class_name => "Friendship", :foreign_key => "user_id", :dependent => :destroy
   has_many :accepted_friendships, :class_name => "Friendship", :conditions => ['friendship_status_id = ?', 2]

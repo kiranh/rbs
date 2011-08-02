@@ -37,7 +37,7 @@
         %label
           =:body_text.l
           %em="(#{:required.l})"
-        = f.text_area :raw_post, {:size => "86x70", :class => "rich_text_editor"}
+        = f.text_area :raw_post#, {:class => "rich_text_editor"}
 
         %label
           =:tags.l
@@ -45,6 +45,10 @@
         = text_field_tag 'tag_list', @post.tag_list, {:autocomplete => "off", :size => 35}
         .auto_complete#tag_list_auto_complete
           = auto_complete_field 'tag_list', {:url => { :controller => "tags", :action => 'auto_complete_for_tag_name'}, :tokens => [','] }
+
+        %label
+          Industry/Business:
+          = select_tag "post[industry_type_id]",options_for_select(IndustryType.all.collect {|i| [ i.name, i.id ] }, {:style=>"height: 27px!important;opacity:1!important;"})
 
         %label
           %a{:href=> "#", :onclick => "$('poll-ui').toggle(); return false;"}

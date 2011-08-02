@@ -92,8 +92,11 @@ class UsersController < BaseController
   def create
     @user       = User.new(params[:user])
     @user.role  = Role[:member]
-
     if (!configatron.require_captcha_on_signup || verify_recaptcha(@user)) && @user.save
+      if @user.industry_type_id.nil?
+        @user.industry_type_id = params[:user][:industry_type_id] if params[:user][:industry_type_id].present?
+        @user.save!
+      end
       create_friendship_with_inviter(@user, params)
       flash[:notice] = :email_signup_thanks.l_with_args(:email => @user.email)
       redirect_to signup_completed_user_path(@user)
@@ -103,7 +106,8 @@ class UsersController < BaseController
   end
 
   def getting_started
-    @user   = User.find(params[:id])
+    @user   = User.find_by_login(params[:id])
+    current_user = @user
   end
 
   def edit
