@@ -107,6 +107,13 @@ img.polaroid {
     border: 1px solid #A2A19B;
 }
 
+img.group_member {
+    padding: 2px;
+    border: 1px solid #A2A19B;
+    height: 30px;
+    width: 30px;
+}
+
 /* =============================================== */
 /* 2. HEADER                                       */
 /* =============================================== */
@@ -1170,7 +1177,7 @@ table.poll td.bars div.bar-container .bar {
     font-size: 10px;
     position: absolute;
     right: 0;
-    top: 20px;
+    top: -9999px;
     *width: 150px;
     border: 2px solid #F9F9F9;
     border-top: none;
@@ -1181,7 +1188,7 @@ table.poll td.bars div.bar-container .bar {
 
 #user-menu {
     padding-right: 15px;
-    width:100px;
+    width:70px;
     float:right;
     position: relative;
     background: url(/assets/icons/bullet_arrow_down_50.png) no-repeat right;
@@ -1323,14 +1330,3 @@ hr {
     font-size:16px;
 }
 
-.group_description {
-    color: #ccc;
-    font-size:13px;
-}
-
-img.group_member {
-    padding: 2px;
-    border: 1px solid #A2A19B;
-    height: 30px;
-    width: 30px;
-}

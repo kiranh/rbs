@@ -1,7 +1,7 @@
 #group
   .group_photo
     - if group.logo && group.logo.url(:medium)
-      = link_to image_tag(@group.logo.url(:medium).to_s), @group
+      = link_to image_tag(@group.logo.url(:medium).to_s, :class => "polaroid"), @group
     - else
       = link_to image_tag("logo_default.png"), @group
     %br/

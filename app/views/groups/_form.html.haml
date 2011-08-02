@@ -1,3 +1,12 @@
+=javascript_include_tag 'jquery.ddown'
+:javascript
+  jQuery(document).ready(function() {
+      jQuery(".btn").hover(function() {
+          jQuery(this).addClass("hover");
+      }, function() {
+          jQuery(this).removeClass("hover");
+      });
+  });
 = form_for @group, :html => {:multipart => true} do |f|
   %p
     = f.error_messages
@@ -24,5 +33,5 @@
     = f.radio_button :public, false
     = "To be Moderated"
   %p
-    = f.submit
+    = f.submit "Submit Group", :class =>"btn loginbtn 1thickbox", :alt => "#TB_inline?height=320&width=300&inlineId=myOnPageContent"
 

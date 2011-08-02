@@ -1,4 +1,3 @@
-- title "Pages"
 %h3
   = t('.my_groups')
 %table
@@ -15,7 +14,7 @@
     %td= link_to group.title, group
     %td= person_image_link group.person
     %td
-      - PageMember.moderator(group).each do |moderator|
+      - GroupMember.moderator(group).each do |moderator|
         = person_image_link Person.find(moderator.member_id)
         = link_to t('.remove_moderator'), remove_moderator_path(group.id, moderator.member) if group.person_id == currentuser.person.id
         %br/
