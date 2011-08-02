@@ -1,22 +1,42 @@
 = javascript_include_tag 'jquery-1.6.1.min'
-= stylesheet_link_tag 'community_engine'
+= stylesheet_link_tag 'style'
+= stylesheet_link_tag 'thickbox'
+= javascript_include_tag 'thickbox'
+
 :javascript
   jQuery(document).ready(function() {
-    jQuery(".getting_started_centered").click(function() {
-      if(jQuery(this).css("background-color") == "rgb(255, 255, 255)")
-      {jQuery(this).css("background-color", "#75D675");}
-      else{jQuery(this).css("background-color", "white");}
+    tb_show("Import Contacts","#TB_inline?height=320&width=300&inlineId=myOnPageContent");
+    jQuery('#linkedin_li').click(function() {
+      window.location = "/contacts";
     });
   });
-.margin-b
-  .getting_started_centered
-    %img.float_l{:src => "/assets/linkedin_32.png"}
-    %span.float_l.margin_5 Professional contacts from LinkedIn
-  .getting_started_centered
-    %img.float_l{:src => "/assets/facebook_32.png"}
-    %span.float_l.margin_5 Import friends from Facebook
-  .getting_started_centered
-    %img.float_l{:src => "/assets/twitter_32.png"}
-    %span.float_l.margin_5 Import Contacts from Twitter
-.skip_step
-  %a{:href => dashboard_user_path(@user)} skip getting started →
+  
+
+.main_logo
+  %a{:href=>home_url, :title=>"#{configatron.community_name}"}
+    = image_tag "logo.png", :alt => "logo", :height => "69", :width => "251"
+.spacerdiv
+
+#myOnPageContent{:style => "display: none;"}
+  %ul.social-imports
+    %li#linkedin_li
+      %img.icons{:alt => "linkedin", :src => "/assets/linkedin_icon.png", :title => "linkedin"}
+      %p
+        Personal Contacts
+        %br/
+        from LinkedIn
+    %li
+      %img.icons{:alt => "facebook", :src => "/assets/facebook_icon.png", :title => "facebook"}
+      %p
+        Regular Contacts
+        %br/
+        from Facebook
+    %li
+      %img.icons{:alt => "twitter", :src => "/assets/twitter_icon.png", :title => "twitter"}
+      %p
+        People who follow
+        %br/
+        you on Twitter
+  %p.btndiv
+    %input.btn{:onclick => "location.href='home.html'", :type => "submit", :value => "Import"}
+    %a{:href => "#", :onclick => "dashboard_user_path(@user)"} Skip this step

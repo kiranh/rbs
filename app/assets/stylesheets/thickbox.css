@@ -172,6 +172,6 @@ ul.social-imports li{overflow:hidden; padding:5px; margin-bottom:10px; border:1p
   	-moz-box-shadow: 0px 1px 7px #888;
   	-webkit-box-shadow: 0px 1px 7px #888;
 	}
-ul.social-imports li:hover{background:#f1f1f1 url(../images/tick.png) no-repeat 220px 15px;}
+ul.social-imports li:hover{background:#f1f1f1 url(/assets/tick.png) no-repeat 220px 15px;}
 ul.social-imports .icons{float:left; padding-right:10px;}
 #TB_ajaxContent ul.social-imports p{padding:12px 0 0; overflow:hidden;}
