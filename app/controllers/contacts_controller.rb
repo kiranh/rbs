@@ -1,14 +1,14 @@
-class ContactsController < ApplicationController
+class ContactsController < BaseController
   require 'linkedin'
   def index
     client = LinkedIn::Client.new("u2qwtchjry2s", "EckOuDsWcWAeBJdm")
-    request_token = client.request_token(:oauth_callback => "http://#{request.host_with_port}/contacts/callback")
+    request_token = client.request_token(:oauth_callback => "http://#{request.host_with_port}/contacts/new")
     session[:rtoken] = request_token.token
     session[:rsecret] = request_token.secret
     redirect_to client.request_token.authorize_url
   end
 
-  def callback
+  def new
     client = LinkedIn::Client.new("u2qwtchjry2s", "EckOuDsWcWAeBJdm")
     if session[:atoken].nil?
       pin = params[:oauth_verifier]
