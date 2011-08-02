@@ -39,4 +39,4 @@
         you on Twitter
   %p.btndiv
     %input.btn{:onclick => "location.href='home.html'", :type => "submit", :value => "Import"}
-    %a{:href => "#", :onclick => "dashboard_user_path(@user)"} Skip this step
+    %a{:href => "#{dashboard_user_path(@user)}"} Skip this step
