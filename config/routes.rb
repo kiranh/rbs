@@ -44,7 +44,15 @@ SocialCrm::Application.routes.draw do
     collection do
       get :auto_complete
     end
-  end  
+  end
+
+  resources :messages do
+      match :auto_complete_for_username, :on => :collection
+      collection do
+        post :delete_message_threads
+        post :delete_selected
+      end
+  end
   
   resources :posts do
     collection do

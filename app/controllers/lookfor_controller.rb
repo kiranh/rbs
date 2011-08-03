@@ -1,8 +1,8 @@
-class SearchController < BaseController 
+class LookforController < BaseController 
 
   def auto_complete
-    @users = User.find(:all, :conditions => [ 'LOWER(login) LIKE ?', '%' + (params[:search]) + '%' ])
-    render :inline => "<%=raw auto_complete_result(@users, 'login') %>"
+    @users = User.find(:all, :conditions => [ 'LOWER(login) LIKE ?', '%' + (params[:message_tosearch]) + '%' ])
+    render :inline => "<%=raw auto_complete_search_result(@users, 'login') %>"
   end
 
   private
