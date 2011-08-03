@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110801134147) do
+ActiveRecord::Schema.define(:version => 20110802072005) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -207,7 +207,6 @@ ActiveRecord::Schema.define(:version => 20110801134147) do
     t.integer  "user_id"
     t.string   "title"
     t.text     "description"
-    t.string   "logo"
     t.boolean  "public"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -231,6 +230,12 @@ ActiveRecord::Schema.define(:version => 20110801134147) do
     t.integer  "width"
     t.integer  "height"
     t.datetime "image_updated_at"
+  end
+
+  create_table "industry_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "invitations", :force => true do |t|
@@ -350,6 +355,7 @@ ActiveRecord::Schema.define(:version => 20110801134147) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "group_id"
+    t.integer  "industry_type_id"
   end
 
   add_index "posts", ["category_id"], :name => "index_posts_on_category_id"
@@ -494,7 +500,7 @@ ActiveRecord::Schema.define(:version => 20110801134147) do
     t.string   "address_line1"
     t.string   "address_line2"
     t.string   "state"
-    t.string   "industry_type"
+    t.integer  "industry_type_id"
   end
 
   add_index "users", ["activated_at"], :name => "index_users_on_activated_at"

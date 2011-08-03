@@ -68,11 +68,11 @@ class Post < ActiveRecord::Base
   end
   
   def self.find_business_specific(limit,user)
-    self.find(:all,:conditions=>["industry_type_id=?",user.industry_type_id],:limit=>limit,:order=> "published_at DESC")
+    self.find(:all,:conditions=>["industry_type_id=?",user.industry_type_id],:limit=>limit,:order=> "published_at DESC") if user
   end
 
   def self.find_non_business_specific(limit,user)
-    self.find(:all,:conditions=>["industry_type_id !=?",user.industry_type_id],:limit=>limit,:order=> "published_at DESC")
+    self.find(:all, :limit=>limit,:order=> "published_at DESC")
   end
 
   def self.find_popular(options = {} )
