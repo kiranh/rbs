@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
   belongs_to :group
   has_many   :polls, :dependent => :destroy
   has_many :favorites, :as => :favoritable, :dependent => :destroy
+  has_one :industry_type
   
   validates_presence_of :raw_post
   validates_presence_of :title
@@ -66,10 +67,26 @@ class Post < ActiveRecord::Base
     self.recent.find :all, options
   end
   
+  def self.find_business_specific(limit,user)
+    self.find(:all,:conditions=>["industry_type_id=?",user.industry_type_id],:limit=>limit,:order=> "published_at DESC")
+  end
+
+  def self.find_non_business_specific(limit,user)
+    self.find(:all,:conditions=>["industry_type_id !=?",user.industry_type_id],:limit=>limit,:order=> "published_at DESC")
+  end
+
   def self.find_popular(options = {} )
     options.reverse_merge! :limit => 5, :since => 7.days
     
     self.popular.since(options[:since]).limit(options[:limit]).all
+  end
+
+  def self.business_specific_popular(limit,user)
+    self.find(:all,:conditions=>["industry_type_id =?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
+  end
+  
+  def self.non_business_specific_popular(limit,user)
+    self.find(:all,:conditions=>["industry_type_id !=?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
   end
   
   def self.find_featured(options = {:limit => 10})

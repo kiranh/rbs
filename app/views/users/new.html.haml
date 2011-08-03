@@ -78,7 +78,7 @@
               %label
                 Industry/Business:
               .rel
-                = f.text_field :industry_type, :class => "required"
+                = select_tag "user[industry_type_id]",options_for_select(IndustryType.all.collect {|i| [ i.name, i.id ] }, params[:user_industry_type_id])
                 %span.regpopup Industry / Business Type
             .row
               %label

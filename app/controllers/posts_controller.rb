@@ -112,9 +112,13 @@ class PostsController < BaseController
     @post = Post.new(params[:post])
     @post.user = @user
     @post.tag_list = params[:tag_list] || ''
-    
+    if @post.industry_type_id.nil?
+      @post.industry_type_id = params[:post][:industry_type_id] if params[:post][:industry_type_id].present?
+      @post.save!
+    end
+
     respond_to do |format|
-      if @post.save
+      if @post.save!
         @post.create_poll(params[:poll], params[:choices]) if params[:poll]
         
         flash[:notice] = @post.category ? :post_created_for_category.l_with_args(:category => @post.category.name.singularize) : :your_post_was_successfully_created.l
@@ -166,7 +170,7 @@ class PostsController < BaseController
   end
   
   def download_doc_file
-   redirect_to Post.find(params[:id]).doc.url
+    redirect_to Post.find(params[:id]).doc.url
   end
   # DELETE /posts/1
   # DELETE /posts/1.xml
@@ -197,7 +201,8 @@ class PostsController < BaseController
 
 
   def popular
-    @posts = Post.find_popular({:limit => 15, :since => 3.days})
+    # @posts = Post.find_popular({:limit => 15, :since => 3.days})
+    sorted_popular_posts
 
     @monthly_popular_posts = Post.find_popular({:limit => 20, :since => 30.days})
     
@@ -269,5 +274,14 @@ class PostsController < BaseController
     end
     return @user
   end
-  
+
+
+  def sorted_popular_posts
+    @b_posts = Post.business_specific_popular(15,current_user)
+    if @b_posts.size < 15
+      limit = 15 - @b_posts.size.to_i
+      @n_b_posts = Post.non_business_specific_popular(limit.to_i,current_user)
+    end
+  end
+
 end
