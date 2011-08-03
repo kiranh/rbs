@@ -1,0 +1,26 @@
+= javascript_include_tag 'jquery-1.6.1.min'
+= stylesheet_link_tag 'style'
+= stylesheet_link_tag 'thickbox'
+= javascript_include_tag 'thickbox'
+
+:javascript
+  jQuery(document).ready(function() {
+    tb_show("Select and  Invite Connections to Collaborate","#TB_inline?height=520&width=300&inlineId=myOnPageContent");
+  });
+
+
+.main_logo
+  %a{:href=>home_url, :title=>"#{configatron.community_name}"}
+    = image_tag "logo.png", :alt => "logo", :height => "69", :width => "251"
+.spacerdiv
+
+#myOnPageContent
+  = form_tag send_linked_in_message_path, :id => 'connections_form' do
+    - @friends.each do |f|
+      %p
+        - name = f.strip.delete "[" "]" "\""
+        = check_box_tag(name.split('|')[0], value = "#{name.split('|')[1]}", checked = false, options = {})
+        = name.split('|')[0]
+    %p.btndiv
+      = submit_tag("Invite", :class => "btn")
+      %a{:href => "#{dashboard_user_path(current_user)}"} Skip this step

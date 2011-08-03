@@ -81,6 +81,9 @@ SocialCrm::Application.routes.draw do
   match 'groups/invite_friends/:id',      :to => 'groups#invite_friends', :as => 'invite_friends'
   match 'group/search',                  :to => 'groups#search', :as => 'search_group'
   match 'group/term_search',                  :to => 'groups#term_search', :as => 'group_search'
+
+
+  match 'contacts/send_messages_to_connections',                  :to => 'contacts#send_messages_to_connections', :as => 'send_linked_in_message'
   # Sample resource route with options:
   #   resources :products do
   #     member do

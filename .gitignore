@@ -6,4 +6,4 @@ tmp/
 public/assets
 public/system
 vendor/bundle
-
+config/database.yml
