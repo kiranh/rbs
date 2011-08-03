@@ -1,11 +1,19 @@
 class AddIndustryTypeIdToPostAndUser < ActiveRecord::Migration
 
   def self.up
-    User.all.each{|u| u.destroy}
-    Post.all.each{|p| p.destroy}
     remove_column :users, :industry_type
     add_column :users, :industry_type_id, :integer
     add_column :posts, :industry_type_id, :integer
+    User.reset_column_information
+    Post.reset_column_information
+    User.all.each do |u|
+      u.update_attribute("industry_type_id", 5)
+      u.save!
+    end
+    Post.all.each do |p|
+      p.update_attribute("industry_type_id", 5)
+      p.save!
+    end
   end
 
   def self.down
@@ -15,3 +23,6 @@ class AddIndustryTypeIdToPostAndUser < ActiveRecord::Migration
   end
   
 end
+
+
+

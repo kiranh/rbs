@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
 
   #validation
   #validates_presence_of :metro_area, :if => Proc.new { |user| user.state }
-  validates_presence_of :fullname
+  #validates_presence_of :fullname
   validates_uniqueness_of :login
   validates_exclusion_of :login, :in => configatron.reserved_logins
 
