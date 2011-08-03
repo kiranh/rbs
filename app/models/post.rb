@@ -80,6 +80,14 @@ class Post < ActiveRecord::Base
     
     self.popular.since(options[:since]).limit(options[:limit]).all
   end
+
+  def self.business_specific_popular(limit,user)
+    self.find(:all,:conditions=>["industry_type_id =?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
+  end
+  
+  def self.non_business_specific_popular(limit,user)
+    self.find(:all,:conditions=>["industry_type_id !=?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
+  end
   
   def self.find_featured(options = {:limit => 10})
     self.recent.by_featured_writers.limit(options[:limit]).all

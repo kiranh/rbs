@@ -201,7 +201,8 @@ class PostsController < BaseController
 
 
   def popular
-    @posts = Post.find_popular({:limit => 15, :since => 3.days})
+    # @posts = Post.find_popular({:limit => 15, :since => 3.days})
+    sorted_popular_posts
 
     @monthly_popular_posts = Post.find_popular({:limit => 20, :since => 30.days})
     
@@ -273,4 +274,14 @@ class PostsController < BaseController
     end
     return @user
   end
+
+
+  def sorted_popular_posts
+    @b_posts = Post.business_specific_popular(15,current_user)
+    if @b_posts.size < 15
+      limit = 15 - @b_posts.size.to_i
+      @n_b_posts = Post.non_business_specific_popular(limit.to_i,current_user)
+    end
+  end
+
 end
