@@ -35,3 +35,5 @@
       /= render :partial => 'posts/post', :collection => @posts
       = render :partial => 'posts/business_specific_post.html', :locals => {:posts=>@b_posts}
       = render :partial => 'posts/business_specific_post.html', :locals => {:posts=>@n_b_posts}
+      -unless logged_in?
+        = render :partial => 'posts/post', :collection=> @posts

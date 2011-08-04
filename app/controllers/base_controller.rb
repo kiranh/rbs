@@ -28,7 +28,11 @@ class BaseController < ApplicationController
 
   def site_index
     #@posts = Post.find_recent
-    sorted_recent_posts
+    unless logged_in?
+      @posts = Post.find_recent
+    else
+      sorted_recent_posts
+    end
 
 
     @rss_title = "#{configatron.community_name} "+:recent_posts.l

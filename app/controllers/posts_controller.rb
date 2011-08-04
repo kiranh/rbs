@@ -202,8 +202,11 @@ class PostsController < BaseController
 
   def popular
     # @posts = Post.find_popular({:limit => 15, :since => 3.days})
-    sorted_popular_posts
-
+    unless logged_in?
+      @posts = Post.find_popular({:limit => 15, :since => 3.days})
+    else
+      sorted_popular_posts
+    end
     @monthly_popular_posts = Post.find_popular({:limit => 20, :since => 30.days})
     
     @related_tags = Tag.find_by_sql("SELECT tags.id, tags.name, count(*) AS count 

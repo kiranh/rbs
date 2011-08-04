@@ -12,6 +12,9 @@
           %h6.all= link_to :see_all_recent_posts.l, recent_path
       = render :partial => 'posts/business_specific_post', :locals => {:posts => @b_posts}
       = render :partial => 'posts/business_specific_post', :locals=> {:posts => @n_b_posts}
+      -unless logged_in?
+        = render :partial => 'posts/post', :collection=> @posts 
+
 
 .yui-b  
   =render :partial => 'shared/explore'
