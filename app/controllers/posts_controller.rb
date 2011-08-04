@@ -277,11 +277,12 @@ class PostsController < BaseController
 
 
   def sorted_popular_posts
-    @b_posts = Post.business_specific_popular(15,current_user)
-    if @b_posts.size < 15
-      limit = 15 - @b_posts.size.to_i
-      @n_b_posts = Post.non_business_specific_popular(limit.to_i,current_user)
+    limit = 5
+    @b_posts = Post.find_business_specific(5,current_user)
+    if @b_posts && @b_posts.size < 5
+      limit = 5 - @b_posts.size.to_i
     end
+    @n_b_posts = Post.find_non_business_specific(limit.to_i,current_user)
   end
 
 end
