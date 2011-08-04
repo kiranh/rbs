@@ -69,8 +69,9 @@
           = :users_online.l + ':'
           -last_user = online_users.pop
           - all_users = online_users[0,online_users.size-1]
-          - all_users.each do |u|
-            = link_to u.display_name, user_path(u)
+          - if all_users
+            - all_users.each do |u|
+              = link_to u.display_name, user_path(u)
             ,
           = link_to last_user.display_name, user_path(last_user)
           %br

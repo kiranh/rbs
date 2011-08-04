@@ -26,7 +26,7 @@ gem 'jquery-rails'
 
 # Use unicorn as the web server
 gem 'unicorn'
-#gem 'linkedin', :path => "vendor/git/linkedin-0.3.1"
+gem 'linkedin', :path => "vendor/git/linkedin-0.3.1"
 gem 'hashie', :path => "vendor/git/hashie-1.0.0"
 
 group :development do
