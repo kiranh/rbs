@@ -82,11 +82,11 @@ class Post < ActiveRecord::Base
   end
 
   def self.business_specific_popular(limit,user)
-    self.find(:all,:conditions=>["industry_type_id =?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
+    self.find(:all,:conditions=>["industry_type_id =?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC") if user
   end
   
   def self.non_business_specific_popular(limit,user)
-    self.find(:all,:conditions=>["industry_type_id !=?",user.industry_type_id],:limit=>limit,:order=>"posts.view_count DESC")
+    self.find(:all,:limit=>limit,:order=>"posts.view_count DESC")
   end
   
   def self.find_featured(options = {:limit => 10})
