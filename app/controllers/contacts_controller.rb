@@ -22,15 +22,21 @@ class ContactsController < BaseController
     @connections = @client.connections
     @friends = []
     parse_friends(@connections)
-    mail_id = ""
-    @friends.each do |f|
-      if f.include?("Hemant")
-        mail_id = f.split('|')[1]
-      end
+#    mail_id = ""
+#    @friends.each do |f|
+#      if f.include?("Hemant")
+#        mail_id = f.split('|')[1]
+#      end
+#    end
+#    mail_id = mail_id.strip.delete "\"" "]" "["
+#    Rails.logger.info("ID => => => #{mail_id}")
+    f = ""
+    @friends.each do |contact|
+      contact = contact.strip.delete "\"" "]" "["
+      f += contact + ','
     end
-    mail_id = mail_id.strip.delete "\"" "]" "["
-    Rails.logger.info("ID => => => #{mail_id}")
-    session[:friends] = @friends
+    current_user.friends = f
+    current_user.save
     #making use of Messaging API
     #path = "http://api.linkedin.com/v1/people/~/mailbox"
     #message = "<?xml version='1.0' encoding='UTF-8'?> <mailbox-item> <recipients> <recipient><person path='/people/~'/> </recipient><recipient><person path=\"/people/#{mail_id}\" /></recipient></recipients><subject>Congratulations on your new position.</subject> <body>You're certainly the best person for the job!</body> </mailbox-item>"
@@ -87,8 +93,8 @@ class ContactsController < BaseController
     selected_contacts = []
     selected_names = []
 
-    @friends = session[:friends]
-
+    @friends = current_user.friends.split(',')
+    Rails.logger.info("FRIEND => => #{@friends}")
     @friends.each do |contact|
       contact = contact.strip.delete "\"" "]" "["
       if params.include?(contact.strip.split('|')[0])

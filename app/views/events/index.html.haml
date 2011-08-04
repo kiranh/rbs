@@ -2,11 +2,11 @@
 
 .yui-b
   - if @is_admin_user
-    -box :class => "alt first_alt" do 
+    -box :class => "alt first_alt" do
+      %h3 Useful Links 
       = link_to_unless_current :past_events.l, past_events_path
-      = link_to_unless_current :upcoming_events.l, events_path
       %br
-      = link_to :administer_events.l, admin_events_path
+      = link_to_unless_current :upcoming_events.l, events_path
       %br
       = link_to :administer_events.l, admin_events_path
       %br
@@ -23,4 +23,4 @@
 
       = render :partial=>'event', :collection=>@events, :locals=>{:show_details_link=>true}
 
-      .pagination=paginating_links @events if @events.total_count > 1      
+      .pagination=paginating_links @events if @events.total_count > 1
