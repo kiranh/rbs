@@ -666,6 +666,7 @@ select {
 
 #search_panel input {
     float: left;
+    height: 18px
 }
 
 #search_panel .searchbox {
@@ -1272,4 +1273,8 @@ select {
  .errorExplanation h2{
      background-color: #FFCC00;
      color:#6B5E2B
+}
+
+.search_disp_name{
+    top:10px
 }
