@@ -1263,6 +1263,7 @@ select {
 }
 .auto_complete{
     margin-top:20px;
+    z-index: 1000
 }
 .auto_complete li{
     cursor: pointer;
@@ -1276,5 +1277,14 @@ select {
 }
 
 .search_disp_name{
-    top:10px
+  color:#3b5998;font-weight:bold
+}
+
+.auto_complete a{
+    text-decoration: none;
+    text-align: center;
+}
+
+.margin_5{
+    margin: 5px
 }

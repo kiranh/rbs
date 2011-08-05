@@ -18,7 +18,11 @@ module ApplicationHelper
 
   def fields_in_search(entry, field)
     u = User.find_by_login(entry[field])
-    return image_tag(u.search_photo_url(:thumb), :width => 50, :height => 50) + link_to(entry[field], user_path(entry[field]), :class => "search_disp_name")
+    return link_to(image_tag(u.search_photo_url(:thumb), :width => 50, :height => 50) + ent_field(entry[field]), user_path(entry[field]), :class => "search_disp_name")
+  end
+
+  def ent_field(ent_fld)
+    content_tag(:span, ent_fld, :class => "margin_5")
   end
 
   def scotland_states
