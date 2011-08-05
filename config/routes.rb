@@ -40,10 +40,8 @@ SocialCrm::Application.routes.draw do
     end
   end
 
-  resources :lookfor do
-    collection do
-      get :auto_complete
-    end
+  resources :look_for do
+    match :auto_complete, :on => :collection
   end
 
   resources :messages do
