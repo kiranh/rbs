@@ -1,7 +1,7 @@
 #search_panel
   = text_field_tag 'search', "", {:autocomplete => "off", :size => 35, :id => "search_to"}
   %input.btnsearch{:type => "submit", :value => ""}
-  .auto_complete#search_to_auto_complete{:style=>"margin-top:0px!important;"}
+  .auto_complete#search_to_auto_complete
     = auto_complete_field 'search_to', {:url => auto_complete_look_for_index_path, :tokens=>','}
   - if logged_in?
     = render :partial => 'shared/user_menu'

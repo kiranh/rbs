@@ -12,8 +12,13 @@ module ApplicationHelper
 
   def auto_complete_search_result(entries, field, phrase = nil)
     return unless entries
-    items = entries.map { |entry| content_tag(:li, phrase ? highlight(link_to(entry[field], user_path(entry[field]) ), phrase) : link_to(entry[field], user_path(entry[field]) )) }
+    items = entries.map { |entry| content_tag(:li, phrase ? highlight(fields_in_search(entry, field), phrase) : fields_in_search(entry, field)) }
     content_tag(:ul, items.uniq.join().html_safe)
+  end
+
+  def fields_in_search(entry, field)
+    u = User.find_by_login(entry[field])
+    return image_tag(u.search_photo_url(:thumb), :width => 50, :height => 50) + link_to(entry[field], user_path(entry[field]), :class => "search_disp_name")
   end
 
   def scotland_states

@@ -456,6 +456,14 @@ class User < ActiveRecord::Base
     user
   end
 
+  def search_photo_url(size = nil)
+    if avatar
+      avatar.photo.url(size)
+    else
+      "/assets/missing.png"
+    end
+  end
+
   ## End Instance Methods
 
   protected
