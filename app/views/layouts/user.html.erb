@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/assets/jquery.ui.tabs.css" />
+    <link href="/assets/style.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="/assets/jquery-1.4.4.js"></script>
+    <script type="text/javascript" src="/assets/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="/assets/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="/assets/jquery.ui.tabs.js"></script>
+    <script type="text/javascript" src="/assets/jquery.ddown.js"></script>
+    <script type="text/javascript">
+      jQuery(function() {
+        jQuery('select').customStyle();
+        jQuery(".btn").hover(function() {
+          jQuery(this).addClass("hover");
+        }, function() {
+          jQuery(this).removeClass("hover");
+        });
+        jQuery(function() {
+          jQuery("#tabs").tabs();
+        });
+      });
+    </script>
+
+    <!--[if IE]>
+      <script type="text/javascript" src="js/html5enable.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div id="wrapper">
+      <div class="reg-page2 styleselect">
+        <div class="header">
+          <div id="search_panel">
+            <div class="ddl_container">
+              <select class="ddl">
+                <option>Buyer</option>
+                <option>Seller</option>
+                <option>Merchant</option>
+              </select>
+            </div>
+            <input type="text" class="searchbox" />
+            <input class="btnsearch" type="submit" value="" />
+            <div class="spacerdiv">
+            </div>
+          </div>
+          <a href="login.html">
+            <img src="/assets/logo.png" width="251" height="69" alt="logo" /></a>
+          <div class="spacerdiv">
+          </div>
+        </div>
+        <div id="navigation">
+          <a class="rt" href="<%= logout_url %>">Logout</a>
+          <ul>
+            <li><a class="current" href="<%= dashboard_user_path(current_user) %>">DASHBOARD</a></li>
+            <li><a href="<%= forums_path %>">FORUMS</a></li>
+            <li><a href="<%= popular_path %>">BLOGS</a></li>
+            <li><a href="<%= groups_path %>">GROUPS</a></li>
+            <li><a href="<%= events_path %>">EVENTS</a></li>
+            <li><a href="<%= users_path %>">USERS</a></li>
+          </ul>
+          <div class="spacerdiv">
+          </div>
+        </div>
+        <div id="content">
+          <%= yield %>
+        </div>
+      </div>
+      <div id="leftnav">
+        <section>
+          <div class="figure">
+            <img src="<%= current_user.avatar_photo_url(:medium) %>" alt="" />
+            <div class="figcaption"><%= current_user.name %></div>
+          </div>
+          <ul>
+            <li><a href="#">Messages</a></li>
+            <li><a href="/popular">Blogs</a></li>
+            <li><a href="#">Articles</a></li>
+            <li><a href="#">Contacts</a></li>
+            <li><a href="#">Events</a></li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <br /><br /><br />
+    <br />
+    <br />
+    <br />
+  </body>
+</html>

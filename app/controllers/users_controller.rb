@@ -1,7 +1,7 @@
 class UsersController < BaseController
   include Viewable
   cache_sweeper :taggable_sweeper, :only => [:activate, :update, :destroy]
-  layout "application", :except => [:complete_profile, :getting_started]
+  layout :get_layout, :except => [:complete_profile, :getting_started]
 
   uses_tiny_mce do
     {:only => [:new, :create, :update, :edit, :welcome_about], :options => configatron.default_mce_options}
@@ -13,15 +13,15 @@ class UsersController < BaseController
 
   # Filters
   before_filter :login_required, :only => [:edit, :edit_account, :update, :welcome_photo, :welcome_about,
-                                          :welcome_invite, :return_admin, :assume, :featured,
-                                          :toggle_featured, :edit_pro_details, :update_pro_details, :dashboard, :deactivate,
-                                          :crop_profile_photo, :upload_profile_photo]
+    :welcome_invite, :return_admin, :assume, :featured,
+    :toggle_featured, :edit_pro_details, :update_pro_details, :dashboard, :deactivate,
+    :crop_profile_photo, :upload_profile_photo]
   before_filter :find_user, :only => [:edit, :edit_pro_details, :show, :update, :destroy, :statistics, :deactivate,
-                                      :crop_profile_photo, :upload_profile_photo ]
+    :crop_profile_photo, :upload_profile_photo ]
   before_filter :require_current_user, :only => [:edit, :update, :update_account,
-                                                :edit_pro_details, :update_pro_details,
-                                                :welcome_photo, :welcome_about, :welcome_invite, :deactivate,
-                                                :crop_profile_photo, :upload_profile_photo]
+    :edit_pro_details, :update_pro_details,
+    :welcome_photo, :welcome_about, :welcome_invite, :deactivate,
+    :crop_profile_photo, :upload_profile_photo]
   before_filter :admin_required, :only => [:assume, :destroy, :featured, :toggle_featured, :toggle_moderator]
   before_filter :admin_or_current_user_required, :only => [:statistics]
 
@@ -393,23 +393,30 @@ class UsersController < BaseController
   end
 
   protected
-    def setup_metro_areas_for_cloud
-      @metro_areas_for_cloud = MetroArea.find(:all, :conditions => "users_count > 0", :order => "users_count DESC", :limit => 100)
-      @metro_areas_for_cloud = @metro_areas_for_cloud.sort_by{|m| m.name}
+  def setup_metro_areas_for_cloud
+    @metro_areas_for_cloud = MetroArea.find(:all, :conditions => "users_count > 0", :order => "users_count DESC", :limit => 100)
+    @metro_areas_for_cloud = @metro_areas_for_cloud.sort_by{|m| m.name}
+  end
+
+  def setup_locations_for(user)
+    metro_areas = states = []
+
+    states = user.country.states if user.country
+
+    metro_areas = user.state.metro_areas.all(:order => "name") if user.state
+
+    return metro_areas, states
+  end
+
+  def admin_or_current_user_required
+    current_user && (current_user.admin? || @is_current_user) ? true : access_denied
+  end
+
+  def get_layout
+    if action_name == "dashboard"      
+      "user"
+    else
+      "application"
     end
-
-    def setup_locations_for(user)
-      metro_areas = states = []
-
-      states = user.country.states if user.country
-
-      metro_areas = user.state.metro_areas.all(:order => "name") if user.state
-
-      return metro_areas, states
-    end
-
-    def admin_or_current_user_required
-      current_user && (current_user.admin? || @is_current_user) ? true : access_denied
-    end
-
+  end
 end
