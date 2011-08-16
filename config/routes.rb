@@ -90,10 +90,6 @@ SocialCrm::Application.routes.draw do
 
 
   match 'contacts/send_messages_to_connections',                  :to => 'contacts#send_messages_to_connections', :as => 'send_linked_in_message'
-
-  scope "/:commentable_type/:commentable_id" do
-    resources :comments
-  end
   # Sample resource route with options:
   #   resources :products do
   #     member do
