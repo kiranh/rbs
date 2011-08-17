@@ -59,9 +59,12 @@ class UsersController < BaseController
   end
 
   def dashboard
+    sorted_recent_posts
     @user = current_user
     @network_activity = @user.network_activity
     @recommended_posts = @user.recommended_posts
+    @active_users = User.find_by_activity({:limit => 5, :require_avatar => false})
+    @active_users = @active_users - User.find(:all,:conditions=>["id = ?",current_user.id])
   end
 
   def show
@@ -418,5 +421,16 @@ class UsersController < BaseController
     else
       "application"
     end
+  end
+
+  private
+
+  def sorted_recent_posts
+    limit = 5
+    @b_posts = Post.find_business_specific(5,current_user)
+    if @b_posts && @b_posts.size < 5
+      limit = 5 - @b_posts.size.to_i
+    end
+    @n_b_posts = Post.find_non_business_specific(limit.to_i,current_user)
   end
 end

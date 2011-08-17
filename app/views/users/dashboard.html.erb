@@ -1,232 +1,188 @@
 
 <div id="rightnav">
-  <h3 class="head1">Recent Buyers</h3>
+  <h3 class="head1">View</h3>
   <section>
     <ul>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li class="txtright"><a href="#">more&raquo;</a></li>
+      <li><%= link_to :my_profile.l, user_path(@user)  %></li>
+      <li><%= link_to :my_blog.l, user_posts_path(@user)%></li>
+      <li><%= link_to :photo_manager.l, user_photo_manager_index_path(@user)%></li>
+      <li><%= link_to :my_clippings.l, user_clippings_path(@user)%></li>
+      <li><%= link_to :my_friends.l, accepted_user_friendships_path(@user)%></li>
+      <li><%= link_to :inbox.l, user_messages_path(@user)%></li>
     </ul>
   </section>
-  <h3 class="head1">Recent Sellers</h3>
+  <h3 class="head1">Manage</h3>
   <section>
     <ul>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li><a href="#">Lorem ipsum dolor sit amet, consectetur Lorem ipsum dolor</a></li>
-      <li class="txtright"><a href="#">more&raquo;</a></li>
+      <li><%=link_to :my_profile.l, edit_user_path(@user)%></li>
+      <li><%=link_to :my_account.l, edit_account_user_path(@user)%></li>
+      <li><%=link_to :my_blog_posts.l, manage_user_posts_path(@user)%></li>
+      <%if current_user.admin?%>
+        <li><%=link_to :admin_dashboard.l, admin_dashboard_path%></li>
+      <%end%>
     </ul>
   </section>
-  <h3 class="head2">People You may Know</h3>
-  <section class="section2">
-    <div class="row-box2">
-      <div class="photo">
-        <img src="/assets/photo.png" alt="" /></div>
-      <div class="photo-info">
-        <a href="#">Nicholas, James</a><br />
-        <span>Asst. Manager</span> <span>Corp UK</span>
-      </div>
-    </div>
-    <div class="row-box2">
-      <div class="photo">
-        <img src="/assets/p1.jpg" alt="" /></div>
-      <div class="photo-info">
-        <a href="#">
-          Pooja, Agarwal</a><br />
-        <span>CEO</span> <span>Infinity Networks</span>
-      </div>
-    </div>
-    <div class="row-box2">
-      <div class="photo">
-        <img src="/assets/p2.jpg" alt="" /></div>
-      <div class="photo-info">
-        <a href="#">
-          James, Cook</a><br />
-        <span>Managing Partner</span> <span>Somerset Mutual Funds</span>
-      </div>
-    </div>
-    <div class="row-box2">
-      <div class="photo">
-        <img src="/assets/p3.jpg" alt="" /></div>
-      <div class="photo-info">
-        <a href="#">
-          Lousie, Lou</a><br />
-        <span>Stock Broker</span> <span>Investcorp</span>
-      </div>
-    </div>
+  <h3 class="head1">Stats</h3>
+  <section>
+    <ul style="color: #0572C5">
+      <% if @user.last_login_at %>
+        <li><%= :you_last_logged_in_on.l+" #{I18n.l(@user.last_login_at, :format => :published_date)}" %></li>
+      <%end%>
+      <li><%= :member_since.l+" #{I18n.l(@user.created_at, :format => :published_date)}" %></li>
+      <%unless @user.posts.empty?%>
+        <li><%=:you_have_written_blog_posts.l(:count => @user.posts.count)%></li>
+      <%end%>
+      <%unless @user.photos.empty?%>
+        <li><%= :you_have_uploaded_photos.l(:count => @user.photos.count) %></li>
+      <%end%>
+      <%unless @user.clippings.empty?%>
+        <li><%=:you_have_added_clippings.l(:count => @user.clippings.count)%></li>
+      <%end%>
+      <%unless @user.comments.empty?%>
+        <li><%= :you_have_left_comments.l(:count => @user.posts.count) %></li>
+      <%end%>
+      <%unless @user.accepted_friendships.empty?%>
+        <li><%=:you_have_friends.l(:count => @user.accepted_friendships.count) %></li>
+      <%end%>
+
+    </ul>
   </section>
+  <h3 class="head2">Active Users</h3>
+  <% @active_users.each do |user|  %>
+    <%= render :partial => "users/sidebar_user", :locals => {:user => user} %>
+  <%end%>
 </div>
-<div id="main">
-  <div class="shadow">
-    <div id="connections">
-      <a href="#" class="close"></a>
-      <h2>
-        Connect to business that Interest You - <a href="#">View all</a></h2>
-      <div class="spacerdiv">
+<div id="main" style="padding-top: 2px!important">
+  <%#*<div class="shadow">%>
+    <%#*<div id="connections">%>
+      <%#*<a href="#" class="close"></a>%>
+      <%#*<h2>%>
+        <%#*Connect to business that Interest You - <a href="#">View all</a></h2>%>
+      <%#*<div class="spacerdiv">%>
+      <%#*</div>%>
+      <%#*<div class="threecol">%>
+        <%#*<div class="col one">%>
+          <%#*<h3>%>
+            <%#*Communications</h3>%>
+          <%#*<p>%>
+            <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>%>
+          <%#*<input type="submit" class="btn secondary" value="Connect" />%>
+        <%#*</div>%>
+        <%#*<div class="col two">%>
+          <%#*<h3>%>
+            <%#*Banking</h3>%>
+          <%#*<p>%>
+            <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>%>
+          <%#*<input type="submit" class="btn secondary" value="Connect" />%>
+        <%#*</div>%>
+        <%#*<div class="col three">%>
+          <%#*<h3>%>
+            <%#*Healthcare</h3>%>
+          <%#*<p>%>
+            <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>%>
+          <%#*<input type="submit" class="btn secondary" value="Connect" />%>
+        <%#*</div>%>
+        <%#*<div class="spacerdiv">%>
+        <%#*</div>%>
+      <%#*</div>%>
+    <%#*</div>%>
+  <%#*</div>%>
+  <% if @user.pending_friendships.any? %>
+    <div class="spacerdiv pad5v"></div>
+    <div class="forumpost">
+      <div class="header2">
+        <h2>Pending friendship request</h2>
       </div>
-      <div class="threecol">
-        <div class="col one">
-          <h3>
-            Communications</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>
-          <input type="submit" class="btn secondary" value="Connect" />
-        </div>
-        <div class="col two">
-          <h3>
-            Banking</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>
-          <input type="submit" class="btn secondary" value="Connect" />
-        </div>
-        <div class="col three">
-          <h3>
-            Healthcare</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus.</p>
-          <input type="submit" class="btn secondary" value="Connect" />
-        </div>
-        <div class="spacerdiv">
-        </div>
-      </div>
+      <div class="spacerdiv pad5v"></div>
+      <%= link_to :you_have_pending_friendship_requests.l, pending_user_friendships_path(@user) %>
+      <div class="spacerdiv pad5v"></div>
     </div>
-  </div>
+  <%end%>
+
+  <% unless @network_activity.empty? %>
+    <div class="spacerdiv pad5v"></div>
+    <div class="forumpost">
+      <div class="header2">
+        <h2><%= :activity_from_your_network.l %></h2>
+      </div>
+      <div class="spacerdiv pad5v"></div>
+      <div style="color: #6A6A6A">
+        <%= render :partial => "activities/activity", :collection => @network_activity %>
+      </div>
+        <div class="spacerdiv pad5v"></div>
+        <%=link_to :see_all_activity.l, network_user_activities_path(current_user)%>
+    </div>
+  <%end%>
+    
   <div class="spacerdiv pad5v"></div>
   <div class="forumpost">
-    <div id="postaquestion">
-      <div id="tabs">
-        <ul>
-          <li><a href="#tabs-1"><img src="/assets/messages.jpg" width="16" height="12" alt="Home" align="absmiddle" /> Message</a></li>
-
-          <li><a href="#tabs-2"><img src="/assets/blog.jpg" width="13" height="14"  align="absmiddle"/> Blog</a></li>
-          <li><a href="#tabs-3"><img src="/assets/article.jpg" width="12" height="14" alt="Articles" align="absmiddle"/> Articles</a></li>
-          <li><a href="#tabs-4"><img src="/assets/events.jpg" width="13" height="14" alt="Events" align="absmiddle"/> Events</a></li>
-          <li class="links last"><a href="#">Attachments</a></li>
-          <li class="links"><a href="#">To</a></li>
-        </ul>
-        <div class="tab_content" id="tabs-1">
-          <div class="content">
-            <div class="ddl_container">
-              <select class="ddl">
-                <option>Buyer</option>
-                <option>Seller</option>
-                <option>Merchant</option>
-              </select>
-            </div>
-            <textarea class="queryinput" rows="1" cols="40"></textarea>
-            <div class="spacerdiv"></div>
-          </div>
-          <input class="btn secondary" type="submit" value="Post" />
-        </div>
-        <div class="tab_content" id="tabs-2">
-          <div class="content">
-            <div class="ddl_container">
-              <select class="ddl">
-                <option>Buyer</option>
-                <option>Seller</option>
-                <option>Merchant</option>
-              </select>
-            </div>
-            <textarea class="queryinput" rows="1" cols="40"></textarea>
-            <div class="spacerdiv">
-            </div>
-          </div>
-          <input class="btn secondary" type="submit" value="Post" />
-        </div>
-        <div class="tab_content" id="tabs-3">
-          <div class="content">
-            <div class="ddl_container">
-              <select class="ddl">
-                <option>Buyer</option>
-                <option>Seller</option>
-                <option>Merchant</option>
-              </select>
-            </div>
-            <textarea class="queryinput" rows="1" cols="40"></textarea>
-            <div class="spacerdiv">
-            </div>
-          </div>
-          <input class="btn secondary" type="submit" value="Post" />
-        </div>
-        <div class="tab_content" id="tabs-4">
-          <div class="content">
-            <div class="ddl_container">
-              <select class="ddl">
-                <option>Buyer</option>
-                <option>Seller</option>
-                <option>Merchant</option>
-              </select>
-            </div>
-            <textarea class="queryinput" rows="1" cols="40"></textarea>
-            <div class="spacerdiv">
-            </div>
-          </div>
-          <input class="btn secondary" type="submit" value="Post" />
-        </div>
-      </div>
-    </div>
     <div class="header2">
-      <a class="brdlt" href="#">My Network</a><a class="current" href="#">All</a>
+      <%= link_to :All, recent_path,{:class=>'current'} %>
       <h2>Recent Activity</h2>
     </div>
-    <div class="row-box first">
-      <div class="photo-box">
-        <img src="/assets/p1.jpg" alt="" /></div>
-      <div class="photo-text">
-        <h3>Need local banking help!</h3>
-        <span>Anju George, Private Broker, Bank of America</span>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>
-        <p><a href="#">Comment</a> | <a href="#">Connect</a></p>
-      </div>
-    </div>
-    <div class="row-box">
-      <div class="photo-box">
-        <img src="/assets/p3.jpg" alt="" /></div>
-      <div class="photo-text">
-        <h3>
-          Need local banking help!</h3>
-        <span>
-          Anju George, Private Broker, Bank of America</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean
-          bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>
-        <p>
-          <a href="#">Comment</a> | <a href="#">Connect</a></p>
-      </div>
-    </div>
-    <div class="row-box">
-      <div class="photo-box">
-        <img src="/assets/p2.jpg" alt="" /></div>
-      <div class="photo-text">
-        <h3>
-          Need local banking help!</h3>
-        <span>
-          Anju George, Private Broker, Bank of America</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean
-          bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>
-        <p>
-          <a href="#">Comment</a> | <a href="#">Connect</a></p>
-      </div>
-    </div>
-    <div class="row-box">
-      <div class="photo-box">
-        <img src="/assets/p3.jpg" alt="" /></div>
-      <div class="photo-text">
-        <h3>
-          Need local banking help!</h3>
-        <span>
-          Anju George, Private Broker, Bank of America</span>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean
-          bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>
-        <p>
-          <a href="#">Comment</a> | <a href="#">Connect</a></p>
-      </div>
-    </div>
+    <%= render :partial => 'posts/recent_activities_post', :locals => {:posts => @b_posts}%>
+    <%= render :partial => 'posts/recent_activities_post', :locals=> {:posts => @n_b_posts}%>
+
+
+
+
+
+
+    <%#*<div class="row-box first">%>
+      <%#*<div class="photo-box">%>
+        <%#*<img src="/assets/p1.jpg" alt="" /></div>%>
+      <%#*<div class="photo-text">%>
+        <%#*<h3>Need local banking help!</h3>%>
+        <%#*<span>Anju George, Private Broker, Bank of America</span>%>
+        <%#*<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>%>
+        <%#*<p><a href="#">Comment</a> | <a href="#">Connect</a></p>%>
+      <%#*</div>%>
+    <%#*</div>%>
+    <%#*<div class="row-box">%>
+      <%#*<div class="photo-box">%>
+        <%#*<img src="/assets/p3.jpg" alt="" /></div>%>
+      <%#*<div class="photo-text">%>
+        <%#*<h3>%>
+          <%#*Need local banking help!</h3>%>
+        <%#*<span>%>
+          <%#*Anju George, Private Broker, Bank of America</span>%>
+        <%#*<p>%>
+          <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean%>
+          <%#*bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>%>
+        <%#*<p>%>
+          <%#*<a href="#">Comment</a> | <a href="#">Connect</a></p>%>
+      <%#*</div>%>
+    <%#*</div>%>
+    <%#*<div class="row-box">%>
+      <%#*<div class="photo-box">%>
+        <%#*<img src="/assets/p2.jpg" alt="" /></div>%>
+      <%#*<div class="photo-text">%>
+        <%#*<h3>%>
+          <%#*Need local banking help!</h3>%>
+        <%#*<span>%>
+          <%#*Anju George, Private Broker, Bank of America</span>%>
+        <%#*<p>%>
+          <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean%>
+          <%#*bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>%>
+        <%#*<p>%>
+          <%#*<a href="#">Comment</a> | <a href="#">Connect</a></p>%>
+      <%#*</div>%>
+    <%#*</div>%>
+    <%#*<div class="row-box">%>
+      <%#*<div class="photo-box">%>
+        <%#*<img src="/assets/p3.jpg" alt="" /></div>%>
+      <%#*<div class="photo-text">%>
+        <%#*<h3>%>
+          <%#*Need local banking help!</h3>%>
+        <%#*<span>%>
+          <%#*Anju George, Private Broker, Bank of America</span>%>
+        <%#*<p>%>
+          <%#*Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut in mattis metus. Aenean%>
+          <%#*bibendum tortor id odio rutrum nec suscipit nunc pulvinar.</p>%>
+        <%#*<p>%>
+          <%#*<a href="#">Comment</a> | <a href="#">Connect</a></p>%>
+      <%#*</div>%>
+    <%#*</div>%>
 
     <div class="spacerdiv"></div>
   </div>

@@ -1,0 +1,21 @@
+- if posts
+  -posts.each do |post|
+    .row-box{:style=>"float:none!important"}
+      .photo-box
+        =image_tag((post.first_image_in_body || post.user.avatar_photo_url(:thumb)), :alt=>"")
+      .photo-text
+      %h3{:id=>"post_#{ post.id}",:style=>"margin-bottom:3px;color:#0572C5"}
+        = link_to post.title, user_post_path(post.user, post), :rel => 'bookmark'
+        %br
+      %span
+        =link_to post.user.login, user_path(post.user),{:style=>"color:#9C9C9C"}
+        %a{:href=>"#{user_post_path(post.user, post)}", :rel=>"bookmark",:style=>"color:#9C9C9C;"}
+          %abbr.published{:title=>"#{post.published_at}"}= post.published_at_display(:short_literal_date)
+      %p{:style=>"color:#9C9C9C"}
+        = truncate_words(post.post, 75, '...' )
+      = :view_count.l
+      = "(#{post.view_count})"
+      = link_to :comments.l+" (#{post.comments.count})", user_post_path(post.user, post)+'#comments'
+      - if current_user and current_user.can_request_friendship_with(post.user)
+        = add_friend_link(post.user)
+      
