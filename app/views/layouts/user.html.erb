@@ -11,6 +11,9 @@
     <script type="text/javascript" src="/assets/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="/assets/jquery.ui.tabs.js"></script>
     <script type="text/javascript" src="/assets/jquery.ddown.js"></script>
+    <%= javascript_include_tag 'community_engine' %>
+    <%=javascript_include_tag 'jquery-1.6.1.min'  %>
+
     <script type="text/javascript">
       jQuery(function() {
         jQuery('select').customStyle();
@@ -23,6 +26,7 @@
           jQuery("#tabs").tabs();
         });
       });
+      jQuery.noConflict();
     </script>
 
     <!--[if IE]>
@@ -33,16 +37,21 @@
     <div id="wrapper">
       <div class="reg-page2 styleselect">
         <div class="header">
-          <div id="search_panel">
-            <div class="ddl_container">
-              <select class="ddl">
-                <option>Buyer</option>
-                <option>Seller</option>
-                <option>Merchant</option>
-              </select>
+          <div id="search_panel" style="width: 240px !important;">
+            <div class="ddl_container" style="margin-top: 5px;">
+              <span class="customStyleSelectBox">Buyer</span>
+<%#*<select class="ddl">%>
+<%#*<option>Buyer</option>%>
+<%#*<option>Seller</option>%>
+<%#*<option>Merchant</option>%>
+<%#*</select>%>
             </div>
-            <input type="text" class="searchbox" />
-            <input class="btnsearch" type="submit" value="" />
+            <%= text_field_tag 'search', "", {:autocomplete => "off", :size => 35, :id => "search_to"}%>
+            <input class="btnsearch" type="submit" value="" style="height: 22px!important;"/>
+            <div class="auto_complete" id="search_to_auto_complete">
+              <%= auto_complete_field 'search_to', {:url => auto_complete_look_for_index_path, :tokens=>','}%>
+            </div>
+
             <div class="spacerdiv">
             </div>
           </div>
@@ -90,3 +99,35 @@
     <br />
   </body>
 </html>
+<style type="text/css">
+  div.auto_complete {
+    width: 350px;
+    background: #ffffff; }
+  div.auto_complete ul {
+    border: 1px solid #888888;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: auto; }
+  div.auto_complete ul li {
+    margin: 0;
+    padding: 3px; }
+  div.auto_complete ul li.selected {
+    background-color: #FFFDC0; }
+  .auto_complete{
+    margin-top:20px;
+  }
+  .auto_complete li{
+    cursor: pointer;
+    text-align: left;
+    z-index: 10
+  }
+  .buyer_button{
+    font-size: 11px;
+    height: 19px;
+    opacity: 0;
+    position: absolute;
+    float: left;
+    width: 80px;
+  }
+</style>
