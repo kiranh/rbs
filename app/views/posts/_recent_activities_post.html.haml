@@ -12,10 +12,10 @@
         %a{:href=>"#{user_post_path(post.user, post)}", :rel=>"bookmark",:style=>"color:#9C9C9C;"}
           %abbr.published{:title=>"#{post.published_at}"}= post.published_at_display(:short_literal_date)
       %p{:style=>"color:#9C9C9C"}
-        = truncate_words(post.post, 75, '...' )
+        = truncate_words(post.post, 35, '...' )
       = :view_count.l
       = "(#{post.view_count})"
       = link_to :comments.l+" (#{post.comments.count})", user_post_path(post.user, post)+'#comments'
       - if current_user and current_user.can_request_friendship_with(post.user)
         = add_friend_link(post.user)
-      
+      %div{:style=>"clear:both;"}
