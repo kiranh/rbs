@@ -75,11 +75,11 @@
             <div class="figcaption"><%= current_user.name %></div>
           </div>
           <ul>
-            <li><a href="#">Messages</a></li>
-            <li><a href="/popular">Blogs</a></li>
-            <li><a href="#">Articles</a></li>
-            <li><a href="#">Contacts</a></li>
-            <li><a href="#">Events</a></li>
+            <li><%= link_to :Messages, user_messages_path(current_user)%></li>
+            <li><%= link_to :Blogs, user_posts_path(current_user)%></li>
+            <li><a href="<%= forums_path %>">Forums</a></li>
+            <li><%= link_to :Contacts, accepted_user_friendships_path(current_user)%></li>
+            <li><a href="<%= user_events_path(current_user) %>">Events</a></li>
           </ul>
         </section>
       </div>
