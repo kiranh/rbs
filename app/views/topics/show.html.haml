@@ -2,7 +2,7 @@
 - @section = 'forums'
 - @page_title = @topic.title
 - @monitoring = logged_in? && current_user.monitoring_topic?(@topic)
-
+= include_tiny_mce_if_needed
 %script{:type => 'text/javascript'}
   function monitor_click(checkbox){
   if (checkbox.checked) {
@@ -88,8 +88,19 @@
       %h6.all.right= link_to_function :reply_to_topic.l, "ReplyForm.init()", :class => "utility"
       #reply.editbox
         .container
-          =render :partial => 'sb_posts/reply_form'
-          
+          = content_tag 'p', h(flash[:bad_reply]), :class => 'notice' if flash[:bad_reply]
+          = form_for :post, :url => sb_posts_path(:forum_id => @forum, :topic_id => @topic, :page => @topic.last_page) do |f|
+            %table{"cellspacing"=>"0", "border"=>"0", "cellpadding"=>"0", "width"=>"100%"}
+              %tr
+                %td{"rowspan"=>"2", "width"=>"70%"}
+                  = f.text_area :body, {:style => "width: 99%", :class => "rich_text_editor"}
+                %td{"style"=>"vertical-align:top;"}
+                  = submit_tag :save_reply.l
+                  %span.button_or
+                    ="or #{link_to_function "cancel", "$('reply').hide()"}".html_safe
+              %tr
+                %td{"style"=>"vertical-align: bottom; padding-bottom:15px;"}
+
           
     = javascript_tag "$('reply').hide();"
   - else
