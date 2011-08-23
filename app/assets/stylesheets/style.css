@@ -1288,3 +1288,6 @@ select {
 .margin_5{
     margin: 5px
 }
+.word_wrap{
+  word-wrap:break-word;
+}

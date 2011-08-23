@@ -39,7 +39,7 @@
     -box :class => 'yui-g alt', :id => 'photo_comments' do
       %h3=:my_recent_comments.l
       - @users_comments.each do |comment|
-        %dl.vcard
+        %dl.vcard.word_wrap
           %dt.photo
             - if comment.recipient
               = link_to image_tag(comment.recipient.avatar_photo_url(:thumb), :alt => "#{comment.recipient.login}", :width => '50', :height => '50'), commentable_url(comment)
@@ -47,7 +47,9 @@
             - if comment.commentable.eql?(comment.recipient)
               %strong= :to.l + ": #{link_to comment.recipient.login, commentable_url(comment)}"
             - else
-              %strong= :on_commentable.l + ": #{link_to comment.commentable_name, commentable_url(comment)} (#{comment.commentable_type.l})"
+              %strong= :on_commentable.l + ":"
+              = link_to comment.commentable_name, commentable_url(comment)
+              = "(#{comment.commentable_type.l})"
           %dd
             %p= "\"#{truncate_words( comment.comment, 10, '...')}\""
 
