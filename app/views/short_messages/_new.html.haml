@@ -1,0 +1,18 @@
+#message_box
+  .message-box-title
+    %h2
+      What's happening?
+  .message-text-area
+
+= error_messages_for :post
+= form_remote_for(:message, @message, :url => user_short_messages_path, :html => {:class => "MainForm", :id => 'message_form'}) do |f|
+  = f.text_area :message,{:class=>"message_text_area"}
+  %br
+  = submit_tag "post"
+
+
+
+
+
+
+

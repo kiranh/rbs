@@ -32,6 +32,7 @@ SocialCrm::Application.routes.draw do
       match 'upload_profile_photo'
       match 'metro_area_update'
     end
+    resources :short_messages
   end
 
   resources :contacts do
@@ -62,6 +63,7 @@ SocialCrm::Application.routes.draw do
     match :remove_doc, :on => :member
     match :remove_video, :on => :member
   end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

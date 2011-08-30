@@ -1,0 +1,17 @@
+.yui-b
+  = render :partial => 'author_profile', :locals => {:user => @user}
+
+  - unless @messages.empty?
+    -box :id => "posts", :class => 'alt' do
+      %h3
+        Recent Messages
+      %ul.list.page
+        - @messages.each do |msg|
+          %li= link_to truncate(msg.message, :length => 75), user_short_message_path(@user)
+
+#yui-main
+  = render :partial => 'new', :locals => {:user => @user}
+  .yui-b
+    -box :class => "posts hfeed" do 
+      = render :partial => 'message', :collection => @pmessages
+      

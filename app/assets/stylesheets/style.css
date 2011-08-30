@@ -1291,3 +1291,8 @@ select {
 .word_wrap{
   word-wrap:break-word;
 }
+.message_text_area{
+    height:56px;
+    width:482px;
+    border:1px solid #ccc;
+  }
