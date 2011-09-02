@@ -347,6 +347,10 @@ input.textlarge {
     border-color: #fc2727;
 }
 
+input.error {
+  border-color: #fc2727;
+}
+
 .tip {
     display: none;
     position: absolute;
@@ -1037,7 +1041,7 @@ select {
     padding: 0 0 0 15px;
     background: url(popupimg.png) no-repeat;
     color: #fff;
-    display: none;
+/*    display: none;*/
 }
 
 .disp {
@@ -1045,11 +1049,11 @@ select {
 }
 
 .rel span.error {
-    font-size: 10px;
+    font-size: 8px;
     background: url("errorpopup.png") no-repeat scroll 0 0 transparent;
     display: table;
-    height: 26px;
-    padding: 9px 0 0 15px;
+    height: 28px;
+    padding: 6px 0 0 15px;
     position: absolute;
     right: 0px;
     top: 0;

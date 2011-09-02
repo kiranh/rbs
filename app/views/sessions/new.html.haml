@@ -8,13 +8,45 @@
       }, function() {
           jQuery(this).removeClass("hover");
       });
-
       jQuery("input.field").focus(function() {
           jQuery(this).next().show();
       });
       jQuery("input.field").blur(function() {
           jQuery(this).next().hide();
       });
+      if (jQuery('.userlogin').length != 0){
+        jQuery("input[type='text']").addClass('error');
+        jQuery("input[type='text']").focus(function() {
+          jQuery('span.username_error').hide();
+        });
+        jQuery('span.username_error').hide();
+        jQuery("#username").keypress(function() {
+          if(jQuery("#username").val()== ""){
+            jQuery('.userlogin').hide();
+          }
+          else{
+            jQuery('.userlogin').show();
+            }
+        });
+      }
+      if (jQuery('.pwd_login').length != 0){
+        jQuery("input[type='password']").addClass("error");
+        jQuery("input[type='password']").focus(function() {
+          jQuery('span.password_error').hide();
+        });
+      jQuery('span.password_error').hide();
+       jQuery("input[type='password']").keypress(function() {
+          if(jQuery("input[type='password']").val()== ""){
+            jQuery('.pwd_login').hide();
+             jQuery('span.password_error').show();
+          }
+          else{
+            jQuery('span.password_error').hide();
+            jQuery('.pwd_login').show();
+            }
+        });
+      }
+
       jQuery("#form").validate();
   });
 .main-container
@@ -48,15 +80,19 @@
           %label Username:
           .rel
             = text_field_tag 'login', params[:login], :id => "username", :class => "text field required"
-            %span.tip Enter Username
-            %span.loginpopup Enter Valid Username
+            %span.tip.username_error Enter Username
+            -if @errors.present? && @errors[:login].present?
+              %span.error.userlogin Enter Valid Username
         .row
           %label Password:
           .rel
-            %input.text.field{:name => "password", :type => "password"}
-            %span.loginpopup Enter Valid Password
-            %span.tip Enter password
+            %input.text.field{:name => "password", :type => "password",:class=>"required"}
+            %span.tip.password_error Enter password
+            -if @errors.present? && @errors[:password].present?
+              %span.error.pwd_login Enter Valid Password
         .spacerdiv
+        %p{:style=>'margin-left:5.7em;'}
+          = link_to "Get new password", forgot_password_url
         .row
           %label &nbsp;
           %input.btn.loginbtn.1thickbox{:alt => "#TB_inline?height=320&width=300&inlineId=myOnPageContent", :title => "Import Contacts", :type => "submit", :value => "Login"}/

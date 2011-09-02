@@ -19,7 +19,16 @@
         jQuery(this).parent().find(".regpopup").hide();
     });
 
-    jQuery("#form").validate();
+    jQuery("#form").validate({
+      rules: {
+        "user[password_confirmation]": {equalTo: "#user_password"},
+        "user[login]": {minlength: 5}
+      },
+      messages: {
+        "user[login]" : {minlength : "minimum 5 characters required"},
+        "user[password_confirmation]" : {equalTo : "Password doesn't match confirmation"}
+     }
+    });
   });
 
 .reg-page
@@ -29,7 +38,7 @@
       .business-info
         %h2
           Signup
-        = error_messages_for :user
+        =# error_messages_for :user
         .twocol
           .col.one
             .row
@@ -42,8 +51,10 @@
               %label
                 Username:
               .rel
-                = f.text_field :login, :class => "required"
+                = f.text_field :login, :class => "required #{(error_message_on :user, :login).present? ? 'error' : ''}"
                 %span.regpopup Enter Username
+                - if (error_message_on :user, :login).present?
+                  %span.error Login has alredy been taken
             .row
               %label
                 Password:
@@ -66,8 +77,10 @@
               %label
                 email ID:
               .rel
-                = f.text_field :email, :class => "required email"
+                = f.text_field :email, :class => "required email #{(error_message_on :user, :email).present? ? 'error' : ''}"
                 %span.regpopup Enter Email
+                - if (error_message_on :user, :email).present?
+                  %span.error Email has alredy been taken
             .row
               %label
                 Organization/Business:
