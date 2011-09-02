@@ -69,6 +69,9 @@
             <li><a href="<%= groups_path %>">GROUPS</a></li>
             <li><a href="<%= events_path %>">EVENTS</a></li>
             <li><a href="<%= users_path %>">USERS</a></li>
+            <%if current_user.present?%>
+              <li><a href="<%= user_short_messages_path(current_user) %>">Short Message</a></li>
+            <%end%>
           </ul>
           <div class="spacerdiv">
           </div>
