@@ -11,6 +11,7 @@ require 'active_support/core_ext/load_error'
 require 'active_support/core_ext/name_error'
 require 'active_support/core_ext/string/starts_ends_with'
 require 'active_support/inflector'
+require 'jcode' if RUBY_VERSION < '1.9'
 
 module ActiveSupport #:nodoc:
   module Dependencies #:nodoc:

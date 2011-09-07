@@ -7,9 +7,10 @@ gem 'community_engine', :path => "vendor/engines/communityengine"
 #'2.0.0.beta', :git => 'https://github.com/bborn/communityengine.git', :branch => 'rails3'
 gem 'authlogic', :path => "vendor/git/authlogic"
 #, :git => 'https://github.com/bborn/authlogic.git'
-#gem 'calendar_date_select', :path => "vendor/git/calendar_date_select"
+gem 'calendar_date_select', :path => "vendor/git/calendar_date_select"
+
 #, :git => 'https://github.com/paneq/calendar_date_select.git', :branch => 'rails3test'
-gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
+#gem 'calendar_date_select', :git => 'git://github.com/paneq/calendar_date_select.git'
 gem 'omniauth'
 gem 'meta_search', :path => "vendor/git/meta_search"
 gem 'sprockets', :path => "vendor/git/sprockets"
@@ -23,6 +24,10 @@ gem 'coffee-script'
 gem 'uglifier'
 
 gem 'jquery-rails'
+
+# For contacts gem
+gem 'gdata', '1.1.1' 
+
 
 # Use unicorn as the web server
 gem 'unicorn'

@@ -4,7 +4,7 @@ common: &common
   pool: 5
   host: localhost
   username: root
-  password: root
+  password: password
 # MySQL.  Versions 4.1 and 5.0 are recommended.
 #
 #
