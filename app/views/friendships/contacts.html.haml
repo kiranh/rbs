@@ -1,0 +1,25 @@
+.user_list{:style=>"float:left;width:100%"}
+  .row
+    #yui-main
+      .yui-b
+        .filter{:style=>"width:20%;float:left;"}= render :partial => "friendships/filter_options"
+        .user_list{:style=>"float:left;width:79%;"}= render :partial => "friendships/friend", :locals=> {:friendships => @friendships}
+        %div{:style=>"clear:both;"}
+      %div{:style=>"clear:both;"}
+    %div{:style=>"clear:both;"}
+  %div{:style=>"clear:both;"}
+%style{:type => "text/css"}
+  div.user_list .row {
+  border: 1px solid #cccccc;
+  margin: 1em 0 1em 0;
+  margin-bottom: 1.5em;
+  padding: 0.5em;
+  }
+  div.user_list div.vcard {
+  width: 100%;
+  }
+  div.user_list div.vcard ul {
+  margin-left: 0;
+  font-size: 85%;
+  }
+  
