@@ -71,10 +71,20 @@ class FriendshipsController < BaseController
 
   def contacts
     @user = User.find(params[:id])
-    @friend_count = @user.accepted_friendships.count
-    @pending_friendships_count = @user.pending_friendships.count
+    @groups_connection = @user.group_members
 
+    @friend_count = @user.accepted_friendships.count
+    #@pending_friendships_count = @user.pending_friendships.count
     @friendships = @user.friendships.accepted.page(params[:page]).per(12)
+    @friends = []
+    @friendships.each do |f|
+      @friends << f.friend
+    end
+    @business_connection = []
+    @friends.each do |friend|
+      @business_connection << friend.business_name if friend.business_name && !@business_connection.present?
+    end
+
     respond_to do |format|
       format.html
     end

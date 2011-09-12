@@ -1,22 +1,15 @@
 %div{:style=>"margin:14px"}
-  filter by
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
-  skjldddddd
-  %br
+  -if @groups_connection.present?
+    %h4 Groups
+    %ul
+      -@groups_connection.each do |group|
+        %li
+          =check_box_tag 'search[group][]', group.group_id
+          =group.group_name.titleize
+  -if @business_connection.present?
+    %h4 Company
+    %ul
+      -@business_connection.each do |company|
+        %li
+          =check_box_tag 'search[company][]', company
+          =company.titleize

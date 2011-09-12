@@ -59,4 +59,8 @@ class GroupMember < ActiveRecord::Base
     self.find(:all, :conditions => ['group_id = ? AND aasm_state = ?', group.id, "pending"])
   end
 
+  def group_name
+    group.title
+  end
+
 end
