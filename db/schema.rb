@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804053323) do
+ActiveRecord::Schema.define(:version => 20110830070714) do
 
   create_table "activities", :force => true do |t|
     t.integer  "user_id"
@@ -401,6 +401,13 @@ ActiveRecord::Schema.define(:version => 20110804053323) do
   end
 
   add_index "sessions", ["sessid"], :name => "index_sessions_on_sessid"
+
+  create_table "short_messages", :force => true do |t|
+    t.string   "message"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "slugs", :force => true do |t|
     t.string   "name"
