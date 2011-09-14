@@ -220,6 +220,40 @@ class User < ActiveRecord::Base
     query
   end
 
+  def self.query(group_ids,company_names,current_user)
+    g_friends = User.query_for_group_members(group_ids,current_user)
+    b_friends = User.query_for_company_members(company_names,current_user)
+    p "<<<<<<<<<<<<<<<<<<<group friends<<<>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    p g_friends
+    p "<<<<<<<<<<<<<<<<<<<<<<company friends>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
+    p b_friends
+    friends = g_friends + b_friends
+    friends = friends.uniq
+    p "<<<<<<<<<<<<<<<<<<<<<<<<<friends>>>>>>>>>>>>>>>>>>>>>"
+    p friends
+    friends
+  end
+
+  def self.query_for_group_members(group_ids,current_user)
+    group_members = []
+    group_ids.each do |id|
+      Group.find(id.to_i).group_members.each do |member|
+        group_members << member.member if Friendship.friends?(current_user, member.member) && !group_members.include?(member.member)
+      end
+    end
+    group_members
+  end
+
+  def self.query_for_company_members(comapny_names,current_user)
+    company_members = []
+    comapny_names.each do |name|
+      all = User.find(:all,:conditions=>['business_name like ?',name])
+      all.each do |u|
+        company_members << u if Friendship.friends?(current_user, u) && !company_members.include?(u)
+      end
+    end
+    company_members
+  end
   ## End Class Methods  
 
 

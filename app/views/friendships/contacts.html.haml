@@ -3,7 +3,7 @@
     #yui-main
       .yui-b
         .filter{:style=>"width:20%;float:left;"}= render :partial => "friendships/friend_filter_options"
-        .user_list{:style=>"float:left;width:79%;"}= render :partial => "friendships/friend", :locals=> {:friendships => @friendships}
+        #friends_result.user_list{:style=>"float:left;width:79%;"}= render :partial => "friendships/friend", :locals=> {:friends_result => @friends_result}
         %div{:style=>"clear:both;"}
       %div{:style=>"clear:both;"}
     %div{:style=>"clear:both;"}
