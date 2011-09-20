@@ -30,5 +30,4 @@ class Group < ActiveRecord::Base
       all
     end
   end
-
 end

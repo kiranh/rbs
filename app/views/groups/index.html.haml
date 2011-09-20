@@ -2,9 +2,9 @@
   = t('.my_groups')
 %table
   %tr
-    %th Title
-    %th Owner
-    %th Moderator(s)
+    %th Title  
+    %th Owner    
+    %th Moderator(s)    
     %th Public
     %th Member(s)
     %th Total-Members
@@ -12,11 +12,12 @@
   - group = @group
   %tr
     %td= link_to group.title, group
-    %td= person_image_link group.person
+    %td= link_to image_tag(@owner.avatar_photo_url(:thumb), :width => '50', :height => '50'), user_path(@owner.id)
     %td
-      - GroupMember.moderator(group).each do |moderator|
-        = person_image_link Person.find(moderator.member_id)
-        = link_to t('.remove_moderator'), remove_moderator_path(group.id, moderator.member) if group.person_id == currentuser.person.id
+      - GroupMember.moderator(@group).each do |moderator|
+        - @user_who_is_moderator = User.find(moderator.member_id)
+        = link_to image_tag(@user_who_is_moderator.avatar_photo_url(:thumb), :width => '50', :height => '50'), user_path(@user_who_is_moderator.id)
+        = link_to t('.remove_moderator'), remove_moderator_path(group.id, moderator.member_id) if group.user_id == current_user.id
         %br/
     %td
       - if group.public
@@ -25,11 +26,10 @@
         = "NO"
     %td
       - group.members.each do |member|
-        - if !PageMember.moderator?(group,member)
-          =  person_image_link member
-          =  link_to t('.make_moderator'), make_moderator_path(group.id, member) if group.person_id == currentuser.person.id
+        - if !GroupMember.find_by_member_id(member.id).moderator
+          =  link_to image_tag(member.avatar_photo_url(:thumb), :width => '50', :height => '50'), user_path(member.id)
+          =  link_to t('.make_moderator'), make_moderator_path(group.id, member.id) if group.user_id == current_user.id
           %br/
     %td= group.members.count
-    %td= link_to "Edit", edit_group_path(group) if group.person_id == currentuser.person.id
-    %td= link_to "Destroy", group, :confirm => 'Are you sure?', :method => :delete if group.person_id == currentuser.person.id
-%p= link_to "Create a New Page", new_group_path if group.person_id == currentuser.person.id
+    %td= link_to "Edit", edit_group_path(group) if group.user_id == current_user.id
+    %td= link_to "Destroy", group, :confirm => 'Are you sure?', :method => :delete if group.user_id == current_user.id

@@ -12,6 +12,7 @@ class GroupsController < BaseController
       @group = Group.find(params[:id])
       @group_member = true if GroupMember.actual_member(@group, current_user)
       @member_is_moderator = GroupMember.moderator?(@group, current_user) if @group_member
+      @owner = @group.user
     end
   end
 
@@ -73,7 +74,7 @@ class GroupsController < BaseController
   def destroy
     @group = Group.find(params[:id])
     @group.destroy
-    redirect_to root_url, :notice => "Successfully destroyed #{@group.title} Group."
+    redirect_to :controller=>:users,:action=>:dashboard, :notice => "Successfully destroyed #{@group.title} Group."
   end
 
   def add_member
@@ -188,6 +189,21 @@ class GroupsController < BaseController
     respond_to do |format|
       format.js
       format.html
+    end
+  end
+
+  def avatar_photo_url(size = nil)
+    if avatar
+      avatar.photo.url(size)
+    elsif omniauthed? && authorizations.first.picture_url
+      authorizations.first.picture_url
+    else
+      case size
+      when :thumb
+        configatron.photo.missing_thumb.to_s
+      else
+        configatron.photo.missing_medium.to_s
+      end
     end
   end
 end
