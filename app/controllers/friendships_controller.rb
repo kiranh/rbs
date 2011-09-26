@@ -2,7 +2,7 @@ class FriendshipsController < BaseController
   before_filter :login_required, :except => [:accepted, :index,:contacts]
   before_filter :find_user, :only => [:accepted, :pending, :denied,:contacts]
   before_filter :require_current_user, :only => [:accept, :deny, :pending, :destroy]
-  layout :get_layout, :only => [:contacts]
+  layout :get_layout#, :only => [:contacts]
 
   def index
     @body_class = 'friendships-browser'
@@ -72,21 +72,34 @@ class FriendshipsController < BaseController
   def contacts
     @user = User.find(params[:id])
     @groups_connection = @user.group_members
-
-    @friend_count = @user.accepted_friendships.count
-    #@pending_friendships_count = @user.pending_friendships.count
+    if params[:connection].present?
+      group_ids = []
+      company_names = []
+      group_ids = params[:connection][:group_ids] if params[:connection][:group_ids].present?
+      company_names = params[:connection][:company_names] if params[:connection][:company_names].present?
+      @filtered_friends = User.query(group_ids, company_names,current_user)
+    end
     @friendships = @user.friendships.accepted.page(params[:page]).per(12)
+    @friends_result = []
+    @friendships.each do |friend|
+      @friends_result << friend.friend
+    end
+    #@friend_count = @user.accepted_friendships.count
+    #@pending_friendships_count = @user.pending_friendships.count
     @friends = []
     @friendships.each do |f|
       @friends << f.friend
     end
     @business_connection = []
     @friends.each do |friend|
-      @business_connection << friend.business_name if friend.business_name && !@business_connection.present?
+      @business_connection << friend.business_name if friend.business_name && !@business_connection.include?(friend.business_name)
     end
-
+    @business_connection << current_user.business_name
     respond_to do |format|
       format.html
+      format.js do
+        render :partial => "friendships/friend", :locals=> {:friends_result => @filtered_friends}
+      end
     end
   end
   

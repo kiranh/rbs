@@ -1,0 +1,42 @@
+<div style="margin:14px">
+  <form method="post" action="" id="filter_friends">
+    <%if @groups_connection.present?%>
+      <h4>Groups</h4>
+      <ul>
+        <%@groups_connection.each do |group|%>
+          <li>
+            <input type="checkbox" id="chk_<%= group.id %>" name="connection[group_ids][]" value="<%= group.group_id %>" onclick="submit_search_form();"/>
+            &nbsp;<span class='filter-items'><%= truncate(group.group_name.titleize , :ommision=>"...", :length => 25)%></span>
+          </li>
+        <%end%>
+      </ul>
+    <%end%>
+    <%if @business_connection.present?%>
+      <h4>Groups</h4>
+      <ul>
+        <%@business_connection.each do |company|%>
+          <li>
+            <input type="checkbox" id="chk_<%= company%>" name="connection[company_names][]" value="<%= company %>" onclick="submit_search_form();"/>
+            &nbsp;<span class='filter-items'><%= truncate(company.titleize , :ommision=>"...", :length => 25)%></span>
+          </li>
+        <%end%>
+      </ul>
+    <%end%>
+  </form>
+</div>
+
+<script type="text/javascript">
+  function submit_search_form(){
+    alert("hello");
+    jQuery.ajax({
+    data: jQuery('#filter_friends').serializeArray(),
+    dataType:'script',
+    type:'post',
+    url:"/connections/"+<%= current_user.id %>,
+    success: function(data){
+     alert("done");
+     jQuery("#friends_result").empty().append(data);
+   }
+  });
+  }
+</script>
