@@ -188,7 +188,7 @@ module BaseHelper
 					:method => :post }, {:class => "add_friend button"}
 		html +=	"<span style='display:none;' class='spinner'>"
 		html += image_tag 'spinner.gif', :plugin => "community_engine"
-		html += :requesting_friendship.l+" ...</span></span>"
+		html += :requesting_friendship.l+" ..."
 		html.html_safe
   end
 
